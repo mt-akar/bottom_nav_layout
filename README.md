@@ -1,5 +1,5 @@
 # bottom_nav_layout
-A quick layout with
+A quick and powerful layout with
  - Bottom navigation bar
  - Navigation management
  - Page state preservation
