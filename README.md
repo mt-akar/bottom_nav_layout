@@ -1,7 +1,13 @@
 # bottom_nav_layout
- A quick layout with bottom navigation, tab back stack, and  state management.
+A quick layout with
+ - Bottom navigation layout
+ - Tab back stack
+ - Back button management
+ - Page state preservation
 
-#Installation
+# Installation
+This package hasn't been released. Therefore the installiation is directly from github.
+Add the following to your `pubspec.yaml` file.
 ```
   bottom_nav_layout:
     git:
