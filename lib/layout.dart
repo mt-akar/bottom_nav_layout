@@ -4,6 +4,12 @@ import 'package:flutter/widgets.dart';
 import 'bottom_nav_bar_delegate.dart';
 import 'tab_stack.dart';
 
+/// [BottomNavLayout] layout consists of a [Scaffold].
+/// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar].
+/// [BottomNavigationBar] controls which one of the [pages] is currently visible.
+///
+/// While navigating around with [BottomNavigationBar], [pages] do not get destroyed/rebuilt, only get hidden/visible.
+/// This way, the pages saves all their state.
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     this.keys,
@@ -21,21 +27,15 @@ class BottomNavLayout extends StatefulWidget {
   ///
   /// To manage all back button presses in this widget, keys of type [GlobalKey<NavigatorState>] for navigation should be used in the [pages].
   /// These keys should be created outside the pages and the same key instances should be passed into both pages and to this widget at the same time.
-  /// Order of [keys] should be the same as the order of [pages] they are passed into.
   ///
   /// Once present, these keys are used to navigate back.
   /// The back press events will be passed to the current page's key to be consumed first.
   /// The onTap events on the current BottomNavBarItem will cause the key to pop until the root route is reached on that page.
+  ///
+  /// Number and order of [keys] should be the same as the order of [pages] they are passed into.
   final List<GlobalKey<NavigatorState>?>? keys;
 
   /// The main content of [BottomNavLayout] layout.
-  ///
-  /// [BottomNavLayout] layout consists of a [Scaffold].
-  /// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar).
-  /// [BottomNavigationBar] controls which one of the [pages] is currently visible.
-  ///
-  /// While navigating around with [BottomNavigationBar], [pages] do not get destroyed/rebuilt, only get hidden/visible.
-  /// This way, the pages saves all their state.
   final List<Widget> pages;
 
   /// Delegate for the [_BottomNavLayoutState.tabStack].
