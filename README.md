@@ -78,7 +78,7 @@ class _ExamplePageState extends State<ExamplePage> {
 # Different Back Stack Types
 This layout remembers the order of pages navitagated and when back button is pressed, navigates back to the previously visited page. There are many ways of organizing a tab back stack, a lot of which are readily implemented. You can also implement your own.
 
-Let's look at how different TabStacks behave in the follwing scenario. After launching the app, the user;
+Consider the following scerario. After launching the app, the user;
  - Start at tab 0
  - Navigate to tab 1
  - Navigate to tab 2
@@ -86,6 +86,8 @@ Let's look at how different TabStacks behave in the follwing scenario. After lau
  - Press back button
  - Navigate to tab 0
  - Press back button
+
+Let's look at how different TabStacks behave in this scenario.
 
 ### StandartTabStack
 This behavior is used by Google Play app.
@@ -163,3 +165,5 @@ class MyApp extends StatelessWidget {
   }
 }
 ```
+# In-Page Navigation Using GlobalKeys
+To be filled.
