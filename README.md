@@ -1,8 +1,7 @@
 # bottom_nav_layout
 A quick layout with
- - Bottom navigation layout
- - Tab back stack
- - Back button management
+ - Bottom navigation bar
+ - Navigation management
  - Page state preservation
 
 # Installation
