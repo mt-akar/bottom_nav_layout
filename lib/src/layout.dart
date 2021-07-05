@@ -1,8 +1,8 @@
+import 'package:bottom_nav_layout/src/tab_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import 'bottom_nav_bar_delegate.dart';
-import 'tab_stack.dart';
 
 /// [BottomNavLayout] layout consists of a [Scaffold].
 /// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar].
