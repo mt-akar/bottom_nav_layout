@@ -4,6 +4,10 @@ import 'package:flutter/widgets.dart';
 
 import 'bottom_nav_bar_delegate.dart';
 
+/// TODO: What is BottomNavLayout
+/// TODO: Why does BottomNavLayout exist, what is it's purpose
+/// TODO: What does BottomNavLayout do
+///
 /// [BottomNavLayout] layout consists of a [Scaffold].
 /// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar].
 /// [BottomNavigationBar] controls which one of the [pages] is currently visible.
@@ -13,13 +17,15 @@ import 'bottom_nav_bar_delegate.dart';
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     this.keys,
-    required this.pages,
+    this.pages,
+    this.pageBuilders,
     this.tabStack,
     required this.bottomNavBarDelegate,
-  })  : assert(pages.length >= 2, "At least 2 Pages are required"),
-        assert(keys == null || pages.length == keys.length, "Either do not pass keys or pass as many as Pages"),
-        assert(pages.length == bottomNavBarDelegate.items.length, "Pages and BottomNavBarItems should be equal in number"),
-        assert(tabStack == null || pages.length > tabStack.peek(), "Initial tab index cannot exceed the maximum page index");
+  })  : assert(pages != null && pageBuilders == null || pageBuilders != null && pages == null, "Either pass pages or pageBuilders"),
+        assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 Pages are required"),
+        assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as Pages"),
+        assert((pages?.length ?? pageBuilders!.length) == bottomNavBarDelegate.items.length, "Pages and BottomNavBarItems should be equal in number"),
+        assert(tabStack == null || (pages?.length ?? pageBuilders!.length) > tabStack.peek(), "Initial tab index cannot exceed the maximum page index");
 
   /// The navigation keys of the [pages] in the layout.
   ///
@@ -36,7 +42,11 @@ class BottomNavLayout extends StatefulWidget {
   final List<GlobalKey<NavigatorState>?>? keys;
 
   /// The main content of [BottomNavLayout] layout.
-  final List<Widget> pages;
+  final List<Widget>? pages;
+
+  /// These page builders are simple functions that return the respective pages.
+  /// These are used to lazily initialize the pages, when the user first navigates to that tab.
+  final List<StatelessWidget Function()>? pageBuilders;
 
   /// Delegate for the [_BottomNavLayoutState.tabStack].
   final TabStack? tabStack;
@@ -52,7 +62,6 @@ class BottomNavLayout extends StatefulWidget {
 }
 
 class _BottomNavLayoutState extends State<BottomNavLayout> {
-
   /// [BottomNavLayout]'s tab backstack. The main focus of this package.
   ///
   /// It saves tabs on the backstack by their indexes. The [tabStack.peek] always contains the current tab's index.
