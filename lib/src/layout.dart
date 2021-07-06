@@ -166,10 +166,14 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         // the page states would not have been saved and restored.
         body: Stack(
           children: pages.asMap().entries.map((indexPageMap) {
-            return Offstage(
+            var o = Offstage(
               offstage: indexPageMap.key != tabStack.peek(),
               child: indexPageMap.value ?? Text(""),
             );
+            int t = 6;
+            int y = 7;
+            t = y;
+            return o;
           }).toList(),
         ),
         bottomNavigationBar: BottomNavigationBar(
