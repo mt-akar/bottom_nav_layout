@@ -34,7 +34,7 @@ class BottomNavLayout extends StatefulWidget {
   /// Simple functions that return the respective items on [pages].
   /// When [pageBuilders] is passed, they are used to lazily initialize the pages, when the user first navigates to the respective tab.
   /// Either pass [pages] or [pageBuilders], do not pass both.
-  final List<StatelessWidget Function()>? pageBuilders;
+  final List<Widget Function()>? pageBuilders;
 
   /// Initial tab stack that user passed in.
   final TabStack? tabStack;
@@ -148,7 +148,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If the current page is null, then it needs to be built from the [widget.pageBuilders] before being shown.
   @override
   Widget build(BuildContext context) {
-    // If the current page has never been navigated to.
+    // If the current page hasn't been initialized.
     if (pages[tabStack.peek()] == null) {
       // Create the page from the builder and put it into page list.
       pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
