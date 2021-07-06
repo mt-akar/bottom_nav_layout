@@ -151,7 +151,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // If the current page has never been navigated to.
     if (pages[tabStack.peek()] == null) {
       // Create the page from the builder and put it into page list.
-      pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
+      var builder = widget.pageBuilders![tabStack.peek()];
+      var page = builder();
+      pages[tabStack.peek()] = page;
     }
 
     var stackChildren = pages.asMap().entries.map((indexPageMap) {
