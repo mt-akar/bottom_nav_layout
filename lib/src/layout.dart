@@ -168,7 +168,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
           children: pages.asMap().entries.map((indexPageMap) {
             return Offstage(
               offstage: indexPageMap.key != tabStack.peek(),
-              child: indexPageMap.value ?? Text(""),
+              child: indexPageMap.value ?? SizedBox.shrink(),
             );
           }).toList(),
         ),
