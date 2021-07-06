@@ -138,6 +138,7 @@ BottomNavLayout(
   // tabStack: ReplaceExceptFirstTabStack(initialTab: 0),
   // tabStack: ReorderToFrontExceptFirstTabStack(initialTab: 0),
 )
+```
 
 # Lazy Loading
 Instead of passing `pages`, pass `pageBuilders` which are simple Functions that immediately return the corresponding page. This way, the pages are created when they are navigated to. This way, any action that is taken when the page is loaded such as launch animations are executed when the corresponding tab is selected.
