@@ -76,7 +76,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   ///
   /// If pages are directly passed is, all pages will be present in this list at all times.
   /// If pageBuilders are passed in, the corresponding entry in the list will contain null until that page is navigated for the first time.
-  final List<Widget?> pages = List<Widget?>.empty(growable: true);
+  final List<Widget?> pages = List.empty(growable: true);
 
   /// Initialize [tabStack] and [pages]
   @override
@@ -86,13 +86,13 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
 
     // If pages are passed in, just set them.
     if (widget.pages != null) {
-      // Set the pages.
+      // Add all pages
       widget.pages!.forEach((page) => pages.add(page));
     }
     // If not, they will be lazily initialized on runtime.
     else {
-      // Put null for each page
-      widget.pageBuilders!.forEach((builder) => pages.add(null));
+      // Add a null for each page
+      widget.pageBuilders!.forEach((_) => pages.add(null));
     }
 
     super.initState();
@@ -151,17 +151,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // If the current page has never been navigated to.
     if (pages[tabStack.peek()] == null) {
       // Create the page from the builder and put it into page list.
-      var builder = widget.pageBuilders![tabStack.peek()];
-      var page = builder();
-      pages[tabStack.peek()] = page;
+      pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
     }
-
-    var stackChildren = pages.asMap().entries.map((indexPageMap) {
-      return Offstage(
-        offstage: indexPageMap.key != tabStack.peek(),
-        child: indexPageMap.value ?? Text(""),
-      );
-    }).toList();
 
     // Return the view
     return WillPopScope(
@@ -174,18 +165,24 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         // body: widget.pages[widget.tabStack.peek()],
         // the page states would not have been saved and restored.
         body: Stack(
-          children: stackChildren,
+          children: pages.asMap().entries.map((indexPageMap) {
+            return Offstage(
+              offstage: indexPageMap.key != tabStack.peek(),
+              child: indexPageMap.value ?? Text(""),
+            );
+          }).toList(),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          // onTap calls both the user's passed in onTap action and the layout's own onTap action.
+          currentIndex: tabStack.peek(),
+
+          // onTap calls both the layout's own onTap action and the user's passed in onTap action.
           onTap: (index) {
-            // Additional functionality
+            // Layout functionality
             onTabSelected(index);
 
-            // Passed in onTap method
+            // Passed in onTap call
             widget.bottomNavBarDelegate.onTap?.call(index);
           },
-          currentIndex: tabStack.peek(),
 
           // Delegated properties
           key: widget.bottomNavBarDelegate.key,
