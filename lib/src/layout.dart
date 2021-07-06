@@ -92,7 +92,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // If not, they will be lazily initialized on runtime.
     else {
       // Put null for each page
-      widget.pageBuilders!.forEach((builder) => pages.add(builder()));
+      widget.pageBuilders!.forEach((builder) => pages.add(null));
     }
 
     super.initState();
