@@ -154,6 +154,13 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
     }
 
+    var stackChildren = pages.asMap().entries.map((indexPageMap) {
+      return Offstage(
+        offstage: indexPageMap.key != tabStack.peek(),
+        child: indexPageMap.value ?? Text(""),
+      );
+    }).toList();
+
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
@@ -165,16 +172,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         // body: widget.pages[widget.tabStack.peek()],
         // the page states would not have been saved and restored.
         body: Stack(
-          children: pages.asMap().entries.map((indexPageMap) {
-            var o = Offstage(
-              offstage: indexPageMap.key != tabStack.peek(),
-              child: indexPageMap.value ?? Text(""),
-            );
-            int t = 6;
-            int y = 7;
-            t = y;
-            return o;
-          }).toList(),
+          children: stackChildren,
         ),
         bottomNavigationBar: BottomNavigationBar(
           // onTap calls both the user's passed in onTap action and the layout's own onTap action.
