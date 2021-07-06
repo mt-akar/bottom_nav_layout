@@ -76,7 +76,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   ///
   /// If pages are directly passed is, all pages will be present in this list at all times.
   /// If pageBuilders are passed in, the corresponding entry in the list will contain null until that page is navigated for the first time.
-  late final List<Widget?> pages;
+  final List<Widget?> pages = List<Widget?>.empty(growable: true);
 
   /// Initialize [tabStack] and [pages]
   @override
@@ -87,12 +87,12 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // If pages are passed in, just set them.
     if (widget.pages != null) {
       // Set the pages.
-      pages = widget.pages!;
+      widget.pages!.forEach((page) => pages.add(page));
     }
     // If not, they will be lazily initialized on runtime.
     else {
       // Put null for each page
-      pages = widget.pageBuilders!.map((e) => null).toList();
+      widget.pageBuilders!.forEach((builder) => pages.add(builder()));
     }
 
     super.initState();
