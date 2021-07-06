@@ -16,43 +16,44 @@ import 'bottom_nav_bar_delegate.dart';
 /// This way, the pages saves all their state.
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
-    this.keys,
     this.pages,
     this.pageBuilders,
     this.tabStack,
+    this.keys,
     required this.bottomNavBarDelegate,
   })  : assert(pages != null && pageBuilders == null || pageBuilders != null && pages == null, "Either pass pages or pageBuilders"),
-        assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 Pages are required"),
-        assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as Pages"),
-        assert((pages?.length ?? pageBuilders!.length) == bottomNavBarDelegate.items.length, "Pages and BottomNavBarItems should be equal in number"),
-        assert(tabStack == null || (pages?.length ?? pageBuilders!.length) > tabStack.peek(), "Initial tab index cannot exceed the maximum page index");
+        assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 pages are required"),
+        assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as pages"),
+        assert((pages?.length ?? pageBuilders!.length) == bottomNavBarDelegate.items.length, "Pass as many bottomNavBarItems as pages"),
+        assert(tabStack == null || (pages?.length ?? pageBuilders!.length) > tabStack.peek() && tabStack.peek() >= 0, "initialTabIndex cannot exceed the max page index or be negative");
+
+  /// The main content of the layout.
+  /// Directly passed to the [_BottomNavLayoutState.pages]
+  final List<Widget>? pages;
+
+  /// Simple functions that return the respective items on [pages].
+  /// When [pageBuilders] is passed, they are used to lazily initialize the pages, when the user first navigates to the respective tab.
+  /// Either pass [pages] or [pageBuilders], do not pass both.
+  final List<StatelessWidget Function()>? pageBuilders;
+
+  /// Initial tab stack that user passed in.
+  final TabStack? tabStack;
 
   /// The navigation keys of the [pages] in the layout.
   ///
   /// These keys are optional. If not used, bottom navigation backstack still functions normally.
   ///
-  /// To manage all back button presses in this widget, keys of type [GlobalKey<NavigatorState>] for navigation should be used in the [pages].
-  /// These keys should be created outside the pages and the same key instances should be passed into both pages and to this widget at the same time.
+  /// To manage all back button presses from this widget, keys of type [GlobalKey<NavigatorState>] should be used in the [pages] for navigation.
+  /// These keys should be created outside the pages and the same key instances should be passed into both pages themselves and to this widget at the same time.
   ///
-  /// Once present, these keys are used to navigate back.
+  /// If present, these keys are used to navigate back.
   /// The back press events will be passed to the current page's key to be consumed first.
   /// The onTap events on the current BottomNavBarItem will cause the key to pop until the root route is reached on that page.
   ///
   /// Number and order of [keys] should be the same as the order of [pages] they are passed into.
   final List<GlobalKey<NavigatorState>?>? keys;
 
-  /// The main content of [BottomNavLayout] layout.
-  final List<Widget>? pages;
-
-  /// These page builders are simple functions that return the respective pages.
-  /// When [pageBuilders] is passed instead of [pages], they are used to lazily initialize the pages, when the user first navigates to that tab.
-  final List<StatelessWidget Function()>? pageBuilders;
-
-  /// Initial tab stack that user passed in.
-  final TabStack? tabStack;
-
   /// Delegate for all the of the [BottomNavigationBar] properties, except [BottomNavigationBar.currentIndex].
-  ///
   /// [BottomNavigationBar.currentIndex] functionality is captured in [_BottomNavLayoutState.tabStack].
   /// Initial tab index could still be passed in [TabStack]'s constructor.
   final BottomNavBarDelegate bottomNavBarDelegate;
@@ -70,20 +71,28 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// There are different versions of stack pattern readily implemented. Users can also implement their own.
   late final TabStack tabStack;
 
+  /// The main content of the layout.
+  /// Respective widget in this list is shown above the [BottomNavigationBar].
+  ///
+  /// If pages are directly passed is, all pages will be present in this list at all times.
+  /// If pageBuilders are passed in, the corresponding entry in the list will contain null until that page is navigated for the first time.
   late final List<Widget?> pages;
 
+  /// Initialize [tabStack] and [pages]
   @override
   void initState() {
-    // If the tabStack is not passed in, initialize it with default.
+    // Set the tabStack. If not passed in, initialize with default.
     tabStack = widget.tabStack ?? ReorderToFrontTabStack(initialTab: 0);
 
-    // Initialize the pages. If pages are passed in, just set it. If not, they will be lazily initialized on runtime.
+    // If pages are passed in, just set them.
     if (widget.pages != null) {
+      // Set the pages.
       pages = widget.pages!;
-    } else {
-      //pages = List.empty(growable: true);
-      //widget.pageBuilders!.forEach((element) => pages.add(null));
-      pages = widget.pageBuilders!.map<Widget?>((e) => null).toList();
+    }
+    // If not, they will be lazily initialized on runtime.
+    else {
+      // Put null for each page
+      pages = widget.pageBuilders!.map((e) => null).toList();
     }
 
     super.initState();
@@ -109,7 +118,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
 
   /// Sends the pop event to the current page first. If it doesn't consume it, then tries to pop the tabStack.
   /// If there are more than one items in the tabStack, pops back to the previous page on the stack.
-  /// If there is a single tab in the stack, bubbles up the pop event. Exits the app if no other back button handler is added.
+  /// If there is a single tab in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
     // Send pop event to the inner page
     final consumedByPage = await widget.keys?[tabStack.peek()]?.currentState?.maybePop() ?? false;
@@ -136,29 +145,30 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     return true;
   }
 
-  /// If the current page is null, then it needs to be built from the [widget.pageBuilders]
+  /// If the current page is null, then it needs to be built from the [widget.pageBuilders] before being shown.
   @override
   Widget build(BuildContext context) {
-    // If the current page is null, then build it.
+    // If the current page has never been navigated to.
     if (pages[tabStack.peek()] == null) {
-      var pageBuilder = widget.pageBuilders![tabStack.peek()];
-      var page = pageBuilder.call();
-      pages[tabStack.peek()] = page;
+      // Create the page from the builder and put it into page list.
+      pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
     }
 
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
-        // All the pages are initialized and running regardless of which view is currently visible.
-        // This stack view contains one Offstage widget per page.
+        // This stack view contains one Offstage widget per initialized page.
         // Offstages are hidden unless the corresponding tab is currently selected.
         //
         // If body was defined as following:
         // body: widget.pages[widget.tabStack.peek()],
         // the page states would not have been saved and restored.
         body: Stack(
-          children: pages.asMap().entries.where((indexPageMap) => indexPageMap.value != null).map((indexPageMap) {
+          children: pages.asMap().entries.map((indexPageMap) {
+            if(indexPageMap.value == null){
+              return Text("");
+            }
             return Offstage(
               offstage: indexPageMap.key != tabStack.peek(),
               child: indexPageMap.value,
@@ -166,6 +176,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
           }).toList(),
         ),
         bottomNavigationBar: BottomNavigationBar(
+          // onTap calls both the user's passed in onTap action and the layout's own onTap action.
           onTap: (index) {
             // Additional functionality
             onTabSelected(index);
