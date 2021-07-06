@@ -81,9 +81,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     if (widget.pages != null) {
       pages = widget.pages!;
     } else {
-      pages = List.empty(growable: true);
-      widget.pageBuilders!.forEach((element) => pages.add(null));
-      //pages = widget.pageBuilders!.map<Widget?>((e) => null).toList();
+      //pages = List.empty(growable: true);
+      //widget.pageBuilders!.forEach((element) => pages.add(null));
+      pages = widget.pageBuilders!.map<Widget?>((e) => null).toList();
     }
 
     super.initState();
