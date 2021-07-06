@@ -129,41 +129,28 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 ### Using Different Back Stacks
 
 ```dart
-void main() => runApp(MyApp());
+BottomNavLayout(
+  // ...
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BottomNavLayout(
-        pages: [
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search for favorite'))),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search for music'))),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search for place'))),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search for news'))),
-        ],
-        tabStack: StandardTabStack(initialTab: 0),
-        // tabStack: ReorderToFrontTabStack(initialTab: 0),
-        // tabStack: ReplaceTabStack(initialTab: 0),
-        // tabStack: ReplaceExceptFirstTabStack(initialTab: 0),
-        // tabStack: ReorderToFrontExceptFirstTabStack(initialTab: 0),
-        bottomNavBarDelegate: BottomNavBarDelegate(
-          // Delegates following properties to a framework BottomNavigationBar
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
-            BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
-            BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
-            BottomNavigationBarItem(icon: Icon(Icons.article), label: 'News'),
-          ],
-          backgroundColor: Colors.blue,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white54,
-          type: BottomNavigationBarType.fixed,
-        ),
-      ),
-    );
-  }
-}
+  tabStack: StandardTabStack(initialTab: 0),
+  // tabStack: ReorderToFrontTabStack(initialTab: 0),
+  // tabStack: ReplaceTabStack(initialTab: 0),
+  // tabStack: ReplaceExceptFirstTabStack(initialTab: 0),
+  // tabStack: ReorderToFrontExceptFirstTabStack(initialTab: 0),
+)
+
+# Lazy Loading
+Instead of passing `pages`, pass `pageBuilders` which are simple Functions that immediately return the corresponding page. This way, the pages are created when they are navigated to. This way, any action that is taken when the page is loaded such as launch animations are executed when the corresponding tab is selected.
+```dart
+BottomNavLayout(
+  // ...
+
+  pageBuilders: [
+    () => ExamplePage('Music'),
+    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search for favorite'))),
+    () => const CheckoutPage(cart: someCart),
+  ],
+)
 ```
 # In-Page Navigation Using GlobalKeys
 To be filled.
