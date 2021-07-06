@@ -141,7 +141,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   Widget build(BuildContext context) {
     // If the current page is null, then build it.
     if (pages[tabStack.peek()] == null) {
-      pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
+      var pageBuilder = widget.pageBuilders![tabStack.peek()];
+      var page = pageBuilder.call();
+      pages[tabStack.peek()] = page;
     }
 
     // Return the view
