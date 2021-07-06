@@ -45,16 +45,16 @@ class BottomNavLayout extends StatefulWidget {
   final List<Widget>? pages;
 
   /// These page builders are simple functions that return the respective pages.
-  /// These are used to lazily initialize the pages, when the user first navigates to that tab.
+  /// When [pageBuilders] is passed instead of [pages], they are used to lazily initialize the pages, when the user first navigates to that tab.
   final List<StatelessWidget Function()>? pageBuilders;
 
-  /// Delegate for the [_BottomNavLayoutState.tabStack].
+  /// Initial tab stack that user passed in.
   final TabStack? tabStack;
 
   /// Delegate for all the of the [BottomNavigationBar] properties, except [BottomNavigationBar.currentIndex].
   ///
   /// [BottomNavigationBar.currentIndex] functionality is captured in [_BottomNavLayoutState.tabStack].
-  /// Initial tab index could still be passed in [tabStack]'s constructor.
+  /// Initial tab index could still be passed in [TabStack]'s constructor.
   final BottomNavBarDelegate bottomNavBarDelegate;
 
   @override
@@ -70,10 +70,20 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// There are different versions of stack pattern readily implemented. Users can also implement their own.
   late final TabStack tabStack;
 
+  late final List<Widget?> pages;
+
   @override
   void initState() {
     // If the tabStack is not passed in, initialize it with default.
     tabStack = widget.tabStack ?? ReorderToFrontTabStack(initialTab: 0);
+
+    // Initialize the pages. If pages are passed in, just set it. If not, they will be lazily initialized on runtime.
+    if (widget.pages != null) {
+      pages = widget.pages!;
+    } else {
+      pages = widget.pageBuilders!.map((e) => null).toList();
+    }
+
     super.initState();
   }
 
@@ -124,8 +134,16 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     return true;
   }
 
+  /// If the current page is null, then it needs to be built from the [widget.pageBuilders]
   @override
   Widget build(BuildContext context) {
+
+    // If the current page is null, then build it.
+    if (pages[tabStack.peek()] == null) {
+      pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
+    }
+
+    // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
@@ -137,7 +155,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         // body: widget.pages[widget.tabStack.peek()],
         // the page states would not have been saved and restored.
         body: Stack(
-          children: widget.pages.asMap().entries.map((indexPageMap) {
+          children: pages.asMap().entries.where((indexPageMap) => indexPageMap.value != null).map((indexPageMap) {
             return Offstage(
               offstage: indexPageMap.key != tabStack.peek(),
               child: indexPageMap.value,
