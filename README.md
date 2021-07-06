@@ -1,8 +1,9 @@
-# bottom_nav_layout
-A quick and powerful layout with
+# What is `bottom_nav_layout`?
+It is quick and powerful layout with
  - Bottom navigation bar
  - Page state preservation
  - Back button navigation management (for android)
+ - Lazy page loading
 
 # Installation
 This package hasn't been released. Therefore the installiation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -15,65 +16,27 @@ bottom_nav_layout:
 
 # Quick Start Example
 ```dart
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: BottomNavLayout(
-        pages: [
-          ExamplePage('Favorite'),
-          ExamplePage('Music'),
-          ExamplePage('Place'),
-          ExamplePage('News'),
-        ],
-        bottomNavBarDelegate: BottomNavBarDelegate(
-          // Delegates following properties to a framework BottomNavigationBar
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
-            BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
-            BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
-            BottomNavigationBarItem(icon: Icon(Icons.article), label: 'News'),
-          ],
-          backgroundColor: Colors.blue,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white54,
-          type: BottomNavigationBarType.fixed,
-        ),
-      ),
-    );
-  }
-}
-
-class ExamplePage extends StatefulWidget {
-  final String name;
-  ExamplePage(this.name);
-
-  @override
-  _ExamplePageState createState() => _ExamplePageState();
-}
-
-class _ExamplePageState extends State<ExamplePage> {
-  double rating = 0;
-
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: Text("${widget.name}")),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Pick a ${widget.name}"),
-            Slider(
-              value: rating,
-              divisions: 10,
-              label: '$rating',
-              onChanged: (double value) => setState(() => rating = value),
-            ),
-          ],
-        ),
-      );
-}
+BottomNavLayout(
+  pages: [
+    ExamplePage('Favorite'),
+    ExamplePage('Music'),
+    ExamplePage('Place'),
+    Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+  ],
+  // Delegates its properties to a flutter BottomNavigationBar
+  bottomNavBarDelegate: BottomNavBarDelegate(
+    items: [
+      BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
+      BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
+      BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
+      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+    ],
+    backgroundColor: Colors.blue,
+    selectedItemColor: Colors.white,
+    unselectedItemColor: Colors.white54,
+    type: BottomNavigationBarType.fixed,
+  ),
+)
 ```
 # Different Back Stack Types
 This layout remembers the order of pages navitagated and when back button is pressed, navigates back to the previously visited page. There are many ways of organizing a tab back stack, a lot of which are readily implemented. You can also implement your own.
@@ -141,15 +104,17 @@ BottomNavLayout(
 ```
 
 # Lazy Loading
-Instead of passing `pages`, pass `pageBuilders` which are simple Functions that immediately return the corresponding page. This way, the pages are created when they are navigated to. This way, any action that is taken when the page is loaded such as launch animations are executed when the corresponding tab is selected.
+Instead of passing `pages`, pass `pageBuilders`.
+
+`pageBuilders` are simple Functions that immediately return the corresponding page. When used, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page has a load animation or runs a heavy process.
 ```dart
 BottomNavLayout(
   // ...
 
   pageBuilders: [
+    () => const Center(child: Text("Welcome")),
     () => ExamplePage('Music'),
     () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search for favorite'))),
-    () => const CheckoutPage(cart: someCart),
   ],
 )
 ```
