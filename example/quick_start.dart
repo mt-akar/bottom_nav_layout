@@ -9,7 +9,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: BottomNavLayout(
         pages: [
-          ExamplePage('Favorite'),
+          Center(child: Text("Welcome to bottom_nav_layout")),
           ExamplePage('Music'),
           ExamplePage('Place'),
           Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         // Delegates its properties to a flutter BottomNavigationBar
         bottomNavBarDelegate: BottomNavBarDelegate(
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
             BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
@@ -32,6 +32,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/// [ExamplePage] a very simple stateful widget. We can easily change and observe its state.
+/// It is used to demonstrate the state preservation of [BottomNavLayout]
 class ExamplePage extends StatefulWidget {
   final String name;
 
@@ -42,6 +44,7 @@ class ExamplePage extends StatefulWidget {
 }
 
 class _ExamplePageState extends State<ExamplePage> {
+  // The page's state
   double rating = 0;
 
   @override
@@ -51,6 +54,8 @@ class _ExamplePageState extends State<ExamplePage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text("Pick a ${widget.name}"),
+
+        // A slider whose value can be changed easily. The value of the slider doesn't have a meaning.
         Slider(
           value: rating,
           divisions: 10,

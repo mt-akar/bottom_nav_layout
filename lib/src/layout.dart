@@ -168,6 +168,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
           children: pages.asMap().entries.map((indexPageMap) {
             return Offstage(
               offstage: indexPageMap.key != tabStack.peek(),
+              // If the page is not initialized, "not show" an invisible widget instead.
               child: indexPageMap.value ?? SizedBox.shrink(),
             );
           }).toList(),

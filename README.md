@@ -2,7 +2,7 @@
 It is quick and powerful layout with
  - Bottom navigation bar
  - Page state preservation
- - Back button navigation management (for android)
+ - Back button navigation management
  - Lazy page loading
 
 # Installation
@@ -18,7 +18,7 @@ bottom_nav_layout:
 ```dart
 BottomNavLayout(
   pages: [
-    ExamplePage('Favorite'),
+    Center(child: Text("Welcome to bottom_nav_layout")),
     ExamplePage('Music'),
     ExamplePage('Place'),
     Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
@@ -26,7 +26,7 @@ BottomNavLayout(
   // Delegates its properties to a flutter BottomNavigationBar
   bottomNavBarDelegate: BottomNavBarDelegate(
     items: [
-      BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'Favorites'),
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
       BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
       BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
       BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
@@ -39,9 +39,9 @@ BottomNavLayout(
 )
 ```
 # Different Back Stack Types
-This layout remembers the order of pages navitagated and when back button is pressed, navigates back to the previously visited page. There are many ways of organizing a tab back stack, a lot of which are readily implemented. You can also implement your own.
+This layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a tab back stack, many of which are readily implemented. You can also implement your own.
 
-Consider the following scerario. After launching the app, the user;
+Consider the following use case. After launching the app, the user;
  - Start at tab 0
  - Navigate to tab 1
  - Navigate to tab 2
@@ -52,7 +52,7 @@ Consider the following scerario. After launching the app, the user;
 
 Let's look at how different TabStacks behave in this scenario.
 
-### StandartTabStack
+### StandardTabStack
 This behavior is used by Google Play app.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
@@ -74,9 +74,9 @@ This behavior is used by Youtube app.
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 0->2->0 | 0->2 |
 
 ### ReplaceTabStack
-This is similar to the naive example given at [flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
+This is similar to [the naive example given at flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
 
-This behavior is used by a lot of applications such as Google Drive, Zoom, Microsoft Teams...
+This behavior is used by a lot of applications. This is also Cupertino default behavior.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |

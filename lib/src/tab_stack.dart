@@ -25,7 +25,9 @@ abstract class TabStack extends ListQueue<int> {
   int peek();
 }
 
-/// [TabStack] implementation that is a trivial stack.
+/// [TabStack] implementation that behaves like a standard stack.
+///
+/// This behavior is used by Google Play app.
 ///
 /// Example:
 /// Initial  Stack: 0.
@@ -52,7 +54,7 @@ class StandardTabStack extends TabStack {
 
 /// [TabStack] implementation that follows reorder-to-front behavior.
 ///
-/// This behavior is used in instagram.
+/// This behavior is used by Instagram, Reddit, and Netflix apps.
 ///
 /// Example:
 /// Initial  Stack: 0.
@@ -79,9 +81,9 @@ class ReorderToFrontTabStack extends TabStack {
 }
 
 /// [TabStack] implementation that follows reorder-to-front behavior except the first item.
-/// The first item never changes and can be twice in the stack.
+/// The first item never changes and can be at two different positions in the stack.
 ///
-/// This behavior is used in youtube.
+/// This behavior is used by Youtube app.
 ///
 /// Initial  Stack: 0.
 /// push(1); Stack: 0->1.
@@ -113,8 +115,10 @@ class ReorderToFrontExceptFirstTabStack extends TabStack {
 
 /// [TabStack] implementation that only stores the last item pushed.
 ///
-/// This behavior is very similar to the behavior in the following example:
+/// This is similar to the naive example given at flutter docs:
 /// https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
+///
+/// This behavior is used by a lot of applications. This is also Cupertino's default behavior.
 ///
 /// Example:
 /// Initial  Stack: 0.
@@ -141,6 +145,8 @@ class ReplaceTabStack extends TabStack {
 }
 
 /// [TabStack] implementation that stores the first and the last item pushed.
+///
+/// This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 ///
 /// Example:
 /// Initial  Stack: 0.
