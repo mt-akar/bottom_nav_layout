@@ -81,7 +81,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     if (widget.pages != null) {
       pages = widget.pages!;
     } else {
-      pages = widget.pageBuilders!.map<Widget?>((e) => null).toList();
+      pages = List.empty();
+      widget.pageBuilders!.forEach((element) => pages.add(null));
+      //pages = widget.pageBuilders!.map<Widget?>((e) => null).toList();
     }
 
     super.initState();
@@ -137,7 +139,6 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If the current page is null, then it needs to be built from the [widget.pageBuilders]
   @override
   Widget build(BuildContext context) {
-
     // If the current page is null, then build it.
     if (pages[tabStack.peek()] == null) {
       pages[tabStack.peek()] = widget.pageBuilders![tabStack.peek()]();
