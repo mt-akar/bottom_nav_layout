@@ -1,5 +1,8 @@
-# What is `bottom_nav_layout`?
-It is quick and powerful widget which has
+![bottom_nav_layout (1)](https://user-images.githubusercontent.com/32205084/124821612-99d66900-df77-11eb-8205-7a6b3e621369.png)
+======
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+### `bottom_nav_layout` offers;
  - Layout with bottom nav bar and pages
  - Page state preservation
  - Lazy page loading
@@ -7,11 +10,21 @@ It is quick and powerful widget which has
  - Back button navigation management
  - Multiple bottom bar designs
 
-# Why `bottom_nav_layout`?
+### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
  - Implements additional, common features.
  - Supports multiple bar designs.
  - Uses the same APIs with the underlying bottom bars.
+
+# Content
+ - [Installation](#installation)
+ - [Quick Start Example](#quick-start-example)
+ - [Page State Preservation](#page-state-preservation)
+ - [Lazy Page Loading](#lazy-page-loading)
+ - [Page Back Stack](#page-back-stack)
+ - [In-Page Navigation Using GlobalKeys](#in-page-navigation-using-globalkeys)
+ - [Styling Bottom Bar](#styling-bottom-bar)
+ - [Improvements](#improvements)
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
