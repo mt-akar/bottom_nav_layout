@@ -74,7 +74,7 @@ This behavior is used by Youtube app.
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 0->2->0 | 0->2 |
 
 ### ReplaceTabStack
-This is similar to [the naive example given at flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
+This behavior is similar to the behavior in [the `BottomNavigationBar` example given at flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
 
 This behavior is used by a lot of applications. This is also Cupertino default behavior.
 
