@@ -6,7 +6,10 @@ It is quick and powerful layout with
  - Page backstack
  - Back button navigation management
 
-Eliminates all boilerplate code for the coordination between bottom nav bar and app's top level destinations.
+# Why `bottom_nav_layout`?
+ - Eliminates all boilerplate code for the coordination between bottom nav bar and app's top level destinations.
+ - Implements additional, common features.
+ - Has the same API with flutter's `BottomNavigationBar`
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -20,26 +23,25 @@ bottom_nav_layout:
 # Quick Start Example
 ```dart
 BottomNavLayout(
-  // The app's top level destinations
+  // Your app's top level destinations
   pages: [
     Center(child: Text("Welcome to bottom_nav_layout")),
     ExamplePage('Music'),
     ExamplePage('Place'),
     Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
   ],
-  // Delegates its properties to a flutter BottomNavigationBar
-  bottomNavBarDelegate: BottomNavBarDelegate(
-    items: [
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
-      BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
-      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-    ],
-    backgroundColor: Colors.blue,
-    selectedItemColor: Colors.white,
-    unselectedItemColor: Colors.white54,
-    type: BottomNavigationBarType.fixed,
-  ),
+
+  // Visual properties. Delegate the following properties to a flutter BottomNavigationBar
+  items: [
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+    BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
+    BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
+    BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+  ],
+  backgroundColor: Colors.blue,
+  selectedItemColor: Colors.white,
+  unselectedItemColor: Colors.white54,
+  type: BottomNavigationBarType.fixed,
 )
 ```
 

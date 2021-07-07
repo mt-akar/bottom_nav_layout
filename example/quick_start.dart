@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
+
         backgroundColor: Colors.blue,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,

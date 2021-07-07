@@ -11,6 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  salomon_bottom_bar: ^3.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
