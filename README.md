@@ -1,20 +1,19 @@
-![bottom_nav_layout (1)](https://user-images.githubusercontent.com/32205084/124821612-99d66900-df77-11eb-8205-7a6b3e621369.png)
+![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 ======
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-### `bottom_nav_layout` offers;
- - Layout with bottom nav bar and pages
- - Page state preservation
- - Lazy page loading
- - Page backstack
- - Back button navigation management
- - Multiple bottom bar designs
+`bottom_nav_layout` a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in seconds.
 
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
- - Implements additional, common features.
- - Supports multiple bar designs.
- - Uses the same APIs with the underlying bottom bars.
+ - Supports multiple, beautiful bar designs.
+ - Uses identical APIs with the underlying bottom bars.
+ - Offers additional common features.
+   - Page state preservation
+   - Lazy page loading
+   - Page backstack
+   - Back button navigation management
+   - Bar Styling
 
 # Content
  - [Installation](#installation)
@@ -24,7 +23,7 @@
  - [Page Back Stack](#page-back-stack)
  - [In-Page Navigation Using GlobalKeys](#in-page-navigation-using-globalkeys)
  - [Different Bar Designs](#different-bar-designs)
- - [Styling Bottom Bar](#styling-bottom-bar)
+ - [Bar Styling](#bar-styling)
  - [Improvements](#improvements)
 
 # Installation
@@ -166,17 +165,17 @@ BottomNavLayout(
 ```
 
 # Different Bar Designs
-So far, we only worked on Material design bottom nav bar. This layout also supports other bar designs.
+So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs.
 
 ## Salomon Bottom Bar
-It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with this package.
+It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout.
 
-Add this to your `pubspac.yaml` file.
+Add the following to your `pubspac.yaml` file.
 ```yaml
 salomon_bottom_bar: latest_version
 ```
 
-And use this quick start example.
+And use the following quick start example.
 ```dart
 SalomonBottomNavLayout(
   // Your app's top level destinations
@@ -199,7 +198,7 @@ SalomonBottomNavLayout(
 )
 ```
 
-# Styling Bottom Bar
+# Bar Styling
 Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
 ```dart
 BottomNavLayout(
