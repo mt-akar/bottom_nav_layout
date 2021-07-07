@@ -20,6 +20,7 @@ class BottomNavLayout extends StatefulWidget {
     this.pageBuilders,
     this.tabStack,
     this.keys,
+    this.savePageState = true,
     required this.bottomNavBarDelegate,
   })  : assert(pages != null && pageBuilders == null || pageBuilders != null && pages == null, "Either pass pages or pageBuilders"),
         assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 pages are required"),
@@ -52,6 +53,9 @@ class BottomNavLayout extends StatefulWidget {
   ///
   /// Number and order of [keys] should be the same as the order of [pages] they are passed into.
   final List<GlobalKey<NavigatorState>?>? keys;
+
+  /// Whether the page states are saved or not.
+  final bool savePageState;
 
   /// Delegate for all the of the [BottomNavigationBar] properties, except [BottomNavigationBar.currentIndex].
   /// [BottomNavigationBar.currentIndex] functionality is captured in [_BottomNavLayoutState.tabStack].
@@ -160,19 +164,17 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       child: Scaffold(
         // This stack view contains one Offstage widget per initialized page.
         // Offstages are hidden unless the corresponding tab is currently selected.
-        //
-        // If body was defined as following:
-        // body: widget.pages[widget.tabStack.peek()],
-        // the page states would not have been saved and restored.
-        body: Stack(
-          children: pages.asMap().entries.map((indexPageMap) {
-            return Offstage(
-              offstage: indexPageMap.key != tabStack.peek(),
-              // If the page is not initialized, "not show" an invisible widget instead.
-              child: indexPageMap.value ?? SizedBox.shrink(),
-            );
-          }).toList(),
-        ),
+        body: widget.savePageState
+            ? pages[tabStack.peek()]
+            : Stack(
+                children: pages.asMap().entries.map((indexPageMap) {
+                  return Offstage(
+                    offstage: indexPageMap.key != tabStack.peek(),
+                    // If the page is not initialized, "not show" an invisible widget instead.
+                    child: indexPageMap.value ?? SizedBox.shrink(),
+                  );
+                }).toList(),
+              ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: tabStack.peek(),
 
