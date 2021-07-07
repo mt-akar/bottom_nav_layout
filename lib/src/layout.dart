@@ -164,7 +164,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       child: Scaffold(
         // This stack view contains one Offstage widget per initialized page.
         // Offstages are hidden unless the corresponding tab is currently selected.
-        body: widget.savePageState
+        body: !widget.savePageState
             ? pages[tabStack.peek()]
             : Stack(
                 children: pages.asMap().entries.map((indexPageMap) {
