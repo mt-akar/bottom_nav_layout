@@ -217,29 +217,32 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: SalomonBottomBar(
-          currentIndex: pageStack.peek(),
+        bottomNavigationBar: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+          child: SalomonBottomBar(
+            currentIndex: pageStack.peek(),
 
-          // onTap calls both the layout's own onTap action and the user's passed in onTap action.
-          onTap: (index) {
-            // Layout functionality
-            onPageSelected(index);
+            // onTap calls both the layout's own onTap action and the user's passed in onTap action.
+            onTap: (index) {
+              // Layout functionality
+              onPageSelected(index);
 
-            // Passed in onTap call
-            widget.onTap?.call(index);
-          },
+              // Passed in onTap call
+              widget.onTap?.call(index);
+            },
 
-          // Delegated properties
-          key: widget.key,
-          items: widget.items,
-          selectedItemColor: widget.selectedItemColor,
-          unselectedItemColor: widget.unselectedItemColor,
-          selectedColorOpacity: widget.selectedColorOpacity,
-          itemShape: widget.itemShape,
-          margin: widget.margin,
-          itemPadding: widget.itemPadding,
-          duration: widget.duration,
-          curve: widget.curve,
+            // Delegated properties
+            key: widget.key,
+            items: widget.items,
+            selectedItemColor: widget.selectedItemColor,
+            unselectedItemColor: widget.unselectedItemColor,
+            selectedColorOpacity: widget.selectedColorOpacity,
+            itemShape: widget.itemShape,
+            margin: widget.margin,
+            itemPadding: widget.itemPadding,
+            duration: widget.duration,
+            curve: widget.curve,
+          ),
         ),
       ),
     );
