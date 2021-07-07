@@ -23,7 +23,7 @@ class SalomonBottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.keys,
     this.savePageState = true,
-    this.bottomBarContainer,
+    this.bottomBarStyler,
 
     // Delegated properties
     required this.items,
@@ -72,7 +72,8 @@ class SalomonBottomNavLayout extends StatefulWidget {
   /// Whether the page states are saved or not.
   final bool savePageState;
 
-  final Widget Function(Widget)? bottomBarContainer;
+  /// A function that constructs a styling widget to wrap bottom nav bar with.
+  final Widget Function(Widget)? bottomBarStyler;
 
   /// Property delegated to [SalomonBottomBar]
   final List<SalomonBottomBarItem> items;
@@ -200,6 +201,7 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
       pages[pageStack.peek()] = widget.pageBuilders![pageStack.peek()]();
     }
 
+    // Create the bottom nav bar
     var bottomBar = SalomonBottomBar(
       currentIndex: pageStack.peek(),
 
@@ -245,7 +247,7 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: widget.bottomBarContainer?.call(bottomBar) ?? bottomBar,
+        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
       ),
     );
   }

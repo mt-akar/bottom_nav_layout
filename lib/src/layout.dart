@@ -22,7 +22,7 @@ class BottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.keys,
     this.savePageState = true,
-    this.bottomBarContainer,
+    this.bottomBarStyler,
 
     // Delegated properties
     required this.items,
@@ -79,7 +79,8 @@ class BottomNavLayout extends StatefulWidget {
   /// Whether the page states are saved or not.
   final bool savePageState;
 
-  final Widget Function(Widget)? bottomBarContainer;
+  /// A function that returns a styling widget to wrap bottom nav bar with.
+  final Widget Function(Widget)? bottomBarStyler;
 
   /// Property delegated to [BottomNavigationBar]
   final List<BottomNavigationBarItem> items;
@@ -231,6 +232,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[pageStack.peek()] = widget.pageBuilders![pageStack.peek()]();
     }
 
+    // Create the bottom nav bar
     var bottomBar = BottomNavigationBar(
       currentIndex: pageStack.peek(),
 
@@ -284,7 +286,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: widget.bottomBarContainer?.call(bottomBar) ?? bottomBar,
+        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
       ),
     );
   }
