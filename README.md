@@ -4,6 +4,8 @@ It is quick and powerful layout with
  - Page state preservation
  - Back button navigation management
  - Lazy page loading
+ 
+# When should I use it?
 
 # Installation
 This package hasn't been released. Therefore the installiation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -38,6 +40,23 @@ BottomNavLayout(
   ),
 )
 ```
+
+# Lazy Page Loading
+Instead of passing `pages`, pass `pageBuilders`.
+
+`pageBuilders` are simple Functions that immediately return the corresponding page. When used, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page has a load animation or runs an unnecessary heavy process.
+```dart
+BottomNavLayout(
+  // ...
+
+  pageBuilders: [
+    () => const Center(child: Text("Welcome")),
+    () => ExamplePage('Music'),
+    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search for favorite'))),
+  ],
+)
+```
+
 # Different Back Stack Types
 This layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a tab back stack, many of which are readily implemented. You can also implement your own.
 
@@ -74,7 +93,7 @@ This behavior is used by Youtube app.
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 0->2->0 | 0->2 |
 
 ### ReplaceTabStack
-This behavior is similar to the behavior in [the `BottomNavigationBar` example given at flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
+This behavior is similar to the behavior in the [`BottomNavigationBar` example given in flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
 
 This behavior is used by a lot of applications. This is also Cupertino default behavior.
 
@@ -103,20 +122,5 @@ BottomNavLayout(
 )
 ```
 
-# Lazy Loading
-Instead of passing `pages`, pass `pageBuilders`.
-
-`pageBuilders` are simple Functions that immediately return the corresponding page. When used, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page has a load animation or runs a heavy process.
-```dart
-BottomNavLayout(
-  // ...
-
-  pageBuilders: [
-    () => const Center(child: Text("Welcome")),
-    () => ExamplePage('Music'),
-    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search for favorite'))),
-  ],
-)
-```
 # In-Page Navigation Using GlobalKeys
 To be filled.
