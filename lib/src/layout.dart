@@ -38,7 +38,7 @@ class BottomNavLayout extends StatefulWidget {
   final List<Widget Function()>? pageBuilders;
 
   /// Initial tab stack that user passed in.
-  final TabStack? tabStack;
+  final PageStack? tabStack;
 
   /// The navigation keys of the [pages] in the layout.
   ///
@@ -59,7 +59,7 @@ class BottomNavLayout extends StatefulWidget {
 
   /// Delegate for all the of the [BottomNavigationBar] properties, except [BottomNavigationBar.currentIndex].
   /// [BottomNavigationBar.currentIndex] functionality is captured in [_BottomNavLayoutState.tabStack].
-  /// Initial tab index could still be passed in [TabStack]'s constructor.
+  /// Initial tab index could still be passed in [PageStack]'s constructor.
   final BottomNavBarDelegate bottomNavBarDelegate;
 
   @override
@@ -71,9 +71,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   ///
   /// It saves tabs on the backstack by their indexes. The [tabStack.peek] always contains the current tab's index.
   ///
-  /// Users can pass a [TabStack] instance or not. If they do not, the default one will be a [ReorderToFrontTabStack].
+  /// Users can pass a [PageStack] instance or not. If they do not, the default one will be a [ReorderToFrontPageStack].
   /// There are different versions of stack pattern readily implemented. Users can also implement their own.
-  late final TabStack tabStack;
+  late final PageStack tabStack;
 
   /// The main content of the layout.
   /// Respective widget in this list is shown above the [BottomNavigationBar].
@@ -86,7 +86,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   @override
   void initState() {
     // Set the tabStack. If not passed in, initialize with default.
-    tabStack = widget.tabStack ?? ReorderToFrontTabStack(initialTab: 0);
+    tabStack = widget.tabStack ?? ReorderToFrontPageStack(initialPage: 0);
 
     // If pages are passed in, just set them.
     if (widget.pages != null) {

@@ -7,9 +7,8 @@ It is quick and powerful layout with
  
 # When should I use it?
 You should use `bottom_nav_layout` when
- - You have bottom nav bar
-and
- - You don't want to deal with boilerplate code that coordinates bottom nav bar and the app's top level destinations.
+ - You have a bottom nav bar
+ - You don't want to deal with boilerplate code that coordinates bottom nav bar and app's top level destinations.
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -23,6 +22,7 @@ bottom_nav_layout:
 # Quick Start Example
 ```dart
 BottomNavLayout(
+  // The app's top level destinations
   pages: [
     Center(child: Text("Welcome to bottom_nav_layout")),
     ExamplePage('Music'),
@@ -46,9 +46,7 @@ BottomNavLayout(
 ```
 
 # Page State Preservation
-The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved.
-
-You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
+The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved. You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
 ```dart
 BottomNavLayout(
   // ...
@@ -73,44 +71,44 @@ BottomNavLayout(
 )
 ```
 
-# Tab Back Stack
-This layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a tab back stack, many of which are readily implemented. You can also implement your own.
+# Page Back Stack
+This layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a page back stack, many of which are readily implemented. You can also implement your own.
 
-## Tab Back Stack Types
+## Page Back Stack Types
 
 Consider the following use case. After launching the app, the user;
- - Start at tab 0
- - Navigate to tab 1
- - Navigate to tab 2
- - Navigate to tab 1
+ - Start at page 0
+ - Navigate to page 1
+ - Navigate to page 2
+ - Navigate to page 1
  - Press back button
- - Navigate to tab 0
+ - Navigate to page 0
  - Press back button
 
-Let's look at how different TabStacks behave in this scenario.
+Let's look at how different PageStacks behave in this scenario.
 
-### StandardTabStack
+### StandardPageStack
 This behavior is used by Google Play app.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->1->2 | 0->1->2->1 | 0->1->2 | 0->1->2->0 | 0->1->2 |
 
-### ReorderToFrontTabStack
+### ReorderToFrontPageStack
 This is the default behavior. This behavior is used by Instagram, Reddit, and Netflix apps.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 2->0 | 2 |
 
-### ReorderToFrontExceptFirstTabStack
+### ReorderToFrontExceptFirstPageStack
 This behavior is used by Youtube app.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 0->2->0 | 0->2 |
 
-### ReplaceTabStack
+### ReplacePageStack
 This behavior is similar to the behavior in the [`BottomNavigationBar` example given in flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
 
 This behavior is used by a lot of applications. This is also Cupertino default behavior.
@@ -119,7 +117,7 @@ This behavior is used by a lot of applications. This is also Cupertino default b
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 1 | 2 | 1 | Exit App | N/A | N/A |
 
-### ReplaceExceptFirstTabStack
+### ReplaceExceptFirstPageStack
 This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
@@ -132,11 +130,11 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 BottomNavLayout(
   // ...
 
-  tabStack: StandardTabStack(initialTab: 0),
-  // tabStack: ReorderToFrontTabStack(initialTab: 0),
-  // tabStack: ReplaceTabStack(initialTab: 0),
-  // tabStack: ReplaceExceptFirstTabStack(initialTab: 0),
-  // tabStack: ReorderToFrontExceptFirstTabStack(initialTab: 0),
+  pageStack: StandardPageStack(initialPage: 0),
+  // pageStack: ReorderToFrontPageStack(initialPage: 0),
+  // pageStack: ReplacePageStack(initialPage: 0),
+  // pageStack: ReplaceExceptFirstPageStack(initialPage: 0),
+  // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
 )
 ```
 

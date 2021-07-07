@@ -8,6 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: BottomNavLayout(
+        // Your app's top level destinations
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
           ExamplePage('Music'),
