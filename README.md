@@ -41,6 +41,18 @@ BottomNavLayout(
 )
 ```
 
+# Page State Preservation
+The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved.
+
+You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
+```dart
+BottomNavLayout(
+  // ...
+
+  savePageState: true, // Default is true
+)
+```
+
 # Lazy Page Loading
 Instead of passing `pages`, pass `pageBuilders`.
 
