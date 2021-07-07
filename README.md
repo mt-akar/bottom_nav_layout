@@ -4,8 +4,9 @@ It is quick and powerful layout with
  - Page state preservation
  - Lazy page loading
  - Page backstack
+ - Back button navigation management
 
-If you don't want to deal with boilerplate code for the behavior of bottom nav bar and app's top level destinations, you should use `bottom_nav_layout`.
+Eliminates all boilerplate code for the coordination between bottom nav bar and app's top level destinations.
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -69,7 +70,7 @@ BottomNavLayout(
 ```
 
 # Page Back Stack
-This layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a page back stack, many of which are readily implemented. You can also implement your own.
+The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a page back stack, many of which are readily implemented. You can also implement your own.
 
 ## Page Back Stack Types
 
@@ -135,3 +136,11 @@ BottomNavLayout(
 
 # In-Page Navigation Using GlobalKeys
 To be filled.
+
+# Improvements
+Any feedback is appreciated. 🚀🚀 My email: m.azyoksul@gmail.com
+
+### Potential Improvement 1
+What if you don't want to use the Material nav bar but use a more fancy design with custom animations etc. I attempted to allow this but unfortunately, to generalize the bottom bar's functionality, we need to abstract it's functionality from it's visuals. As far as I know, the flutter `BottomNavigationBar`'s composition is simply not agressive enough.
+
+I might end up implementing a few different designs myself. I wish there was a way to use other bottom bar designs at pub.dev.
