@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
           Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
         ],
 
-        // Visual properties. Delegate the following properties to a flutter BottomNavigationBar
+        // Delegate the following properties to a SalomonBottomBar
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), activeIcon: Icon(Icons.landscape), title: Text('Home')),
           SalomonBottomBarItem(icon: Icon(Icons.music_note), activeIcon: Icon(Icons.home), title: Text('Music')),

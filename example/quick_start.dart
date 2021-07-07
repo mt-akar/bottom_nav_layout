@@ -16,14 +16,13 @@ class MyApp extends StatelessWidget {
           Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
         ],
 
-        // Visual properties. Delegate the following properties to a flutter BottomNavigationBar
+        // Delegate the following properties to a flutter BottomNavigationBar
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
           BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
-
         backgroundColor: Colors.blue,
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white54,
