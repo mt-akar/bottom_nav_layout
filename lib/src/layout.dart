@@ -16,6 +16,7 @@ import 'bottom_nav_bar_delegate.dart';
 /// This way, the pages saves all their state.
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
+    Key? key,
     this.pages,
     this.pageBuilders,
     this.tabStack,
@@ -26,7 +27,8 @@ class BottomNavLayout extends StatefulWidget {
         assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 pages are required"),
         assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as pages"),
         assert((pages?.length ?? pageBuilders!.length) == bottomNavBarDelegate.items.length, "Pass as many bottomNavBarItems as pages"),
-        assert(tabStack == null || (pages?.length ?? pageBuilders!.length) > tabStack.peek() && tabStack.peek() >= 0, "initialTabIndex cannot exceed the max page index or be negative");
+        assert(tabStack == null || (pages?.length ?? pageBuilders!.length) > tabStack.peek() && tabStack.peek() >= 0, "initialTabIndex cannot exceed the max page index or be negative"),
+        super(key: key);
 
   /// The main content of the layout.
   /// Directly passed to the [_BottomNavLayoutState.pages]
