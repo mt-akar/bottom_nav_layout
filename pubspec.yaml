@@ -1,5 +1,5 @@
 name: bottom_nav_layout
-description: A quick layout with bottom navigation, tab back stack, and  state management.
+description: A quick layout with bottom nav bar, state preservation, lazy loading and back button navigation management
 version: 0.0.1
 homepage: https://github.com/m-azyoksul/bottom_nav_layout
 
