@@ -8,9 +8,10 @@ It is quick and powerful widget which has
  - Multiple bottom bar designs
 
 # Why `bottom_nav_layout`?
- - Eliminates all boilerplate code for the coordination between bottom nav bar and app's top level destinations.
+ - Eliminates all boilerplate code for bottom nav bar coordination.
  - Implements additional, common features.
- - Has the same API with the underlying bottom bars
+ - Supports multiple bar designs.
+ - Uses the same APIs with the underlying bottom bars.
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -32,7 +33,7 @@ BottomNavLayout(
     Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
   ],
 
-  // Visual properties. Delegate the following properties to a flutter BottomNavigationBar
+  // Delegate the following properties to a flutter BottomNavigationBar
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
@@ -45,13 +46,13 @@ BottomNavLayout(
   type: BottomNavigationBarType.fixed,
 )
 ```
+This layout uses flutter's `BottomNavigationBar` under the hood. You don't directly create a `BottomNavigationBar` instance, properties given to `BottomNavLayout` are used to create it. The API is the same (except `currentIndex`, which is captured in `pageStack`).
 
 # Page State Preservation
 The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved. You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
 ```dart
 BottomNavLayout(
   // ...
-
   savePageState: true, // Default is true
 )
 ```
@@ -63,7 +64,6 @@ Instead of passing `pages`, pass `pageBuilders`.
 ```dart
 BottomNavLayout(
   // ...
-
   pageBuilders: [
     () => const Center(child: Text("Welcome")),
     () => ExamplePage('Music'),
@@ -128,7 +128,6 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 ```dart
 BottomNavLayout(
   // ...
-
   pageStack: StandardPageStack(initialPage: 0),
   // pageStack: ReorderToFrontPageStack(initialPage: 0),
   // pageStack: ReplacePageStack(initialPage: 0),
@@ -138,7 +137,19 @@ BottomNavLayout(
 ```
 
 # In-Page Navigation Using GlobalKeys
-To be filled.
+To be filled...
+
+To use keys, pass all the keys you passed to the pages in the same order.
+```dart
+BottomNavLayout(
+  // ...
+  keys: <GlobalKey<NavigatorState>?>[
+    homePageKey,
+    null, // If the a page doesn't use a key, pass null so that layout knows the order.
+    placePageKey,
+  ],
+)
+```
 
 # Different Bar Designs
 So far, we only worked on Material design bottom nav bar. This layout also supports other bar designs.
@@ -162,7 +173,7 @@ SalomonBottomNavLayout(
     Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
   ],
 
-  // Visual properties. Delegate the following properties to a flutter BottomNavigationBar
+  // Delegate the following properties to a SalomonBottomBar
   items: [
     SalomonBottomBarItem(icon: Icon(Icons.home), activeIcon: Icon(Icons.landscape), title: Text('Home')),
     SalomonBottomBarItem(icon: Icon(Icons.music_note), activeIcon: Icon(Icons.home), title: Text('Music')),
@@ -174,12 +185,7 @@ SalomonBottomNavLayout(
 )
 ```
 
-You don't directly create a `SalomonBottomBar` instance, properties given to `SalomonBottomNavLayout` are used to create it. The API is the same (except `currentIndex`, which is captured in `pageStack`).
-
 # Improvements
 Any feedback is appreciated. 🚀🚀 My email: m.azyoksul@gmail.com
 
-### Potential Improvement 1
-What if you don't want to use the Material nav bar but use a more fancy design with custom animations etc. I attempted to allow this but unfortunately, to generalize the bottom bar's functionality, we need to abstract it's functionality from it's visuals. As far as I know, the flutter `BottomNavigationBar`'s composition is simply not agressive enough.
-
-I might end up implementing a few different designs myself. I wish there was a way to use other bottom bar designs at pub.dev.
+I am looking to improve this package. If you have any ideas, you can contact me or create a PR.
