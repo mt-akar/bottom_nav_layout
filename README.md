@@ -1,15 +1,16 @@
 # What is `bottom_nav_layout`?
-It is quick and powerful layout with
- - Bottom nav bar and pages
+It is quick and powerful widget which has
+ - Layout with bottom nav bar and pages
  - Page state preservation
  - Lazy page loading
  - Page backstack
  - Back button navigation management
+ - Multiple bottom bar designs
 
 # Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for the coordination between bottom nav bar and app's top level destinations.
  - Implements additional, common features.
- - Has the same API with flutter's `BottomNavigationBar`
+ - Has the same API with the underlying bottom bars
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
@@ -138,6 +139,42 @@ BottomNavLayout(
 
 # In-Page Navigation Using GlobalKeys
 To be filled.
+
+# Different Bar Designs
+So far, we only worked on Material design bottom nav bar. This layout also supports other bar designs.
+
+## Salomon Bottom Bar
+It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with this package.
+
+Add this to your `pubspac.yaml` file.
+```yaml
+salomon_bottom_bar: latest_version
+```
+
+And use this quick start example.
+```dart
+SalomonBottomNavLayout(
+  // Your app's top level destinations
+  pages: [
+    Center(child: Text("Welcome to bottom_nav_layout")),
+    ExamplePage('Music'),
+    ExamplePage('Place'),
+    Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+  ],
+
+  // Visual properties. Delegate the following properties to a flutter BottomNavigationBar
+  items: [
+    SalomonBottomBarItem(icon: Icon(Icons.home), activeIcon: Icon(Icons.landscape), title: Text('Home')),
+    SalomonBottomBarItem(icon: Icon(Icons.music_note), activeIcon: Icon(Icons.home), title: Text('Music')),
+    SalomonBottomBarItem(icon: Icon(Icons.place), activeIcon: Icon(Icons.insights), title: Text('Places')),
+    SalomonBottomBarItem(icon: Icon(Icons.search), activeIcon: Icon(Icons.insights), title: Text('Search')),
+  ],
+  selectedItemColor: Theme.of(context).primaryColor,
+  unselectedItemColor: Colors.grey,
+)
+```
+
+You don't directly create a `SalomonBottomBar` instance, properties given to `SalomonBottomNavLayout` are used to create it. The API is the same (except `currentIndex`, which is captured in `pageStack`).
 
 # Improvements
 Any feedback is appreciated. 🚀🚀 My email: m.azyoksul@gmail.com

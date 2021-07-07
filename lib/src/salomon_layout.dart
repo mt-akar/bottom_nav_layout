@@ -16,6 +16,8 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 class SalomonBottomNavLayout extends StatefulWidget {
   SalomonBottomNavLayout({
     Key? key,
+
+    // Nav layout properties
     this.pages,
     this.pageBuilders,
     this.tabStack,
@@ -201,20 +203,20 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
       child: Scaffold(
         // Depending on if the user wants to save the page states
         body: !widget.savePageState
-        // Do not save page states
+            // Do not save page states
             ? pages[tabStack.peek()]
-        // Save page states using a stack/offstage structure.
-        // Stack view contains one Offstage widget per page.
-        // Offstages are hidden except for the currently selected tab.
+            // Save page states using a stack/offstage structure.
+            // Stack view contains one Offstage widget per page.
+            // Offstages are hidden except for the currently selected tab.
             : Stack(
-          children: pages.asMap().entries.map((indexPageMap) {
-            return Offstage(
-              offstage: indexPageMap.key != tabStack.peek(),
-              // If the page is not initialized, "not show" an invisible widget instead.
-              child: indexPageMap.value ?? SizedBox.shrink(),
-            );
-          }).toList(),
-        ),
+                children: pages.asMap().entries.map((indexPageMap) {
+                  return Offstage(
+                    offstage: indexPageMap.key != tabStack.peek(),
+                    // If the page is not initialized, "not show" an invisible widget instead.
+                    child: indexPageMap.value ?? SizedBox.shrink(),
+                  );
+                }).toList(),
+              ),
         bottomNavigationBar: SalomonBottomBar(
           currentIndex: tabStack.peek(),
 
@@ -233,11 +235,11 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
           selectedItemColor: widget.selectedItemColor,
           unselectedItemColor: widget.unselectedItemColor,
           selectedColorOpacity: widget.selectedColorOpacity,
-          itemShape:widget.itemShape,
-          margin:widget.margin,
-          itemPadding:widget.itemPadding,
-          duration:widget.duration,
-          curve:widget.curve,
+          itemShape: widget.itemShape,
+          margin: widget.margin,
+          itemPadding: widget.itemPadding,
+          duration: widget.duration,
+          curve: widget.curve,
         ),
       ),
     );

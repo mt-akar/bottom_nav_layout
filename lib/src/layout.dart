@@ -15,13 +15,15 @@ import 'package:flutter/widgets.dart';
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     Key? key,
+
+    // Nav layout properties
     this.pages,
     this.pageBuilders,
     this.tabStack,
     this.keys,
     this.savePageState = true,
 
-    // Visual properties
+    // Delegated properties
     required this.items,
     this.onTap,
     this.elevation,
