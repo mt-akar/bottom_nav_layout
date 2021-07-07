@@ -5,7 +5,7 @@ It is quick and powerful layout with
  - Lazy page loading
  - Page backstack
 
-If you don't want to deal with boilerplate code that coordinates bottom nav bar and app's top level destinations, you should use `bottom_nav_layout`.
+If you don't want to deal with boilerplate code for the behavior of bottom nav bar and app's top level destinations, you should use `bottom_nav_layout`.
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
