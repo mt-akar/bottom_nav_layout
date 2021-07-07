@@ -109,9 +109,7 @@ This behavior is used by Youtube app.
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 0->2->0 | 0->2 |
 
 ### ReplacePageStack
-This behavior is similar to the behavior in the [`BottomNavigationBar` example given in flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
-
-This behavior is used by a lot of applications. This is also Cupertino default behavior.
+This behavior is the same as the behavior in [`BottomNavigationBar` example given in flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html). It is used by a lot of applications. It is also both Cupertino's and Material's default behavior.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
