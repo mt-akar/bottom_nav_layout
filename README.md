@@ -4,12 +4,8 @@ It is quick and powerful layout with
  - Page state preservation
  - Lazy page loading
  - Page backstack
- 
-# When should I use it?
-You should use `bottom_nav_layout` when
- - You have a bottom nav bar
- - You don't want to deal with boilerplate code that coordinates bottom nav bar and app's top level destinations.
- - You want optional, extra features.
+
+If you don't want to deal with boilerplate code that coordinates bottom nav bar and app's top level destinations, you should use `bottom_nav_layout`.
 
 # Installation
 This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
