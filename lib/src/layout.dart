@@ -2,8 +2,6 @@ import 'package:bottom_nav_layout/src/tab_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'bottom_nav_bar_delegate.dart';
-
 /// TODO: What is BottomNavLayout
 /// TODO: Why does BottomNavLayout exist, what is it's purpose
 /// TODO: What does BottomNavLayout do
@@ -22,11 +20,30 @@ class BottomNavLayout extends StatefulWidget {
     this.tabStack,
     this.keys,
     this.savePageState = true,
-    required this.bottomNavBarDelegate,
+
+    // Visual properties
+    required this.items,
+    this.onTap,
+    this.elevation,
+    this.type,
+    this.fixedColor,
+    this.backgroundColor,
+    this.iconSize = 24.0,
+    this.selectedItemColor,
+    this.unselectedItemColor,
+    this.selectedIconTheme,
+    this.unselectedIconTheme,
+    this.selectedFontSize = 14.0,
+    this.unselectedFontSize = 12.0,
+    this.selectedLabelStyle,
+    this.unselectedLabelStyle,
+    this.showSelectedLabels,
+    this.showUnselectedLabels,
+    this.mouseCursor,
   })  : assert(pages != null && pageBuilders == null || pageBuilders != null && pages == null, "Either pass pages or pageBuilders"),
         assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 pages are required"),
         assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as pages"),
-        assert((pages?.length ?? pageBuilders!.length) == bottomNavBarDelegate.items.length, "Pass as many bottomNavBarItems as pages"),
+        assert((pages?.length ?? pageBuilders!.length) == items.length, "Pass as many bottomNavBarItems as pages"),
         assert(tabStack == null || (pages?.length ?? pageBuilders!.length) > tabStack.peek() && tabStack.peek() >= 0, "initialTabIndex cannot exceed the max page index or be negative"),
         super(key: key);
 
@@ -59,10 +76,59 @@ class BottomNavLayout extends StatefulWidget {
   /// Whether the page states are saved or not.
   final bool savePageState;
 
-  /// Delegate for all the of the [BottomNavigationBar] properties, except [BottomNavigationBar.currentIndex].
-  /// [BottomNavigationBar.currentIndex] functionality is captured in [_BottomNavLayoutState.tabStack].
-  /// Initial tab index could still be passed in [PageStack]'s constructor.
-  final BottomNavBarDelegate bottomNavBarDelegate;
+  /// Property delegated to [BottomNavigationBar]
+  final List<BottomNavigationBarItem> items;
+
+  /// Property delegated to [BottomNavigationBar]
+  final ValueChanged<int>? onTap;
+
+  /// Property delegated to [BottomNavigationBar]
+  final double? elevation;
+
+  /// Property delegated to [BottomNavigationBar]
+  final BottomNavigationBarType? type;
+
+  /// Property delegated to [BottomNavigationBar]
+  final Color? fixedColor;
+
+  /// Property delegated to [BottomNavigationBar]
+  final Color? backgroundColor;
+
+  /// Property delegated to [BottomNavigationBar]
+  final double iconSize;
+
+  /// Property delegated to [BottomNavigationBar]
+  final Color? selectedItemColor;
+
+  /// Property delegated to [BottomNavigationBar]
+  final Color? unselectedItemColor;
+
+  /// Property delegated to [BottomNavigationBar]
+  final IconThemeData? selectedIconTheme;
+
+  /// Property delegated to [BottomNavigationBar]
+  final IconThemeData? unselectedIconTheme;
+
+  /// Property delegated to [BottomNavigationBar]
+  final double selectedFontSize;
+
+  /// Property delegated to [BottomNavigationBar]
+  final double unselectedFontSize;
+
+  /// Property delegated to [BottomNavigationBar]
+  final TextStyle? selectedLabelStyle;
+
+  /// Property delegated to [BottomNavigationBar]
+  final TextStyle? unselectedLabelStyle;
+
+  /// Property delegated to [BottomNavigationBar]
+  final bool? showSelectedLabels;
+
+  /// Property delegated to [BottomNavigationBar]
+  final bool? showUnselectedLabels;
+
+  /// Property delegated to [BottomNavigationBar]
+  final MouseCursor? mouseCursor;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
@@ -189,28 +255,28 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
             onTabSelected(index);
 
             // Passed in onTap call
-            widget.bottomNavBarDelegate.onTap?.call(index);
+            widget.onTap?.call(index);
           },
 
           // Delegated properties
-          key: widget.bottomNavBarDelegate.key,
-          items: widget.bottomNavBarDelegate.items,
-          elevation: widget.bottomNavBarDelegate.elevation,
-          type: widget.bottomNavBarDelegate.type,
-          fixedColor: widget.bottomNavBarDelegate.fixedColor,
-          backgroundColor: widget.bottomNavBarDelegate.backgroundColor,
-          iconSize: widget.bottomNavBarDelegate.iconSize,
-          selectedItemColor: widget.bottomNavBarDelegate.selectedItemColor,
-          unselectedItemColor: widget.bottomNavBarDelegate.unselectedItemColor,
-          selectedIconTheme: widget.bottomNavBarDelegate.selectedIconTheme,
-          unselectedIconTheme: widget.bottomNavBarDelegate.unselectedIconTheme,
-          selectedFontSize: widget.bottomNavBarDelegate.selectedFontSize,
-          unselectedFontSize: widget.bottomNavBarDelegate.unselectedFontSize,
-          selectedLabelStyle: widget.bottomNavBarDelegate.selectedLabelStyle,
-          unselectedLabelStyle: widget.bottomNavBarDelegate.unselectedLabelStyle,
-          showSelectedLabels: widget.bottomNavBarDelegate.showSelectedLabels,
-          showUnselectedLabels: widget.bottomNavBarDelegate.showUnselectedLabels,
-          mouseCursor: widget.bottomNavBarDelegate.mouseCursor,
+          key: widget.key,
+          items: widget.items,
+          elevation: widget.elevation,
+          type: widget.type,
+          fixedColor: widget.fixedColor,
+          backgroundColor: widget.backgroundColor,
+          iconSize: widget.iconSize,
+          selectedItemColor: widget.selectedItemColor,
+          unselectedItemColor: widget.unselectedItemColor,
+          selectedIconTheme: widget.selectedIconTheme,
+          unselectedIconTheme: widget.unselectedIconTheme,
+          selectedFontSize: widget.selectedFontSize,
+          unselectedFontSize: widget.unselectedFontSize,
+          selectedLabelStyle: widget.selectedLabelStyle,
+          unselectedLabelStyle: widget.unselectedLabelStyle,
+          showSelectedLabels: widget.showSelectedLabels,
+          showUnselectedLabels: widget.showUnselectedLabels,
+          mouseCursor: widget.mouseCursor,
         ),
       ),
     );
