@@ -162,10 +162,13 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
-        // This stack view contains one Offstage widget per initialized page.
-        // Offstages are hidden unless the corresponding tab is currently selected.
+        // Depending on if the user wants to save the page states
         body: !widget.savePageState
+            // Do not save page states
             ? pages[tabStack.peek()]
+            // Save page states using a stack/offstage structure.
+            // Stack view contains one Offstage widget per page.
+            // Offstages are hidden except for the currently selected tab.
             : Stack(
                 children: pages.asMap().entries.map((indexPageMap) {
                   return Offstage(
