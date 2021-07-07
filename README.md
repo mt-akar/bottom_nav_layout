@@ -23,6 +23,7 @@
  - [Lazy Page Loading](#lazy-page-loading)
  - [Page Back Stack](#page-back-stack)
  - [In-Page Navigation Using GlobalKeys](#in-page-navigation-using-globalkeys)
+ - [Different Bar Designs](#different-bar-designs)
  - [Styling Bottom Bar](#styling-bottom-bar)
  - [Improvements](#improvements)
 
