@@ -198,6 +198,6 @@ BottomNavLayout(
 ```
 
 # Improvements
-Any feedback is appreciated. 🚀🚀 My email: m.azyoksul@gmail.com
+Any feedback is appreciated. 🚀🚀
 
 I am looking to improve this package. If you have any ideas, create an issue.
