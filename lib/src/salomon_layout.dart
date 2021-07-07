@@ -23,6 +23,7 @@ class SalomonBottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.keys,
     this.savePageState = true,
+    this.bottomBarStyler,
 
     // Delegated properties
     required this.items,
@@ -70,6 +71,9 @@ class SalomonBottomNavLayout extends StatefulWidget {
 
   /// Whether the page states are saved or not.
   final bool savePageState;
+
+  /// A function that constructs a styling widget to wrap bottom nav bar with.
+  final Widget Function(Widget)? bottomBarStyler;
 
   /// Property delegated to [SalomonBottomBar]
   final List<SalomonBottomBarItem> items;
@@ -197,6 +201,32 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
       pages[pageStack.peek()] = widget.pageBuilders![pageStack.peek()]();
     }
 
+    // Create the bottom nav bar
+    var bottomBar = SalomonBottomBar(
+      currentIndex: pageStack.peek(),
+
+      // onTap calls both the layout's own onTap action and the user's passed in onTap action.
+      onTap: (index) {
+        // Layout functionality
+        onPageSelected(index);
+
+        // Passed in onTap call
+        widget.onTap?.call(index);
+      },
+
+      // Delegated properties
+      key: widget.key,
+      items: widget.items,
+      selectedItemColor: widget.selectedItemColor,
+      unselectedItemColor: widget.unselectedItemColor,
+      selectedColorOpacity: widget.selectedColorOpacity,
+      itemShape: widget.itemShape,
+      margin: widget.margin,
+      itemPadding: widget.itemPadding,
+      duration: widget.duration,
+      curve: widget.curve,
+    );
+
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
@@ -217,30 +247,7 @@ class _SalomonBottomNavLayoutState extends State<SalomonBottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: SalomonBottomBar(
-          currentIndex: pageStack.peek(),
-
-          // onTap calls both the layout's own onTap action and the user's passed in onTap action.
-          onTap: (index) {
-            // Layout functionality
-            onPageSelected(index);
-
-            // Passed in onTap call
-            widget.onTap?.call(index);
-          },
-
-          // Delegated properties
-          key: widget.key,
-          items: widget.items,
-          selectedItemColor: widget.selectedItemColor,
-          unselectedItemColor: widget.unselectedItemColor,
-          selectedColorOpacity: widget.selectedColorOpacity,
-          itemShape: widget.itemShape,
-          margin: widget.margin,
-          itemPadding: widget.itemPadding,
-          duration: widget.duration,
-          curve: widget.curve,
-        ),
+        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
       ),
     );
   }

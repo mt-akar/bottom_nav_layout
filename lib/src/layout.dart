@@ -22,6 +22,7 @@ class BottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.keys,
     this.savePageState = true,
+    this.bottomBarStyler,
 
     // Delegated properties
     required this.items,
@@ -77,6 +78,9 @@ class BottomNavLayout extends StatefulWidget {
 
   /// Whether the page states are saved or not.
   final bool savePageState;
+
+  /// A function that returns a styling widget to wrap bottom nav bar with.
+  final Widget Function(Widget)? bottomBarStyler;
 
   /// Property delegated to [BottomNavigationBar]
   final List<BottomNavigationBarItem> items;
@@ -228,6 +232,40 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[pageStack.peek()] = widget.pageBuilders![pageStack.peek()]();
     }
 
+    // Create the bottom nav bar
+    var bottomBar = BottomNavigationBar(
+      currentIndex: pageStack.peek(),
+
+      // onTap calls both the layout's own onTap action and the user's passed in onTap action.
+      onTap: (index) {
+        // Layout functionality
+        onPageSelected(index);
+
+        // Passed in onTap call
+        widget.onTap?.call(index);
+      },
+
+      // Delegated properties
+      key: widget.key,
+      items: widget.items,
+      elevation: widget.elevation,
+      type: widget.type,
+      fixedColor: widget.fixedColor,
+      backgroundColor: widget.backgroundColor,
+      iconSize: widget.iconSize,
+      selectedItemColor: widget.selectedItemColor,
+      unselectedItemColor: widget.unselectedItemColor,
+      selectedIconTheme: widget.selectedIconTheme,
+      unselectedIconTheme: widget.unselectedIconTheme,
+      selectedFontSize: widget.selectedFontSize,
+      unselectedFontSize: widget.unselectedFontSize,
+      selectedLabelStyle: widget.selectedLabelStyle,
+      unselectedLabelStyle: widget.unselectedLabelStyle,
+      showSelectedLabels: widget.showSelectedLabels,
+      showUnselectedLabels: widget.showUnselectedLabels,
+      mouseCursor: widget.mouseCursor,
+    );
+
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
@@ -248,38 +286,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: pageStack.peek(),
-
-          // onTap calls both the layout's own onTap action and the user's passed in onTap action.
-          onTap: (index) {
-            // Layout functionality
-            onPageSelected(index);
-
-            // Passed in onTap call
-            widget.onTap?.call(index);
-          },
-
-          // Delegated properties
-          key: widget.key,
-          items: widget.items,
-          elevation: widget.elevation,
-          type: widget.type,
-          fixedColor: widget.fixedColor,
-          backgroundColor: widget.backgroundColor,
-          iconSize: widget.iconSize,
-          selectedItemColor: widget.selectedItemColor,
-          unselectedItemColor: widget.unselectedItemColor,
-          selectedIconTheme: widget.selectedIconTheme,
-          unselectedIconTheme: widget.unselectedIconTheme,
-          selectedFontSize: widget.selectedFontSize,
-          unselectedFontSize: widget.unselectedFontSize,
-          selectedLabelStyle: widget.selectedLabelStyle,
-          unselectedLabelStyle: widget.unselectedLabelStyle,
-          showSelectedLabels: widget.showSelectedLabels,
-          showUnselectedLabels: widget.showUnselectedLabels,
-          mouseCursor: widget.mouseCursor,
-        ),
+        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
       ),
     );
   }
