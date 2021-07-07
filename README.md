@@ -200,4 +200,4 @@ BottomNavLayout(
 # Improvements
 Any feedback is appreciated. 🚀🚀 My email: m.azyoksul@gmail.com
 
-I am looking to improve this package. If you have any ideas, you can contact me or create a PR.
+I am looking to improve this package. If you have any ideas, create an issue.
