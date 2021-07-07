@@ -185,6 +185,18 @@ SalomonBottomNavLayout(
 )
 ```
 
+# Styling Bottom Bar
+Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
+```dart
+BottomNavLayout(
+  // ...
+  bottomBarStyler: (bottomBar) => Padding(
+    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+    child: bottomBar,
+  ),
+)
+```
+
 # Improvements
 Any feedback is appreciated. 🚀🚀 My email: m.azyoksul@gmail.com
 
