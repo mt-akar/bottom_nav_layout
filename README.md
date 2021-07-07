@@ -2,13 +2,17 @@
 It is quick and powerful layout with
  - Bottom navigation bar
  - Page state preservation
- - Back button navigation management
  - Lazy page loading
+ - Back button navigation management
  
 # When should I use it?
+You should use `bottom_nav_layout` when
+ - You have bottom nav bar
+and
+ - You don't want to deal with boilerplate code that coordinates bottom nav bar and the app's top level destinations.
 
 # Installation
-This package hasn't been released. Therefore the installiation is directly from github. Add the following code to your `pubspec.yaml` file.
+This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
 ```yaml
 bottom_nav_layout:
   git:
@@ -69,8 +73,10 @@ BottomNavLayout(
 )
 ```
 
-# Different Back Stack Types
+# Tab Back Stack
 This layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a tab back stack, many of which are readily implemented. You can also implement your own.
+
+## Tab Back Stack Types
 
 Consider the following use case. After launching the app, the user;
  - Start at tab 0
@@ -120,7 +126,7 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->2 | 0->1 | 0 | 0 | Exit App |
 
-### Using Different Back Stacks
+## Using Different Back Stacks
 
 ```dart
 BottomNavLayout(
