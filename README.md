@@ -45,18 +45,43 @@ void main() => runApp(MaterialApp(
         // The app's top level destinations
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
-          GamePage('TicTacToe'),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
+          SliderPage(),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Go...'))),
         ],
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.gamepad), label: 'Game'),
+          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),
     ));
 ```
 Done. You have a complete, working application.
+ 
+<details>
+<summary>SliderPage code</summary>
+<p>
+
+```dart
+class SliderPage extends StatefulWidget {
+  @override
+  _SliderPageState createState() => _SliderPageState();
+}
+
+class _SliderPageState extends State<SliderPage> {
+  double r = 0;
+
+  @override
+  Widget build(BuildContext context) => Center(
+        child: Slider(
+          value: r,
+          onChanged: (double d) => setState(() => r = d),
+        ),
+      );
+}
+```
+</p>
+</details>  
 
 ## Parameters
  - `pages` - Top level destinations of your application.
