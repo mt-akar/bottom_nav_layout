@@ -14,6 +14,7 @@ import 'dart:collection';
 /// Therefore, the stack is never empty while the [BackStackedBottomNavLayout] is handling the pop events.
 /// When there is a single item on the stack and pop is called, the app exits if no other back button handler is added.
 abstract class PageStack extends ListQueue<int> {
+  // Constructor pushes the initialPage to the stack.
   PageStack({required int initialPage}) {
     addLast(initialPage);
   }
@@ -38,10 +39,14 @@ abstract class PageStack extends ListQueue<int> {
 /// push(0); Stack: 0->1->2->0.
 /// pop();   Stack: 0->1->2.
 class StandardPageStack extends PageStack {
-  StandardPageStack({required int initiaPage}) : super(initialPage: initiaPage);
+  StandardPageStack({required int initialPage}) : super(initialPage: initialPage);
 
   @override
   void push(int pageIndex) {
+    // Check if the last index is pushed again
+    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last item.");
+
+    // Add index
     addLast(pageIndex);
   }
 
@@ -69,7 +74,13 @@ class ReorderToFrontPageStack extends PageStack {
 
   @override
   void push(int pageIndex) {
+    // Check if the last index is pushed again
+    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last item.");
+
+    // If the pushed item exist on the stack, remove it
     remove(pageIndex);
+
+    // Add index
     addLast(pageIndex);
   }
 
@@ -97,12 +108,24 @@ class ReorderToFrontExceptFirstPageStack extends PageStack {
 
   @override
   void push(int pageIndex) {
-    if (pageIndex != first) {
+    // Check if the last index is pushed again
+    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last item.");
+
+    // If the the item pushed is not the first item
+    if (pageIndex != first)
+      // If the pushed item exist on the stack, remove it
       remove(pageIndex);
-    } else {
-      if (remove(pageIndex)) remove(pageIndex);
+
+    // If the index pushed is the first index,
+    else {
+      // Remove it up to two times.
+      this..remove(pageIndex)..remove(pageIndex);
+
+      // Add it back to the first spot
       addFirst(pageIndex);
     }
+
+    // Add index
     addLast(pageIndex);
   }
 
@@ -133,7 +156,13 @@ class ReplacePageStack extends PageStack {
 
   @override
   void push(int pageIndex) {
+    // Check if the last index is pushed again
+    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last item.");
+
+    // Remove the only index
     removeLast();
+
+    // Add index
     addLast(pageIndex);
   }
 
@@ -161,8 +190,18 @@ class ReplaceExceptFirstPageStack extends PageStack {
 
   @override
   void push(int pageIndex) {
-    if (length == 2) removeLast();
-    if (last != pageIndex) addLast(pageIndex);
+    // Check if the last index is pushed again
+    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last item.");
+
+    // If the stack have 2 items
+    if (length == 2)
+      // Remove the last one.
+      removeLast();
+
+    // If the index pushed is not in the stack
+    if (last != pageIndex)
+      // Add index
+      addLast(pageIndex);
   }
 
   @override

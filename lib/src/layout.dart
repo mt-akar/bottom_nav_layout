@@ -19,9 +19,9 @@ class BottomNavLayout extends StatefulWidget {
     // Nav layout properties
     this.pages,
     this.pageBuilders,
+    this.savePageState = true,
     this.pageStack,
     this.keys,
-    this.savePageState = true,
     this.bottomBarStyler,
 
     // Delegated properties
@@ -59,6 +59,9 @@ class BottomNavLayout extends StatefulWidget {
   /// Either pass [pages] or [pageBuilders], do not pass both.
   final List<Widget Function()>? pageBuilders;
 
+  /// Whether the page states are saved or not.
+  final bool savePageState;
+
   /// Initial page stack that user passed in.
   final PageStack? pageStack;
 
@@ -75,9 +78,6 @@ class BottomNavLayout extends StatefulWidget {
   ///
   /// Number and order of [keys] should be the same as the order of [pages] they are passed into.
   final List<GlobalKey<NavigatorState>?>? keys;
-
-  /// Whether the page states are saved or not.
-  final bool savePageState;
 
   /// A function that returns a styling widget to wrap bottom nav bar with.
   final Widget Function(Widget)? bottomBarStyler;
