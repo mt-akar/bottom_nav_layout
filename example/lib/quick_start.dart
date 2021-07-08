@@ -10,7 +10,9 @@ class QuickStartApp extends StatelessWidget {
       pages: [
         Center(child: Text("Welcome to bottom_nav_layout")),
         GamePage('TicTacToe'),
-        Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
+        Center(
+            child:
+                TextField(decoration: InputDecoration(hintText: 'Search...'))),
       ],
       // savePageState: true, // Default is true
       // pageStack: ReorderToFrontPageStack(initialPage: 0), // Default is ReorderToFrontPageStack
