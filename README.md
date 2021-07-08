@@ -8,7 +8,7 @@
  - Eliminates all boilerplate code for bottom nav bar coordination.
  - Supports multiple, beautiful bar designs.
  - Uses identical APIs with the underlying bottom bars.
- - Offers additional common features.
+ - Offers additional common features. All of them are optional.
    - Page state preservation
    - Lazy page loading
    - Page backstack
@@ -16,8 +16,7 @@
    - Bar Styling
 
 # Content
- - [Installation](#installation)
- - [Quick Start Example](#quick-start-example)
+ - [Usage](#usage)
  - [Page State Preservation](#page-state-preservation)
  - [Lazy Page Loading](#lazy-page-loading)
  - [Page Back Stack](#page-back-stack)
@@ -26,40 +25,54 @@
  - [Bar Styling](#bar-styling)
  - [Improvements](#improvements)
 
-# Installation
-This package hasn't been released. Therefore the installation is directly from github. Add the following code to your `pubspec.yaml` file.
+# Usage
+## Installation
+Add the following code to your `pubspec.yaml` file.
 ```yaml
-bottom_nav_layout:
-  git:
-    url: https://github.com/m-azyoksul/bottom_nav_layout.git
-    ref: main
+dependencies:
+  bottom_nav_layout:
+    git:
+      url: https://github.com/m-azyoksul/bottom_nav_layout.git
+      ref: main
 ```
 
-# Quick Start Example
+## Import
 ```dart
-BottomNavLayout(
-  // Your app's top level destinations
-  pages: [
-    Center(child: Text("Welcome to bottom_nav_layout")),
-    ExamplePage('Music'),
-    ExamplePage('Place'),
-    Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
-  ],
-
-  // Delegate the following properties to a flutter BottomNavigationBar
-  items: [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: Icon(Icons.music_note), label: 'Music'),
-    BottomNavigationBarItem(icon: Icon(Icons.place), label: 'Places'),
-    BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-  ],
-  backgroundColor: Colors.blue,
-  selectedItemColor: Colors.white,
-  unselectedItemColor: Colors.white54,
-  type: BottomNavigationBarType.fixed,
-)
+import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 ```
-This layout uses flutter's `BottomNavigationBar` under the hood. You don't directly create a `BottomNavigationBar` instance, properties given to `BottomNavLayout` are used to create it. The API is the same (except `currentIndex`, which is captured in `pageStack`).
+
+## Quick Start Example
+```dart
+void main() => runApp(MaterialApp(
+      home: BottomNavLayout(
+        // The app's top level destinations
+        pages: [
+          Center(child: Text("Welcome to bottom_nav_layout")),
+          GamePage('TicTacToe'),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+        ],
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.gamepad), label: 'Game'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        ],
+      ),
+    ));
+```
+Done. You have a complete, working application.
+
+## Parameters
+ - `pages` - Top level destinations of your application.
+ - `pageBuilders` - Also top level destinations but can be lazily loaded.
+ - `savePageState` - Flag to enable/disable saving page state.
+ - `pageStack` - Navigation stack that remembers pages visited.
+ - `keys` - Keys that help the layout manage in-page navigation.
+ - `bottomBarStyler` - Widget that wrap bottom bar.
+ - Rest of the parameters such as `items`, `selectedItemColor`, `elevation` etc. are used to construct the bottom bar. The layout uses flutter's `BottomNavigationBar` under the hood. The API is identical (except `currentIndex`, which is same as `pageStack.peek()`).
+
+</br>
+
+![image](https://user-images.githubusercontent.com/32205084/124861906-1f303c80-dfbd-11eb-8525-00ad827d9a32.png)
 
 # Page State Preservation
 The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved. You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
@@ -78,9 +91,9 @@ Instead of passing `pages`, pass `pageBuilders`.
 BottomNavLayout(
   // ...
   pageBuilders: [
-    () => const Center(child: Text("Welcome")),
-    () => ExamplePage('Music'),
-    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search for favorite'))),
+    () => Center(child: Text("Welcome to bottom_nav_layout")),
+    () => GamePage('TicTacToe'),
+    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
   ],
 )
 ```
@@ -136,7 +149,7 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->2 | 0->1 | 0 | 0 | Exit App |
 
-## Using Different Back Stacks
+## Using Page Stacks
 
 ```dart
 BottomNavLayout(
@@ -177,25 +190,21 @@ salomon_bottom_bar: latest_version
 
 And use the following quick start example.
 ```dart
-SalomonBottomNavLayout(
-  // Your app's top level destinations
-  pages: [
-    Center(child: Text("Welcome to bottom_nav_layout")),
-    ExamplePage('Music'),
-    ExamplePage('Place'),
-    Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
-  ],
-
-  // Delegate the following properties to a SalomonBottomBar
-  items: [
-    SalomonBottomBarItem(icon: Icon(Icons.home), activeIcon: Icon(Icons.landscape), title: Text('Home')),
-    SalomonBottomBarItem(icon: Icon(Icons.music_note), activeIcon: Icon(Icons.home), title: Text('Music')),
-    SalomonBottomBarItem(icon: Icon(Icons.place), activeIcon: Icon(Icons.insights), title: Text('Places')),
-    SalomonBottomBarItem(icon: Icon(Icons.search), activeIcon: Icon(Icons.insights), title: Text('Search')),
-  ],
-  selectedItemColor: Theme.of(context).primaryColor,
-  unselectedItemColor: Colors.grey,
-)
+void main() => runApp(MaterialApp(
+      home: SalomonBottomNavLayout(
+        // The app's top level destinations
+        pages: [
+          Center(child: Text("Welcome to bottom_nav_layout")),
+          GamePage('TicTacToe'),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+        ],
+        items: [
+          SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
+          SalomonBottomBarItem(icon: Icon(Icons.gamepad), title: Text('Game')),
+          SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
+        ],
+      ),
+    ));
 ```
 
 # Bar Styling
