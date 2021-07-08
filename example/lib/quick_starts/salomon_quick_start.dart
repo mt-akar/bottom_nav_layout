@@ -11,13 +11,11 @@ class SalomonQuickStartApp extends StatelessWidget {
       pages: [
         Center(child: Text("Welcome to bottom_nav_layout")),
         SliderPage(),
-        Center(
-            child: TextField(decoration: InputDecoration(hintText: 'Go...'))),
+        Center(child: TextField(decoration: InputDecoration(hintText: 'Go...'))),
       ],
       items: [
         SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-        SalomonBottomBarItem(
-            icon: Icon(Icons.linear_scale), title: Text('Slider')),
+        SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
         SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
       ],
     );
