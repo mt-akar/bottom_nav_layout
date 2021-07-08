@@ -4,6 +4,8 @@
 
 `bottom_nav_layout` is a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in seconds.
 
+![demo](https://user-images.githubusercontent.com/32205084/124965664-0cece780-e02b-11eb-8cb9-493ee24941a0.gif)
+
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
  - Supports multiple, beautiful bar designs.
@@ -90,6 +92,7 @@ class _SliderPageState extends State<SliderPage> {
  - `pageStack` - Navigation stack that remembers pages visited.
  - `keys` - Keys that help the layout manage in-page navigation.
  - `bottomBarStyler` - Widget that wrap bottom bar.
+ - `extendBody` - Extends the page behind the bottom bar.
  - Rest of the parameters such as `items`, `selectedItemColor`, `elevation` etc. are used to construct the bottom bar. The layout uses flutter's `BottomNavigationBar` under the hood. The API is identical (except `currentIndex`, which is same as `pageStack.peek()`).
 
 </br>
@@ -230,15 +233,6 @@ void main() => runApp(MaterialApp(
 ```
 
 # Bar Styling
-### Extend Body
-You can have the page extend behind the bottom bar.
-```dart
-BottomNavLayout(
-  // ...
-  extendBody: true,
-)
-```
-
 ### Bar Styler
 Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
 ```dart
@@ -248,6 +242,15 @@ BottomNavLayout(
     padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
     child: bottomBar,
   ),
+)
+```
+
+### Extend Body
+You can have the page extend behind the bottom bar.
+```dart
+BottomNavLayout(
+  // ...
+  extendBody: true,
 )
 ```
 
