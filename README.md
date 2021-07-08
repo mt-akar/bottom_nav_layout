@@ -1,6 +1,6 @@
 ![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 ======
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 `bottom_nav_layout` is a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in seconds.
 
@@ -27,13 +27,10 @@
 
 # Usage
 ## Installation
-Add the following code to your `pubspec.yaml` file.
+Add the following to your `pubspec.yaml` file.
 ```yaml
 dependencies:
-  bottom_nav_layout:
-    git:
-      url: https://github.com/m-azyoksul/bottom_nav_layout.git
-      ref: main
+  bottom_nav_layout: latest_version
 ```
 
 ## Import
@@ -49,7 +46,7 @@ void main() => runApp(MaterialApp(
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
           GamePage('TicTacToe'),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -93,7 +90,7 @@ BottomNavLayout(
   pageBuilders: [
     () => Center(child: Text("Welcome to bottom_nav_layout")),
     () => GamePage('TicTacToe'),
-    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
   ],
 )
 ```
@@ -171,7 +168,7 @@ BottomNavLayout(
   // ...
   keys: <GlobalKey<NavigatorState>?>[
     homePageKey,
-    null, // If the a page doesn't use a key, pass null so that layout knows the order.
+    null, // If a page doesn't use a key, pass null so that layout knows the order.
     placePageKey,
   ],
 )
@@ -196,7 +193,7 @@ void main() => runApp(MaterialApp(
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
           GamePage('TicTacToe'),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
