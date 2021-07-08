@@ -22,6 +22,7 @@ class BottomNavLayout extends StatefulWidget {
     this.savePageState = true,
     this.pageStack,
     this.keys,
+    this.extendBody = false,
     this.bottomBarStyler,
 
     // Delegated properties
@@ -90,6 +91,9 @@ class BottomNavLayout extends StatefulWidget {
   ///
   /// Number and order of [keys] should be the same as the order of [pages] they are passed into.
   final List<GlobalKey<NavigatorState>?>? keys;
+
+  /// Weather the body will extend behind the bottom bar or not.
+  final bool extendBody;
 
   /// A function that returns a styling widget to wrap bottom nav bar with.
   final Widget Function(Widget)? bottomBarStyler;
@@ -283,6 +287,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     return WillPopScope(
       onWillPop: onWillPop,
       child: Scaffold(
+        extendBody: widget.extendBody,
         // Depending on if the user wants to save the page states
         body: !widget.savePageState
             // Do not save page states
