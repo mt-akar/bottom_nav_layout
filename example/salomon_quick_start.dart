@@ -8,7 +8,7 @@ void main() => runApp(MaterialApp(
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
           GamePage('TicTacToe'),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Enter search term...'))),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
