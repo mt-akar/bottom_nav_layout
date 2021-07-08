@@ -220,6 +220,8 @@ BottomNavLayout(
 ```
 
 # Improvements
-Any feedback is appreciated. 🚀🚀
+I am looking to improve this package. Any feedback is appreciated. 🚀🚀
 
-I am looking to improve this package. If you have any ideas, create an issue.
+If you have queries, feel free to create an [issue](https://github.com/m-azyoksul/bottom_nav_layout/issues).
+
+If you would like to contribute, feel free to create a [PR](https://github.com/m-azyoksul/bottom_nav_layout/pulls).
