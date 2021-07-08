@@ -1,22 +1,4 @@
-import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:flutter/material.dart';
-import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-
-void main() => runApp(MaterialApp(
-      home: SalomonBottomNavLayout(
-        // The app's top level destinations
-        pages: [
-          Center(child: Text("Welcome to bottom_nav_layout")),
-          GamePage('TicTacToe'),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
-        ],
-        items: [
-          SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(icon: Icon(Icons.gamepad), title: Text('Game')),
-          SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
-        ],
-      ),
-    ));
 
 /// [GamePage] a very simple stateful widget. We can easily change and observe its state.
 /// It is used to demonstrate the state preservation of [BottomNavLayout]

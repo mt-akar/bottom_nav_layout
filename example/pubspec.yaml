@@ -1,0 +1,22 @@
+name: example
+description: Sampl app for bottom nav layout package.
+publish_to: 'none'
+version: 1.0.0+1
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  bottom_nav_layout: ^0.0.1-dev.1
+
+  # Dependencies for different bottom bar designs
+  salomon_bottom_bar: ^3.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
