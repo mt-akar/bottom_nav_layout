@@ -23,8 +23,8 @@ class SalomonBottomNavLayout extends StatefulWidget {
     this.savePageState = true,
     this.pageStack,
     this.keys,
-    this.extendBody = false,
     this.bottomBarStyler,
+    this.extendBody = false,
 
     // Delegated properties
     required this.items,
@@ -85,11 +85,11 @@ class SalomonBottomNavLayout extends StatefulWidget {
   /// Number and order of [keys] should be the same as the order of [pages] they are passed into.
   final List<GlobalKey<NavigatorState>?>? keys;
 
-  /// Weather the body will extend behind the bottom bar or not.
-  final bool extendBody;
-
   /// A function that constructs a styling widget to wrap bottom nav bar with.
   final Widget Function(Widget)? bottomBarStyler;
+
+  /// Weather the body will extend behind the bottom bar or not.
+  final bool extendBody;
 
   /// Property delegated to [SalomonBottomBar]
   final List<SalomonBottomBarItem> items;
