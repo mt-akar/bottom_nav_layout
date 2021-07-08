@@ -230,6 +230,16 @@ void main() => runApp(MaterialApp(
 ```
 
 # Bar Styling
+### Extend Body
+You can have the page extend behind the bottom bar.
+```dart
+BottomNavLayout(
+  // ...
+  extendBody: true,
+)
+```
+
+### Bar Styler
 Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
 ```dart
 BottomNavLayout(
