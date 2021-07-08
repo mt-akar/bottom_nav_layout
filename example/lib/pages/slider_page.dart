@@ -12,9 +12,12 @@ class _SliderPageState extends State<SliderPage> {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Slider(
-          value: r,
-          onChanged: (double d) => setState(() => r = d),
+        child: Container(
+          height: 50,
+          child: Slider(
+            value: r,
+            onChanged: (double d) => setState(() => r = d),
+          ),
         ),
       );
 }
