@@ -2,7 +2,7 @@
 ======
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-`bottom_nav_layout` a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in seconds.
+`bottom_nav_layout` is a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in seconds.
 
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
