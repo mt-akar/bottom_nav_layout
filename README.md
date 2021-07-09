@@ -1,10 +1,10 @@
 ![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 ======
+<img align="right" src="https://user-images.githubusercontent.com/32205084/124965664-0cece780-e02b-11eb-8cb9-493ee24941a0.gif">
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 `bottom_nav_layout` is a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in seconds.
-
-![demo](https://user-images.githubusercontent.com/32205084/124965664-0cece780-e02b-11eb-8cb9-493ee24941a0.gif)
 
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
@@ -26,6 +26,7 @@
  - [Different Bar Designs](#different-bar-designs)
  - [Bar Styling](#bar-styling)
  - [Improvements](#improvements)
+ - [Community](#community)
 
 # Usage
 ## Installation
@@ -253,9 +254,12 @@ BottomNavLayout(
   extendBody: true,
 )
 ```
-
 # Improvements
-I am looking to improve this package. Any feedback is appreciated. 🚀🚀
+ - I am planning to add more bottom bar designs, preferably from pub.dev.
+ - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate that.
+
+# Community
+Any feedback is appreciated. 🚀🚀
 
 If you have queries, feel free to create an [issue](https://github.com/m-azyoksul/bottom_nav_layout/issues).
 
