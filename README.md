@@ -11,7 +11,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
  - Eliminates all boilerplate code for bottom nav bar coordination.
  - Supports multiple, beautiful bar designs.
  - Uses identical APIs with the underlying bottom bars.
- - Offers additional common features. All of them are optional.
+ - Offers additional common features, all of which are optional.
    - Page state preservation
    - Lazy page loading
    - Page backstack
