@@ -1,7 +1,11 @@
-## [1.0.0] - Jul 08, 2021
+## [1.0.0+1] - Jul 10, 2021
 
- - `extendBody` parameter added
- - Documentation updated.
+ - Dart formatting
+ 
+ ## [1.0.0] - Jul 10, 2021
+ 
+  - `extendBody` parameter added
+  - Documentation updated.
 
 ## [0.0.1-dev] - Jul 08, 2021
 
