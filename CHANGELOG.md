@@ -1,7 +1,7 @@
-## [0.0.1-dev.3] - Jul 08, 2021
+## [1.0.0] - Jul 08, 2021
 
- - Docs updated.
  - `extendBody` parameter added
+ - Documentation updated.
 
 ## [0.0.1-dev] - Jul 08, 2021
 

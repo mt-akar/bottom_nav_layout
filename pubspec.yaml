@@ -1,6 +1,6 @@
 name: bottom_nav_layout
 description: A quick and powerful app layout. Supports page state preservation, lazy page loading, and has a page backstack.
-version: 0.0.1-dev.3
+version: 1.0.0
 homepage: https://github.com/m-azyoksul/bottom_nav_layout
 
 environment:
