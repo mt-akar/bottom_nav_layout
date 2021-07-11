@@ -30,11 +30,23 @@ class WaterDropNavLayout extends StatefulWidget {
     this.waterDropColor = const Color(0xFF5B75F0),
     this.iconSize = 30,
     this.inactiveIconColor,
-  })  : assert(pages != null && pageBuilders == null || pageBuilders != null && pages == null, "Either pass pages or pageBuilders"),
-        assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 pages are required"),
-        assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as pages"),
-        assert((pages?.length ?? pageBuilders!.length) == barItems.length, "Pass as many bottomNavBarItems as pages"),
-        assert(pageStack == null || (pages?.length ?? pageBuilders!.length) > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the max page index or be negative"),
+  })  : assert(
+            pages != null && pageBuilders == null ||
+                pageBuilders != null && pages == null,
+            "Either pass pages or pageBuilders"),
+        assert((pages?.length ?? pageBuilders!.length) >= 2,
+            "At least 2 pages are required"),
+        assert(
+            keys == null ||
+                (pages?.length ?? pageBuilders!.length) == keys.length,
+            "Either do not pass keys or pass as many as pages"),
+        assert((pages?.length ?? pageBuilders!.length) == barItems.length,
+            "Pass as many bottomNavBarItems as pages"),
+        assert(
+            pageStack == null ||
+                (pages?.length ?? pageBuilders!.length) > pageStack.peek() &&
+                    pageStack.peek() >= 0,
+            "initialPageIndex cannot exceed the max page index or be negative"),
         super(key: key);
 
   /// The main content of the layout.
@@ -153,7 +165,8 @@ class _WaterDropNavLayoutState extends State<WaterDropNavLayout> {
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
     // Send pop event to the inner page
-    final consumedByPage = await widget.keys?[pageStack.peek()]?.currentState?.maybePop() ?? false;
+    final consumedByPage =
+        await widget.keys?[pageStack.peek()]?.currentState?.maybePop() ?? false;
 
     // If the back event is consumed by the inner page
     if (consumedByPage) {
@@ -229,7 +242,8 @@ class _WaterDropNavLayoutState extends State<WaterDropNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
+        bottomNavigationBar:
+            widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
       ),
     );
   }

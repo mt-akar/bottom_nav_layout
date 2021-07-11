@@ -198,7 +198,7 @@ BottomNavLayout(
   // ...
   keys: <GlobalKey<NavigatorState>?>[
     homePageKey,
-    null, // If a page doesn't use a key, pass null so that layout knows the order.
+    null, // If a page doesn't use a key, pass null so that layout knows the order
     placePageKey,
   ],
 )
@@ -208,11 +208,12 @@ BottomNavLayout(
 So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs.
 
 ## Salomon Bottom Bar
-It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout.
+It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout. The API is identical with the original package.
 
-Add the following to your `pubspac.yaml` file.
+Add the following to your `pubspec.yaml` file.
 ```yaml
-salomon_bottom_bar: latest_version
+dependencies:
+  salomon_bottom_bar: latest_version
 ```
 
 And use the following quick start example.
@@ -229,6 +230,34 @@ void main() => runApp(MaterialApp(
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
           SalomonBottomBarItem(icon: Icon(Icons.gamepad), title: Text('Game')),
           SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
+        ],
+      ),
+    ));
+```
+
+## Salomon Bottom Bar
+It is possible to use [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) with the layout. The API is identical with the original package.
+
+Add the following to your `pubspec.yaml` file.
+```yaml
+dependencies:
+  water_drop_nav_bar: latest_version
+```
+
+And use the following quick start example.
+```dart
+void main() => runApp(MaterialApp(
+      home: WaterDropNavLayout(
+        // The app's top level destinations
+        pages: [
+          Center(child: Text("Welcome to bottom_nav_layout")),
+          SliderPage(),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+        ],
+        barItems: [
+          BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
+          BarItem(filledIcon: Icons.linear_scale, outlinedIcon: Icons.linear_scale_outlined),
+          BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
         ],
       ),
     ));

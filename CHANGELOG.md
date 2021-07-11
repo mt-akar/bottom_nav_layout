@@ -1,6 +1,11 @@
-## [1.0.0+1] - Jul 10, 2021
+## [1.1.1] - Jul 11, 2021
 
- - Dart formatting
+Docs updated
+ 
+## [1.1.0] - Jul 11, 2021
+
+Bar Designs included:
+ - Water Drop Bar
  
  ## [1.0.0] - Jul 10, 2021
  
