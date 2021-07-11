@@ -50,7 +50,7 @@ void main() => runApp(MaterialApp(
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
           SliderPage(),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Go...'))),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -207,17 +207,18 @@ BottomNavLayout(
 # Different Bar Designs
 So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs.
 
-## Salomon Bottom Bar
-It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout. The API is identical with the original package.
+The APIs are all identical with the respective packages.
 
-Add the following to your `pubspec.yaml` file.
+## 1. Salomon Bottom Bar
+It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout.
+
 ```yaml
 dependencies:
   salomon_bottom_bar: latest_version
 ```
 
-And use the following quick start example.
 ```dart
+// Salomon Quick Start Example
 void main() => runApp(MaterialApp(
       home: SalomonBottomNavLayout(
         // The app's top level destinations
@@ -235,24 +236,23 @@ void main() => runApp(MaterialApp(
     ));
 ```
 
-## Salomon Bottom Bar
-It is possible to use [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) with the layout. The API is identical with the original package.
+## 2. Water Drop Bottom Bar
+It is possible to use [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) with the layout.
 
-Add the following to your `pubspec.yaml` file.
 ```yaml
 dependencies:
   water_drop_nav_bar: latest_version
 ```
 
-And use the following quick start example.
 ```dart
+// Water Drop Quick Start Example
 void main() => runApp(MaterialApp(
       home: WaterDropNavLayout(
         // The app's top level destinations
         pages: [
           Center(child: Text("Welcome to bottom_nav_layout")),
           SliderPage(),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+          Center(child: TextField(decoration: InputDecoration(hintText: 'Search..'))),
         ],
         barItems: [
           BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
@@ -287,6 +287,7 @@ BottomNavLayout(
 # Improvements
  - I am planning to add more bottom bar designs, preferably from pub.dev.
  - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate that.
+ - I am also considering to make a drawer_nav_layout package. If you are interested, let me know!
 
 # Community
 Any feedback is appreciated. 🚀🚀
