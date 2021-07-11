@@ -10,8 +10,8 @@ import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 /// [BottomNavLayout] layout consists of a [Scaffold].
 /// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar].
 /// [BottomNavigationBar] controls which one of the [pages] is currently visible.
-class BottomNavLayout extends StatefulWidget {
-  BottomNavLayout({
+class WaterDropNavLayout extends StatefulWidget {
+  WaterDropNavLayout({
     Key? key,
 
     // Nav layout properties
@@ -91,10 +91,10 @@ class BottomNavLayout extends StatefulWidget {
   final Color? inactiveIconColor;
 
   @override
-  State<StatefulWidget> createState() => _BottomNavLayoutState();
+  State<StatefulWidget> createState() => _WaterDropNavLayoutState();
 }
 
-class _BottomNavLayoutState extends State<BottomNavLayout> {
+class _WaterDropNavLayoutState extends State<WaterDropNavLayout> {
   /// [BottomNavLayout]'s page backstack. The main focus of this package.
   ///
   /// It saves pages on the backstack by their indexes. The [pageStack.peek] always contains the current page's index.
