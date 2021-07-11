@@ -1,6 +1,7 @@
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
 /// [BottomNavLayout] is a quick and powerful layout tool.
 /// You can create an app with fluent bottom bar behavior in less than 15 lines.
@@ -23,41 +24,17 @@ class BottomNavLayout extends StatefulWidget {
     this.extendBody = false,
 
     // Delegated properties
-    required this.items,
-    this.onTap,
-    this.elevation,
-    this.type,
-    this.fixedColor,
-    this.backgroundColor,
-    this.iconSize = 24.0,
-    this.selectedItemColor,
-    this.unselectedItemColor,
-    this.selectedIconTheme,
-    this.unselectedIconTheme,
-    this.selectedFontSize = 14.0,
-    this.unselectedFontSize = 12.0,
-    this.selectedLabelStyle,
-    this.unselectedLabelStyle,
-    this.showSelectedLabels,
-    this.showUnselectedLabels,
-    this.mouseCursor,
-  })  : assert(
-            pages != null && pageBuilders == null ||
-                pageBuilders != null && pages == null,
-            "Either pass pages or pageBuilders"),
-        assert((pages?.length ?? pageBuilders!.length) >= 2,
-            "At least 2 pages are required"),
-        assert(
-            keys == null ||
-                (pages?.length ?? pageBuilders!.length) == keys.length,
-            "Either do not pass keys or pass as many as pages"),
-        assert((pages?.length ?? pageBuilders!.length) == items.length,
-            "Pass as many bottomNavBarItems as pages"),
-        assert(
-            pageStack == null ||
-                (pages?.length ?? pageBuilders!.length) > pageStack.peek() &&
-                    pageStack.peek() >= 0,
-            "initialPageIndex cannot exceed the max page index or be negative"),
+    required this.barItems,
+    this.onButtonPressed,
+    this.backgroundColor = Colors.white,
+    this.waterDropColor = const Color(0xFF5B75F0),
+    this.iconSize = 30,
+    this.inactiveIconColor,
+  })  : assert(pages != null && pageBuilders == null || pageBuilders != null && pages == null, "Either pass pages or pageBuilders"),
+        assert((pages?.length ?? pageBuilders!.length) >= 2, "At least 2 pages are required"),
+        assert(keys == null || (pages?.length ?? pageBuilders!.length) == keys.length, "Either do not pass keys or pass as many as pages"),
+        assert((pages?.length ?? pageBuilders!.length) == barItems.length, "Pass as many bottomNavBarItems as pages"),
+        assert(pageStack == null || (pages?.length ?? pageBuilders!.length) > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the max page index or be negative"),
         super(key: key);
 
   /// The main content of the layout.
@@ -95,59 +72,23 @@ class BottomNavLayout extends StatefulWidget {
   /// Weather the body will extend behind the bottom bar or not.
   final bool extendBody;
 
-  /// Property delegated to [BottomNavigationBar]
-  final List<BottomNavigationBarItem> items;
+  /// Property delegated to [WaterDropNavBar]
+  final List<BarItem> barItems;
 
-  /// Property delegated to [BottomNavigationBar]
-  final ValueChanged<int>? onTap;
+  /// Property delegated to [WaterDropNavBar]
+  final ValueChanged<int>? onButtonPressed;
 
-  /// Property delegated to [BottomNavigationBar]
-  final double? elevation;
+  /// Property delegated to [WaterDropNavBar]
+  final Color backgroundColor;
 
-  /// Property delegated to [BottomNavigationBar]
-  final BottomNavigationBarType? type;
+  /// Property delegated to [WaterDropNavBar]
+  final Color waterDropColor;
 
-  /// Property delegated to [BottomNavigationBar]
-  final Color? fixedColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final Color? backgroundColor;
-
-  /// Property delegated to [BottomNavigationBar]
+  /// Property delegated to [WaterDropNavBar]
   final double iconSize;
 
-  /// Property delegated to [BottomNavigationBar]
-  final Color? selectedItemColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final Color? unselectedItemColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final IconThemeData? selectedIconTheme;
-
-  /// Property delegated to [BottomNavigationBar]
-  final IconThemeData? unselectedIconTheme;
-
-  /// Property delegated to [BottomNavigationBar]
-  final double selectedFontSize;
-
-  /// Property delegated to [BottomNavigationBar]
-  final double unselectedFontSize;
-
-  /// Property delegated to [BottomNavigationBar]
-  final TextStyle? selectedLabelStyle;
-
-  /// Property delegated to [BottomNavigationBar]
-  final TextStyle? unselectedLabelStyle;
-
-  /// Property delegated to [BottomNavigationBar]
-  final bool? showSelectedLabels;
-
-  /// Property delegated to [BottomNavigationBar]
-  final bool? showUnselectedLabels;
-
-  /// Property delegated to [BottomNavigationBar]
-  final MouseCursor? mouseCursor;
+  /// Property delegated to [WaterDropNavBar]
+  final Color? inactiveIconColor;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
@@ -212,8 +153,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
     // Send pop event to the inner page
-    final consumedByPage =
-        await widget.keys?[pageStack.peek()]?.currentState?.maybePop() ?? false;
+    final consumedByPage = await widget.keys?[pageStack.peek()]?.currentState?.maybePop() ?? false;
 
     // If the back event is consumed by the inner page
     if (consumedByPage) {
@@ -247,37 +187,25 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     }
 
     // Create the bottom nav bar
-    var bottomBar = BottomNavigationBar(
-      currentIndex: pageStack.peek(),
+    var bottomBar = WaterDropNavBar(
+      selectedIndex: pageStack.peek(),
 
       // onTap calls both the layout's own onTap action and the user's passed in onTap action.
-      onTap: (index) {
+      onButtonPressed: (index) {
         // Layout functionality
         onPageSelected(index);
 
         // Passed in onTap call
-        widget.onTap?.call(index);
+        widget.onButtonPressed?.call(index);
       },
 
       // Delegated properties
       key: widget.key,
-      items: widget.items,
-      elevation: widget.elevation,
-      type: widget.type,
-      fixedColor: widget.fixedColor,
+      barItems: widget.barItems,
       backgroundColor: widget.backgroundColor,
+      waterDropColor: widget.waterDropColor,
       iconSize: widget.iconSize,
-      selectedItemColor: widget.selectedItemColor,
-      unselectedItemColor: widget.unselectedItemColor,
-      selectedIconTheme: widget.selectedIconTheme,
-      unselectedIconTheme: widget.unselectedIconTheme,
-      selectedFontSize: widget.selectedFontSize,
-      unselectedFontSize: widget.unselectedFontSize,
-      selectedLabelStyle: widget.selectedLabelStyle,
-      unselectedLabelStyle: widget.unselectedLabelStyle,
-      showSelectedLabels: widget.showSelectedLabels,
-      showUnselectedLabels: widget.showUnselectedLabels,
-      mouseCursor: widget.mouseCursor,
+      inactiveIconColor: widget.inactiveIconColor,
     );
 
     // Return the view
@@ -301,8 +229,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar:
-            widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
+        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
       ),
     );
   }

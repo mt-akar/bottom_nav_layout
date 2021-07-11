@@ -3,16 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-/// TODO: What is BottomNavLayout
-/// TODO: Why does BottomNavLayout exist, what is it's purpose
-/// TODO: What does BottomNavLayout do
+/// [BottomNavLayout] is a quick and powerful layout tool.
+/// You can create an app with fluent bottom bar behavior in less than 15 lines.
+/// It coordinates all behavior regarding bottom nav bar and app's top level destinations.
 ///
 /// [BottomNavLayout] layout consists of a [Scaffold].
 /// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar].
 /// [BottomNavigationBar] controls which one of the [pages] is currently visible.
-///
-/// While navigating around with [BottomNavigationBar], [pages] do not get destroyed/rebuilt, only get hidden/visible.
-/// This way, the pages saves all their state.
 class SalomonBottomNavLayout extends StatefulWidget {
   SalomonBottomNavLayout({
     Key? key,
@@ -53,7 +50,7 @@ class SalomonBottomNavLayout extends StatefulWidget {
             pageStack == null ||
                 (pages?.length ?? pageBuilders!.length) > pageStack.peek() &&
                     pageStack.peek() >= 0,
-            "initialpageIndex cannot exceed the max page index or be negative"),
+            "initialPageIndex cannot exceed the max page index or be negative"),
         super(key: key);
 
   /// The main content of the layout.
