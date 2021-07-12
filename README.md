@@ -52,6 +52,8 @@ void main() => runApp(MaterialApp(
           SliderPage(),
           Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
+        
+        // Delegates its properties to a BottomNavigationBar.
         navBarDelegate: BottomNavigationBarDelegate(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
@@ -108,10 +110,7 @@ class _SliderPageState extends State<SliderPage> {
 # Page State Preservation
 The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved. You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
 ```dart
-BottomNavLayout(
-  // ...
-  savePageState: true, // Default is true
-)
+savePageState: true, // Default is true
 ```
 
 # Lazy Page Loading
@@ -119,14 +118,11 @@ Instead of passing `pages`, pass `pageBuilders`.
 
 `pageBuilders` are simple Functions that immediately return the corresponding page. When used, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page has a load animation or runs an unnecessary heavy process.
 ```dart
-BottomNavLayout(
-  // ...
-  pageBuilders: [
-    () => Center(child: Text("Welcome to bottom_nav_layout")),
-    () => GamePage('TicTacToe'),
-    () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
-  ],
-)
+pageBuilders: [
+  () => Center(child: Text("Welcome to bottom_nav_layout")),
+  () => GamePage('TicTacToe'),
+  () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
+],
 ```
 
 # Page Back Stack
@@ -183,14 +179,11 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 ## Using Page Stacks
 
 ```dart
-BottomNavLayout(
-  // ...
-  pageStack: StandardPageStack(initialPage: 0),
-  // pageStack: ReorderToFrontPageStack(initialPage: 0),
-  // pageStack: ReplacePageStack(initialPage: 0),
-  // pageStack: ReplaceExceptFirstPageStack(initialPage: 0),
-  // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
-)
+pageStack: StandardPageStack(initialPage: 0),
+// pageStack: ReorderToFrontPageStack(initialPage: 0),
+// pageStack: ReplacePageStack(initialPage: 0),
+// pageStack: ReplaceExceptFirstPageStack(initialPage: 0),
+// pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
 ```
 
 # In-Page Navigation Using GlobalKeys
@@ -198,14 +191,11 @@ To be filled...
 
 To use keys, pass all the keys you passed to the pages in the same order.
 ```dart
-BottomNavLayout(
-  // ...
-  keys: <GlobalKey<NavigatorState>?>[
-    homePageKey,
-    null, // If a page doesn't use a key, pass null so that layout knows the order
-    placePageKey,
-  ],
-)
+keys: <GlobalKey<NavigatorState>?>[
+  homePageKey,
+  null, // If a page doesn't use a key, pass null so that layout knows the order
+  placePageKey,
+],
 ```
 
 # Different Bar Designs
@@ -213,7 +203,7 @@ So far, we only worked on Material design bottom nav bar. The layout also suppor
 
 The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to import the corresponding bottom bar package to be able to pass some of the parameters. Make sure to check out their documentation before using.
 
-Some of the packages' index constructor parameter acts as an initial index, not as a current index. Therefore, selected item doesn't change when the back button is pressed. To have the best result, only use `ReplacePageStack` with these bottom bars.
+Some of the packages' index constructor parameter acts as an initial index, not as a current index. Therefore, selected item doesn't change when the back button is pressed. To have the best result, only use `ReplacePageStack` with bottom bars that doesn't have `currentIndex` property.
 
 ## 1. Material
 
@@ -305,22 +295,16 @@ navBarDelegate: WaterDropNavBarDelegate(
 ### Bar Styler
 Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
 ```dart
-BottomNavLayout(
-  // ...
-  bottomBarStyler: (bottomBar) => Padding(
-    padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-    child: bottomBar,
-  ),
-)
+bottomBarStyler: (bottomBar) => Padding(
+  padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
+  child: bottomBar,
+),
 ```
 
 ### Extend Body
 You can have the page extend behind the bottom bar.
 ```dart
-BottomNavLayout(
-  // ...
-  extendBody: true,
-)
+extendBody: true,
 ```
 # Improvements
  - I am planning to add more bottom bar designs, preferably from pub.dev.
