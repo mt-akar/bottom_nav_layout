@@ -2,8 +2,7 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'bar_delegate.dart';
-import 'bottom_navigation_bar_delegate.dart';
+import 'delegates/bar_delegate.dart';
 
 /// [BottomNavLayout] is a quick and powerful layout tool.
 /// You can create an app with fluent bottom bar behavior in less than 15 lines.
@@ -178,7 +177,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     }
 
     // Create the bottom bar
-    var bottomBar = widget.barDelegate.create(pageStack, onPageSelected);
+    var bottomBar = widget.barDelegate.createBar(pageStack, onPageSelected);
 
     // Return the view
     return WillPopScope(

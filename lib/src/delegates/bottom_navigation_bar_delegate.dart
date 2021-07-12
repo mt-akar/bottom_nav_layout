@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'bar_delegate.dart';
-import 'layout.dart';
-import 'page_stack.dart';
+import '../layout.dart';
+import '../page_stack.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
@@ -27,6 +27,7 @@ class BottomNavigationBarDelegate extends BarDelegate {
     this.showSelectedLabels,
     this.showUnselectedLabels,
     this.mouseCursor,
+    this.enableFeedback,
   });
 
   final Key? key;
@@ -48,10 +49,12 @@ class BottomNavigationBarDelegate extends BarDelegate {
   final bool? showSelectedLabels;
   final bool? showUnselectedLabels;
   final MouseCursor? mouseCursor;
+  final bool? enableFeedback;
 
-  Widget create(PageStack pageStack, void Function(int) onPageSelected) {
+  Widget createBar(PageStack pageStack, void Function(int) onPageSelected) {
     return BottomNavigationBar(
-      currentIndex: pageStack.peek(),
+      key: key,
+      items: items,
       onTap: (index) {
         // Layout functionality
         onPageSelected(index);
@@ -59,8 +62,7 @@ class BottomNavigationBarDelegate extends BarDelegate {
         // Passed in onTap call
         onTap?.call(index);
       },
-      key: key,
-      items: items,
+      currentIndex: pageStack.peek(),
       elevation: elevation,
       type: type,
       fixedColor: fixedColor,
@@ -77,6 +79,7 @@ class BottomNavigationBarDelegate extends BarDelegate {
       showSelectedLabels: showSelectedLabels,
       showUnselectedLabels: showUnselectedLabels,
       mouseCursor: mouseCursor,
+      enableFeedback: enableFeedback,
     );
   }
 }
