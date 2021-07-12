@@ -210,12 +210,22 @@ So far, we only worked on Material design bottom nav bar. The layout also suppor
 The APIs are all identical with the respective packages.
 
 ## 1. Salomon Bottom Bar
-It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout.
+It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout. Make sure to check out its [documentation](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar).
+
+<details>
+<summary>Install</summary>
+<p>
 
 ```yaml
 dependencies:
   salomon_bottom_bar: latest_version
 ```
+</p>
+</details>
+
+<details>
+<summary>Quick Start</summary>
+<p>
 
 ```dart
 // Salomon Quick Start Example
@@ -235,14 +245,26 @@ void main() => runApp(MaterialApp(
       ),
     ));
 ```
+</p>
+</details>
 
 ## 2. Water Drop Bottom Bar
-It is possible to use [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) with the layout.
+It is possible to use [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) with the layout. Make sure to check out its [documentation](https://pub.dev/packages/water_drop_nav_bar).
+
+<details>
+<summary>Install</summary>
+<p>
 
 ```yaml
 dependencies:
   water_drop_nav_bar: latest_version
 ```
+</p>
+</details>
+
+<details>
+<summary>Quick Start</summary>
+<p>
 
 ```dart
 // Water Drop Quick Start Example
@@ -262,6 +284,8 @@ void main() => runApp(MaterialApp(
       ),
     ));
 ```
+</p>
+</details>
 
 # Bar Styling
 ### Bar Styler
