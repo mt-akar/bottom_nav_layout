@@ -52,11 +52,13 @@ void main() => runApp(MaterialApp(
           SliderPage(),
           Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        ],
+        barDelegate: BottomNavigationBarDelegate(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          ],
+        ),
       ),
     ));
 ```
