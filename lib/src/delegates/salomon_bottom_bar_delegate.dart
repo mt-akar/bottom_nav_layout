@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../bar_delegate.dart';
+import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [SalomonBottomBar] instance, except [SalomonBottomBar.currentIndex]

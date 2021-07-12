@@ -1,7 +1,7 @@
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:flutter/material.dart';
 
-import '../bar_delegate.dart';
+import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [BottomBarWithSheet] instance, except [BottomBarWithSheet.selectedIndex]

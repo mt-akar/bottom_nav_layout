@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
-import '../bar_delegate.dart';
+import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [SnakeNavigationBar] instance, except [SnakeNavigationBarDelegate.currentIndex]

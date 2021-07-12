@@ -13,7 +13,7 @@ class TrialApp extends StatelessWidget {
         Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
       // Delegates all it's properties to a [BottomNavigationBar] instance.
-      barDelegate: BottomNavigationBarDelegate(
+      barDelegate: SnakeNavigationBarDelegate(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),

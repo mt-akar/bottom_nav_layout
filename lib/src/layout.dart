@@ -2,7 +2,7 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'bar_delegate.dart';
+import 'nav_bar_delegate.dart';
 
 /// [BottomNavLayout] is a quick and powerful layout tool.
 /// You can create an app with fluent bottom bar behavior in less than 15 lines.

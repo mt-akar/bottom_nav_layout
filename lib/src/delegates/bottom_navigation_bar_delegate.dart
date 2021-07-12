@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../bar_delegate.dart';
+import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]

@@ -1,7 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 
-import '../bar_delegate.dart';
+import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [AnimatedBottomNavigationBar] instance, except [AnimatedBottomNavigationBar.activeIndex]

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
-import '../bar_delegate.dart';
+import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [WaterDropNavBar] instance, except [WaterDropNavBar.selectedIndex]
