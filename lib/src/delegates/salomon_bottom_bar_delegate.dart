@@ -5,9 +5,9 @@ import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [SalomonBottomBar] instance, except [SalomonBottomBar.currentIndex]
-/// which is encapsulated in [BottomNavLayout.pageStack]
+/// which is encapsulated in [BottomNavLayout.pageStack].
 ///
-/// Check out the documentation for [SalomonBottomBar]
+/// Check out the documentation for [SalomonBottomBar].
 /// https://pub.dev/packages/salomon_bottom_bar
 class SalomonBottomBarDelegate extends NavBarDelegate {
   SalomonBottomBarDelegate({

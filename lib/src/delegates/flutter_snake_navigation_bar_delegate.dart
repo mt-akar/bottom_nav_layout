@@ -5,9 +5,9 @@ import '../layout.dart';
 import '../nav_bar_delegate.dart';
 
 /// This class contains parameters used to create a [SnakeNavigationBar] instance, except [SnakeNavigationBarDelegate.currentIndex]
-/// which is encapsulated in [BottomNavLayout.pageStack]
+/// which is encapsulated in [BottomNavLayout.pageStack].
 ///
-/// Check out the documentation for [SnakeNavigationBar]
+/// Check out the documentation for [SnakeNavigationBar].
 /// https://pub.dev/packages/flutter_snake_navigationbar
 class SnakeNavigationBarDelegate extends NavBarDelegate {
   SnakeNavigationBarDelegate({

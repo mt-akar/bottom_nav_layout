@@ -7,6 +7,8 @@ import '../layout.dart';
 /// This class contains parameters used to create a [BottomBarWithSheet] instance, except [BottomBarWithSheet.selectedIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
+/// This bottom bar doesn't have a currentIndex parameter. To ge the best result, use [ReplacePageStack] with it.
+///
 /// Check out the documentation for [BottomBarWithSheet]
 /// https://pub.dev/packages/bottom_bar_with_sheet
 class BottomBarWithSheetDelegate extends NavBarDelegate {

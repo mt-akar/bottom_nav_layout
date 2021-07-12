@@ -32,12 +32,10 @@ packages:
   bottom_nav_layout:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "893e8ecca4d0f41b2ad22c885dec66bd356734db"
-      url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
-    source: git
-    version: "1.1.1"
+      name: bottom_nav_layout
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.1"
   characters:
     dependency: transitive
     description:

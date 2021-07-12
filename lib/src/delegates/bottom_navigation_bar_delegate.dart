@@ -4,9 +4,9 @@ import '../nav_bar_delegate.dart';
 import '../layout.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]
-/// which is encapsulated in [BottomNavLayout.pageStack]
+/// which is encapsulated in [BottomNavLayout.pageStack].
 ///
-/// Check out the documentation for [BottomNavigationBar]
+/// Check out the documentation for [BottomNavigationBar].
 /// https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 class BottomNavigationBarDelegate extends NavBarDelegate {
   BottomNavigationBarDelegate({
