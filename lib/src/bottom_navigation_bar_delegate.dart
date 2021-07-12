@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'bar_delegate.dart';
 import 'layout.dart';
+import 'page_stack.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
-class BottomNavBarDelegate extends BarDelegate {
-  BottomNavBarDelegate({
+class BottomNavigationBarDelegate extends BarDelegate {
+  BottomNavigationBarDelegate({
     this.key,
     required this.items,
     this.onTap,
