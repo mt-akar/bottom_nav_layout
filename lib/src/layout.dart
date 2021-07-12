@@ -2,6 +2,9 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'bar_delegate.dart';
+import 'bottom_navigation_bar_delegate.dart';
+
 /// [BottomNavLayout] is a quick and powerful layout tool.
 /// You can create an app with fluent bottom bar behavior in less than 15 lines.
 /// It coordinates all behavior regarding bottom nav bar and app's top level destinations.
@@ -12,8 +15,6 @@ import 'package:flutter/widgets.dart';
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     Key? key,
-
-    // Nav layout properties
     this.pages,
     this.pageBuilders,
     this.savePageState = true,
@@ -21,26 +22,7 @@ class BottomNavLayout extends StatefulWidget {
     this.keys,
     this.bottomBarStyler,
     this.extendBody = false,
-
-    // Delegated properties
-    required this.items,
-    this.onTap,
-    this.elevation,
-    this.type,
-    this.fixedColor,
-    this.backgroundColor,
-    this.iconSize = 24.0,
-    this.selectedItemColor,
-    this.unselectedItemColor,
-    this.selectedIconTheme,
-    this.unselectedIconTheme,
-    this.selectedFontSize = 14.0,
-    this.unselectedFontSize = 12.0,
-    this.selectedLabelStyle,
-    this.unselectedLabelStyle,
-    this.showSelectedLabels,
-    this.showUnselectedLabels,
-    this.mouseCursor,
+    required this.barDelegate,
   })  : assert(
             pages != null && pageBuilders == null ||
                 pageBuilders != null && pages == null,
@@ -51,8 +33,8 @@ class BottomNavLayout extends StatefulWidget {
             keys == null ||
                 (pages?.length ?? pageBuilders!.length) == keys.length,
             "Either do not pass keys or pass as many as pages"),
-        assert((pages?.length ?? pageBuilders!.length) == items.length,
-            "Pass as many bottomNavBarItems as pages"),
+        // assert((pages?.length ?? pageBuilders!.length) == items.length,
+        //     "Pass as many bottomNavBarItems as pages"),
         assert(
             pageStack == null ||
                 (pages?.length ?? pageBuilders!.length) > pageStack.peek() &&
@@ -96,58 +78,7 @@ class BottomNavLayout extends StatefulWidget {
   final bool extendBody;
 
   /// Property delegated to [BottomNavigationBar]
-  final List<BottomNavigationBarItem> items;
-
-  /// Property delegated to [BottomNavigationBar]
-  final ValueChanged<int>? onTap;
-
-  /// Property delegated to [BottomNavigationBar]
-  final double? elevation;
-
-  /// Property delegated to [BottomNavigationBar]
-  final BottomNavigationBarType? type;
-
-  /// Property delegated to [BottomNavigationBar]
-  final Color? fixedColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final Color? backgroundColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final double iconSize;
-
-  /// Property delegated to [BottomNavigationBar]
-  final Color? selectedItemColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final Color? unselectedItemColor;
-
-  /// Property delegated to [BottomNavigationBar]
-  final IconThemeData? selectedIconTheme;
-
-  /// Property delegated to [BottomNavigationBar]
-  final IconThemeData? unselectedIconTheme;
-
-  /// Property delegated to [BottomNavigationBar]
-  final double selectedFontSize;
-
-  /// Property delegated to [BottomNavigationBar]
-  final double unselectedFontSize;
-
-  /// Property delegated to [BottomNavigationBar]
-  final TextStyle? selectedLabelStyle;
-
-  /// Property delegated to [BottomNavigationBar]
-  final TextStyle? unselectedLabelStyle;
-
-  /// Property delegated to [BottomNavigationBar]
-  final bool? showSelectedLabels;
-
-  /// Property delegated to [BottomNavigationBar]
-  final bool? showUnselectedLabels;
-
-  /// Property delegated to [BottomNavigationBar]
-  final MouseCursor? mouseCursor;
+  final BarDelegate barDelegate;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
@@ -246,39 +177,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[pageStack.peek()] = widget.pageBuilders![pageStack.peek()]();
     }
 
-    // Create the bottom nav bar
-    var bottomBar = BottomNavigationBar(
-      currentIndex: pageStack.peek(),
-
-      // onTap calls both the layout's own onTap action and the user's passed in onTap action.
-      onTap: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
-        // Passed in onTap call
-        widget.onTap?.call(index);
-      },
-
-      // Delegated properties
-      key: widget.key,
-      items: widget.items,
-      elevation: widget.elevation,
-      type: widget.type,
-      fixedColor: widget.fixedColor,
-      backgroundColor: widget.backgroundColor,
-      iconSize: widget.iconSize,
-      selectedItemColor: widget.selectedItemColor,
-      unselectedItemColor: widget.unselectedItemColor,
-      selectedIconTheme: widget.selectedIconTheme,
-      unselectedIconTheme: widget.unselectedIconTheme,
-      selectedFontSize: widget.selectedFontSize,
-      unselectedFontSize: widget.unselectedFontSize,
-      selectedLabelStyle: widget.selectedLabelStyle,
-      unselectedLabelStyle: widget.unselectedLabelStyle,
-      showSelectedLabels: widget.showSelectedLabels,
-      showUnselectedLabels: widget.showUnselectedLabels,
-      mouseCursor: widget.mouseCursor,
-    );
+    // Create the bottom bar
+    var bottomBar = widget.barDelegate.create(pageStack, onPageSelected);
 
     // Return the view
     return WillPopScope(
