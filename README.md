@@ -187,7 +187,19 @@ pageStack: StandardPageStack(initialPage: 0),
 ```
 
 # In-Page Navigation Using GlobalKeys
-To be filled...
+
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/32205084/125260520-1024f380-e309-11eb-8c2d-4b10fc3dbc41.png">
+ <br/>
+  <i>Figure: Flat Navigation</i>
+</p>
+
+ 1. Allows the layout to manage a [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
+ 2. Let's us go back to the root route, when the bottom bar item on the current index is selected again.
+
+To do this, the page should have a `Navigator` widget and the same instance of the key should be used as the `Navigator`'s key in the corresponding page.
+
+Example code to be added here...
 
 To use keys, pass all the keys you passed to the pages in the same order.
 ```dart
