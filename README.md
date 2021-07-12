@@ -97,7 +97,7 @@ class _SliderPageState extends State<SliderPage> {
 | `pages` | Top level destinations of your application. |
 | `pageBuilders` | Also top level destinations but can be lazily loaded. |
 | `savePageState` | Flag to enable/disable saving page state. |
-| `pageStack` | Navigation stack that remembers pages visited. |
+| `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
 | `keys` | Keys that help the layout manage in-page navigation. |
 | `bottomBarStyler` | Widget that wrap bottom bar. |
 | `extendBody` | Extends the page behind the bottom bar. |
