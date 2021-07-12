@@ -18,9 +18,11 @@ packages:
   bottom_nav_layout:
     dependency: "direct main"
     description:
-      name: bottom_nav_layout
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: main
+      resolved-ref: a8917e46e7a84962ef55764e11d663b40c968039
+      url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
+    source: git
     version: "1.1.1"
   characters:
     dependency: transitive

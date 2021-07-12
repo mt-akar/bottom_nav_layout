@@ -9,7 +9,10 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bottom_nav_layout: ^1.1.1
+  bottom_nav_layout:
+    git:
+      url: https://github.com/m-azyoksul/bottom_nav_layout.git
+      ref: main
 
   # Dependencies for different bottom bar designs
   salomon_bottom_bar: ^3.1.0
