@@ -90,15 +90,17 @@ class _SliderPageState extends State<SliderPage> {
 </details>  
 
 ## Parameters
- - `pages` - Top level destinations of your application.
- - `pageBuilders` - Also top level destinations but can be lazily loaded.
- - `savePageState` - Flag to enable/disable saving page state.
- - `pageStack` - Navigation stack that remembers pages visited.
- - `keys` - Keys that help the layout manage in-page navigation.
- - `bottomBarStyler` - Widget that wrap bottom bar.
- - `extendBody` - Extends the page behind the bottom bar.
- - Rest of the parameters such as `items`, `selectedItemColor`, `elevation` etc. are used to construct the bottom bar. The layout uses flutter's `BottomNavigationBar` under the hood. The API is identical (except `currentIndex`, which is same as `pageStack.peek()`).
-
+| Name | Description |
+| :--- | :--- |
+| `pages` | Top level destinations of your application. |
+| `pageBuilders` | Also top level destinations but can be lazily loaded. |
+| `savePageState` | Flag to enable/disable saving page state. |
+| `pageStack` | Navigation stack that remembers pages visited. |
+| `keys` | Keys that help the layout manage in-page navigation. |
+| `bottomBarStyler` | Widget that wrap bottom bar. |
+| `extendBody` | Extends the page behind the bottom bar. |
+| `navBarDelegate` | Delegates parameters such as `items`, `selectedItemColor`, `elevation` etc. to the underlying bottom bar. |
+ 
 </br>
 
 ![image](https://user-images.githubusercontent.com/32205084/124861906-1f303c80-dfbd-11eb-8525-00ad827d9a32.png)
