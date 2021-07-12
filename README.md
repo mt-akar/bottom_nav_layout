@@ -207,70 +207,95 @@ BottomNavLayout(
 # Different Bar Designs
 So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs. To use the design you want, pass the corresponding `navBarDelegate` to the layout.
 
-Compatible packages:
-
- 1. [material](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html): Use `BottomNavigationBarDelegate`
- 2. [flutter_snake_navigationbar ](https://pub.dev/packages/flutter_snake_navigationbar): Use `SnakeNavigationBarDelegate`
- 3. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar): Use `SalomonBottomBarDelegate`
- 4. [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet): Use `BottomBarWithSheetDelegate`
- 5. [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Use `AnimatedBottomNavigationBarDelegate`
- 6. [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar): Use `WaterDropNavBarDelegate`
-
 The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to import the corresponding bottom bar package to be able to pass some of the parameters. Make sure to check out their documentation before using.
 
-<details>
-<summary>salomon_bottom_bar Quick Start</summary>
-<p>
+Some of the packages' index constructor parameter acts as an initial index, not as a current index. Therefore, selected item doesn't change when the back button is pressed. To have the best result, only use `ReplacePageStack` with these bottom bars.
+
+## 1. Material
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [BottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html) | `BottomNavigationBarDelegate` | Yes |
+
+## 2. flutter_snake_navigationbar
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar) | `SnakeNavigationBarDelegate` | Yes |
+
+Example:
 
 ```dart
-void main() => runApp(MaterialApp(
-      home: SalomonBottomNavLayout(
-        // The app's top level destinations
-        pages: [
-          Center(child: Text("Welcome to bottom_nav_layout")),
-          GamePage('TicTacToe'),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
-        ],
-        items: [
-          SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(icon: Icon(Icons.gamepad), title: Text('Game')),
-          SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
-        ],
-      ),
-    ));
+navBarDelegate: SnakeNavigationBarDelegate(
+  items: [
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+    BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+    BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+  ],
+  height: 56,
+),
 ```
-</p>
-</details>
 
-<details>
-<summary>water_drop_nav_bar Quick Start</summary>
-<p>
+## 3. salomon_bottom_bar
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar) | `SalomonBottomBarDelegate` | Yes |
+
+Example:
 
 ```dart
-void main() => runApp(MaterialApp(
-      home: WaterDropNavLayout(
-        // The app's top level destinations
-        pages: [
-          Center(child: Text("Welcome to bottom_nav_layout")),
-          SliderPage(),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search..'))),
-        ],
-        barItems: [
-          BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
-          BarItem(filledIcon: Icons.linear_scale, outlinedIcon: Icons.linear_scale_outlined),
-          BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
-        ],
-      ),
-    ));
+navBarDelegate: SalomonBottomBarDelegate(
+  items: [
+    SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
+    SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
+    SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
+  ],
+),
 ```
-</p>
-</details>
+
+## 4. bottom_bar_with_sheet
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet) | `BottomBarWithSheetDelegate` | No |
+
+Example:
+
+```dart
+navBarDelegate: BottomBarWithSheetDelegate(
+  items: [
+    BottomBarWithSheetItem(icon: Icons.home),
+    BottomBarWithSheetItem(icon: Icons.linear_scale),
+    BottomBarWithSheetItem(icon: Icons.linear_scale),
+    BottomBarWithSheetItem(icon: Icons.search),
+  ],
+  sheetChild: Center(child: Text("Welcome to sheetChild")),
+),
+```
+
+## 5. water_drop_nav_bar
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) | `WaterDropNavBarDelegate` | Yes |
+
+Example:
+
+```dart
+navBarDelegate: WaterDropNavBarDelegate(
+  barItems: [
+    BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
+    BarItem(filledIcon: Icons.linear_scale, outlinedIcon: Icons.linear_scale_outlined),
+    BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
+  ],
+),
+```
 
 ## Incompatible Packages
 
- - [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar): Lack of `currentIndex`
  - [persistent_bottom_nav_bar](https://pub.dev/packages/persistent_bottom_nav_bar): Already a layout package
- - [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Uses `Scaffold`'s properties to render.
+ - [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Uses a parent `Scaffold`'s properties to render.
 
 # Bar Styling
 ### Bar Styler
