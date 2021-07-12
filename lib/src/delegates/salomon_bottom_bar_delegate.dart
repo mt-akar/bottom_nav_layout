@@ -3,11 +3,12 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 import '../bar_delegate.dart';
 import '../layout.dart';
-import '../page_stack.dart';
 
 /// This class contains parameters used to create a [SalomonBottomBar] instance, except [SalomonBottomBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
-class SalomonBottomBarDelegate extends BarDelegate {
+///
+/// Check out the documentation for [SalomonBottomBar]
+class SalomonBottomBarDelegate extends NavBarDelegate {
   SalomonBottomBarDelegate({
     this.key,
     required this.items,
@@ -34,11 +35,11 @@ class SalomonBottomBarDelegate extends BarDelegate {
   final Duration duration;
   final Curve curve;
 
-  Widget createBar(PageStack pageStack, void Function(int) onPageSelected) {
+  Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return SalomonBottomBar(
       key: key,
       items: items,
-      currentIndex: pageStack.peek(),
+      currentIndex: pageStackPeek,
       onTap: (index) {
         // Layout functionality
         onPageSelected(index);

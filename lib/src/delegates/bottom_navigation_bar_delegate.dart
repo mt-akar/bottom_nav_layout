@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../bar_delegate.dart';
 import '../layout.dart';
-import '../page_stack.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
-class BottomNavigationBarDelegate extends BarDelegate {
+///
+/// Check out the documentation for [BottomNavigationBar]
+class BottomNavigationBarDelegate extends NavBarDelegate {
   BottomNavigationBarDelegate({
     this.key,
     required this.items,
@@ -51,7 +52,7 @@ class BottomNavigationBarDelegate extends BarDelegate {
   final MouseCursor? mouseCursor;
   final bool? enableFeedback;
 
-  Widget createBar(PageStack pageStack, void Function(int) onPageSelected) {
+  Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return BottomNavigationBar(
       key: key,
       items: items,
@@ -62,7 +63,7 @@ class BottomNavigationBarDelegate extends BarDelegate {
         // Passed in onTap call
         onTap?.call(index);
       },
-      currentIndex: pageStack.peek(),
+      currentIndex: pageStackPeek,
       elevation: elevation,
       type: type,
       fixedColor: fixedColor,

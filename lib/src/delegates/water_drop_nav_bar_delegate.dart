@@ -3,11 +3,12 @@ import 'package:water_drop_nav_bar/water_drop_nav_bar.dart';
 
 import '../bar_delegate.dart';
 import '../layout.dart';
-import '../page_stack.dart';
 
 /// This class contains parameters used to create a [WaterDropNavBar] instance, except [WaterDropNavBar.selectedIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
-class WaterDropNavBarDelegate extends BarDelegate {
+///
+/// Check out the documentation for [WaterDropNavBar]
+class WaterDropNavBarDelegate extends NavBarDelegate {
   WaterDropNavBarDelegate({
     this.key,
     required this.barItems,
@@ -26,11 +27,11 @@ class WaterDropNavBarDelegate extends BarDelegate {
   final double iconSize;
   final Color? inactiveIconColor;
 
-  Widget createBar(PageStack pageStack, void Function(int) onPageSelected) {
+  Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return WaterDropNavBar(
         key: key,
         barItems: barItems,
-        selectedIndex: pageStack.peek(),
+        selectedIndex: pageStackPeek,
         onButtonPressed: (index) {
           // Layout functionality
           onPageSelected(index);

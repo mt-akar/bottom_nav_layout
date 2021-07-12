@@ -12,12 +12,14 @@ class QuickStartApp extends StatelessWidget {
         SliderPage(),
         Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
-      items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.linear_scale), label: 'Slider'),
-        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-      ],
+      // Delegates all it's properties to a [BottomNavigationBar] instance.
+      barDelegate: BottomNavigationBarDelegate(
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        ],
+      ),
     );
   }
 }
