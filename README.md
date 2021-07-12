@@ -52,7 +52,7 @@ void main() => runApp(MaterialApp(
           SliderPage(),
           Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
         ],
-        barDelegate: BottomNavigationBarDelegate(
+        navBarDelegate: BottomNavigationBarDelegate(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
