@@ -1,6 +1,6 @@
-## [2.0.0] - Jul 11, 2021
+## [2.0.0] - Jul 12, 2021
 
-Alternative bottom bar design usage API unified.
+Alternative bottom bar usage API unified. (breaking)
 
 Bar Designs included:
  - Flutter Snake Navigation Bar
@@ -13,8 +13,7 @@ Bar Designs included:
  
  ## [1.0.0] - Jul 10, 2021
  
-  - `extendBody` parameter added
-  - Documentation updated.
+`extendBody` parameter added
 
 ## [0.0.1-dev] - Jul 08, 2021
 
@@ -26,6 +25,6 @@ Main layout initial release. Features include:
  - Different Bar Designs (Material and Salomon)
  - Bar Styling
  
- Bar Designs include:
+Bar Designs include:
  - Material
  - Salomon
