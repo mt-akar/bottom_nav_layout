@@ -29,7 +29,7 @@ class BottomBarWithSheetDelegate extends NavBarDelegate {
     this.mainActionButtonTheme = constMainActionButtonTheme,
     this.autoClose = true,
     required this.sheetChild,
-    required this.onSelectItem,
+    this.onSelectItem, // This parameter's API is deliberately different. The package expects a `Function` and requires it.
   });
 
   final Key? key;
@@ -44,7 +44,7 @@ class BottomBarWithSheetDelegate extends NavBarDelegate {
   final MainActionButtonTheme? mainActionButtonTheme;
   final bool autoClose;
   final Widget sheetChild;
-  final Function onSelectItem;
+  final Function(int)? onSelectItem;
 
   Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return BottomBarWithSheet(
@@ -66,7 +66,7 @@ class BottomBarWithSheetDelegate extends NavBarDelegate {
         onPageSelected(index);
 
         // Passed in onTap call
-        onSelectItem.call(index);
+        onSelectItem?.call(index);
       },
     );
   }
