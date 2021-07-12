@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'bar_delegate.dart';
+import '../bar_delegate.dart';
 import '../layout.dart';
 import '../page_stack.dart';
 
@@ -81,5 +81,10 @@ class BottomNavigationBarDelegate extends BarDelegate {
       mouseCursor: mouseCursor,
       enableFeedback: enableFeedback,
     );
+  }
+
+  @override
+  int itemLength() {
+    return items.length;
   }
 }

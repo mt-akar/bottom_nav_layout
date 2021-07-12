@@ -2,7 +2,7 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'delegates/bar_delegate.dart';
+import 'bar_delegate.dart';
 
 /// [BottomNavLayout] is a quick and powerful layout tool.
 /// You can create an app with fluent bottom bar behavior in less than 15 lines.
@@ -32,8 +32,8 @@ class BottomNavLayout extends StatefulWidget {
             keys == null ||
                 (pages?.length ?? pageBuilders!.length) == keys.length,
             "Either do not pass keys or pass as many as pages"),
-        // assert((pages?.length ?? pageBuilders!.length) == items.length,
-        //     "Pass as many bottomNavBarItems as pages"),
+        assert((pages?.length ?? pageBuilders!.length) == barDelegate.itemLength(),
+            "Pass as many bottomNavBarItems as pages"),
         assert(
             pageStack == null ||
                 (pages?.length ?? pageBuilders!.length) > pageStack.peek() &&
