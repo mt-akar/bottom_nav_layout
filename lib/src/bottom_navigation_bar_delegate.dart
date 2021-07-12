@@ -1,5 +1,7 @@
-import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:flutter/material.dart';
+
+import 'bar_delegate.dart';
+import 'layout.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
