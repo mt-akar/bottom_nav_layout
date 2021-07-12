@@ -8,6 +8,7 @@ import '../layout.dart';
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
 /// Check out the documentation for [WaterDropNavBar]
+/// https://pub.dev/packages/water_drop_nav_bar
 class WaterDropNavBarDelegate extends NavBarDelegate {
   WaterDropNavBarDelegate({
     this.key,

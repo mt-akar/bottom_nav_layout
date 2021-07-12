@@ -37,11 +37,18 @@ class AllParametersQuickStartApp extends StatelessWidget {
       extendBody: false,
 
       // Delegates all it's properties to a bottom bar.
-      barDelegate: _buildBottomNavigationBarDelegate(),
+      navBarDelegate: _buildBottomNavigationBarDelegate(),
+      // barDelegate: _buildSnakeNavigationBarDelegate(),
+      // barDelegate: _buildSalomonBottomBarDelegate(),
+      // barDelegate: _buildBottomBarWithSheetDelegate(),
+      // barDelegate: _buildAnimatedBottomNavigationBarDelegate(),
+      // barDelegate: _buildWaterDropNavBarDelegate(),
     );
   }
 
+  ///////////////////////////////////////////////////
   ///////////////// BUILD FUNCTIONS /////////////////
+  ///////////////////////////////////////////////////
 
   List<Widget> _buildPages() {
     return [
@@ -69,21 +76,40 @@ class AllParametersQuickStartApp extends StatelessWidget {
     );
   }
 
+  NavBarDelegate _buildSnakeNavigationBarDelegate() {
+    return SnakeNavigationBarDelegate(
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+        BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),
+        BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+      ],
+      height: 56,
+    );
+  }
+
   NavBarDelegate _buildSalomonBottomBarDelegate() {
     return SalomonBottomBarDelegate(
       items: [
         SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-        SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
+        SalomonBottomBarItem(icon: Icon(Icons.maximize), title: Text('Slider')),
         SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
       ],
     );
+  }
+
+  NavBarDelegate? _buildBottomBarWithSheetDelegate() {
+    return null;
+  }
+
+  NavBarDelegate? _buildAnimatedBottomNavigationBarDelegate() {
+    return null;
   }
 
   NavBarDelegate _buildWaterDropNavBarDelegate() {
     return WaterDropNavBarDelegate(
       barItems: [
         BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
-        BarItem(filledIcon: Icons.linear_scale, outlinedIcon: Icons.linear_scale_outlined),
+        BarItem(filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
         BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
       ],
     );

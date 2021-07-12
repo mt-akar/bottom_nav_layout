@@ -8,6 +8,7 @@ import '../layout.dart';
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
 /// Check out the documentation for [SalomonBottomBar]
+/// https://pub.dev/packages/salomon_bottom_bar
 class SalomonBottomBarDelegate extends NavBarDelegate {
   SalomonBottomBarDelegate({
     this.key,

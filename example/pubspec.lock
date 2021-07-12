@@ -34,7 +34,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "7fc1fd26932e4d9598bdc263ff3e3c8b24243072"
+      resolved-ref: db0e076a8aacdbb298db1c1b785f63701ed38e6d
       url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
     source: git
     version: "1.1.1"
@@ -79,7 +79,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_snake_navigationbar:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_snake_navigationbar
       url: "https://pub.dartlang.org"

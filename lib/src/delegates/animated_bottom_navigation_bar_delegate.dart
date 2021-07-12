@@ -8,6 +8,7 @@ import '../layout.dart';
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
 /// Check out the documentation for [AnimatedBottomNavigationBar]
+/// https://pub.dev/packages/animated_bottom_navigation_bar
 class AnimatedBottomNavigationBarDelegate extends NavBarDelegate {
   AnimatedBottomNavigationBarDelegate({
     this.key,

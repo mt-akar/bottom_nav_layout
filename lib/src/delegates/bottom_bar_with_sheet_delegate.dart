@@ -8,6 +8,7 @@ import '../layout.dart';
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
 /// Check out the documentation for [BottomBarWithSheet]
+/// https://pub.dev/packages/bottom_bar_with_sheet
 class BottomBarWithSheetDelegate extends NavBarDelegate {
   // Constant taken from bottom_bar_with_sheet/lib/src/theme/defaults.dart
   static const constBottomBarTheme = const BottomBarTheme();

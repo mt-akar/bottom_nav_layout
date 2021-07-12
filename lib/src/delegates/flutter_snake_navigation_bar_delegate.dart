@@ -8,6 +8,7 @@ import '../layout.dart';
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
 /// Check out the documentation for [SnakeNavigationBar]
+/// https://pub.dev/packages/flutter_snake_navigationbar
 class SnakeNavigationBarDelegate extends NavBarDelegate {
   SnakeNavigationBarDelegate({
     this.key,
@@ -42,8 +43,8 @@ class SnakeNavigationBarDelegate extends NavBarDelegate {
   final EdgeInsets padding;
   final double elevation;
   final ValueChanged<int>? onTap;
-  final SnakeBarBehaviour behaviour;
-  final SnakeShape snakeShape;
+  final SnakeBarBehaviour behaviour; // floating pinned
+  final SnakeShape snakeShape; // Default: SnakeShape.circle. Others: rectangle, indicator, custom
   final Color shadowColor;
   final TextStyle? selectedLabelStyle;
   final TextStyle? unselectedLabelStyle;

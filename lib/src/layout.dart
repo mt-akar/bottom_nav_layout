@@ -21,7 +21,7 @@ class BottomNavLayout extends StatefulWidget {
     this.keys,
     this.bottomBarStyler,
     this.extendBody = false,
-    required this.barDelegate,
+    required this.navBarDelegate,
   })  : assert(
             pages != null && pageBuilders == null ||
                 pageBuilders != null && pages == null,
@@ -33,7 +33,7 @@ class BottomNavLayout extends StatefulWidget {
                 (pages?.length ?? pageBuilders!.length) == keys.length,
             "Either do not pass keys or pass as many as pages"),
         assert(
-            (pages?.length ?? pageBuilders!.length) == barDelegate.itemLength(),
+            (pages?.length ?? pageBuilders!.length) == navBarDelegate.itemLength(),
             "Pass as many bottomNavBarItems as pages"),
         assert(
             pageStack == null ||
@@ -78,7 +78,7 @@ class BottomNavLayout extends StatefulWidget {
   final bool extendBody;
 
   /// Property delegated to [BottomNavigationBar]
-  final NavBarDelegate barDelegate;
+  final NavBarDelegate navBarDelegate;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
@@ -178,7 +178,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     }
 
     // Create the bottom bar
-    var bottomBar = widget.barDelegate.createBar(pageStack.peek(), onPageSelected);
+    var bottomBar = widget.navBarDelegate.createBar(pageStack.peek(), onPageSelected);
 
     // Return the view
     return WillPopScope(

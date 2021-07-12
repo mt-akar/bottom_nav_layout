@@ -7,6 +7,7 @@ import '../layout.dart';
 /// which is encapsulated in [BottomNavLayout.pageStack]
 ///
 /// Check out the documentation for [BottomNavigationBar]
+/// https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 class BottomNavigationBarDelegate extends NavBarDelegate {
   BottomNavigationBarDelegate({
     this.key,
