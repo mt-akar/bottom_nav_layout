@@ -34,7 +34,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: "2308670c309eeae9b042b3410df6836ba92e14d6"
+      resolved-ref: "893e8ecca4d0f41b2ad22c885dec66bd356734db"
       url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
     source: git
     version: "1.1.1"
