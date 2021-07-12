@@ -205,30 +205,24 @@ BottomNavLayout(
 ```
 
 # Different Bar Designs
-So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs.
+So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs. To use the design you want, pass the corresponding `navBarDelegate` to the layout.
 
-The APIs are all identical with the respective packages.
+Compatible packages:
 
-## 1. Salomon Bottom Bar
-It is possible to use [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar) with the layout. Make sure to check out its [documentation](https://pub.dev/packages/salomon_bottom_bar#salomon_bottom_bar).
+ 1. [material](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html): Use `BottomNavigationBarDelegate`
+ 2. [flutter_snake_navigationbar ](https://pub.dev/packages/flutter_snake_navigationbar): Use `SnakeNavigationBarDelegate`
+ 3. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar): Use `SalomonBottomBarDelegate`
+ 4. [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet): Use `BottomBarWithSheetDelegate`
+ 5. [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Use `AnimatedBottomNavigationBarDelegate`
+ 6. [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar): Use `WaterDropNavBarDelegate`
 
-<details>
-<summary>Install</summary>
-<p>
-
-```yaml
-dependencies:
-  salomon_bottom_bar: latest_version
-```
-</p>
-</details>
+The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to import the corresponding bottom bar package to be able to pass some of the parameters. Make sure to check out their documentation before using.
 
 <details>
-<summary>Quick Start</summary>
+<summary>salomon_bottom_bar Quick Start</summary>
 <p>
 
 ```dart
-// Salomon Quick Start Example
 void main() => runApp(MaterialApp(
       home: SalomonBottomNavLayout(
         // The app's top level destinations
@@ -248,26 +242,11 @@ void main() => runApp(MaterialApp(
 </p>
 </details>
 
-## 2. Water Drop Bottom Bar
-It is possible to use [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) with the layout. Make sure to check out its [documentation](https://pub.dev/packages/water_drop_nav_bar).
-
 <details>
-<summary>Install</summary>
-<p>
-
-```yaml
-dependencies:
-  water_drop_nav_bar: latest_version
-```
-</p>
-</details>
-
-<details>
-<summary>Quick Start</summary>
+<summary>water_drop_nav_bar Quick Start</summary>
 <p>
 
 ```dart
-// Water Drop Quick Start Example
 void main() => runApp(MaterialApp(
       home: WaterDropNavLayout(
         // The app's top level destinations
@@ -286,6 +265,12 @@ void main() => runApp(MaterialApp(
 ```
 </p>
 </details>
+
+## Incompatible Packages
+
+ - [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar): Lack of `currentIndex`
+ - [persistent_bottom_nav_bar](https://pub.dev/packages/persistent_bottom_nav_bar): Already a layout package
+ - [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Uses `Scaffold`'s properties to render.
 
 # Bar Styling
 ### Bar Styler
