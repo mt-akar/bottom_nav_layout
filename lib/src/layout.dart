@@ -33,7 +33,8 @@ class BottomNavLayout extends StatefulWidget {
                 (pages?.length ?? pageBuilders!.length) == keys.length,
             "Either do not pass keys or pass as many as pages"),
         assert(
-            (pages?.length ?? pageBuilders!.length) == navBarDelegate.itemLength(),
+            (pages?.length ?? pageBuilders!.length) ==
+                navBarDelegate.itemLength(),
             "Pass as many bottomNavBarItems as pages"),
         assert(
             pageStack == null ||
@@ -178,7 +179,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     }
 
     // Create the bottom bar
-    var bottomBar = widget.navBarDelegate.createBar(pageStack.peek(), onPageSelected);
+    var bottomBar =
+        widget.navBarDelegate.createBar(pageStack.peek(), onPageSelected);
 
     // Return the view
     return WillPopScope(

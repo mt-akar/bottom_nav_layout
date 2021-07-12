@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
-import '../nav_bar_delegate.dart';
 import '../layout.dart';
+import '../nav_bar_delegate.dart';
 
 /// This class contains parameters used to create a [SnakeNavigationBar] instance, except [SnakeNavigationBarDelegate.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack]
@@ -44,7 +44,8 @@ class SnakeNavigationBarDelegate extends NavBarDelegate {
   final double elevation;
   final ValueChanged<int>? onTap;
   final SnakeBarBehaviour behaviour; // floating pinned
-  final SnakeShape snakeShape; // Default: SnakeShape.circle. Others: rectangle, indicator, custom
+  /// Default: SnakeShape.circle. Others: rectangle, indicator, custom
+  final SnakeShape snakeShape;
   final Color shadowColor;
   final TextStyle? selectedLabelStyle;
   final TextStyle? unselectedLabelStyle;

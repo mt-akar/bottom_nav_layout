@@ -1,3 +1,4 @@
+import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:example/pages/slider_page.dart';
 import 'package:flutter/material.dart';
@@ -38,11 +39,10 @@ class AllParametersQuickStartApp extends StatelessWidget {
 
       // Delegates all it's properties to a bottom bar.
       navBarDelegate: _buildBottomNavigationBarDelegate(),
-      // barDelegate: _buildSnakeNavigationBarDelegate(),
-      // barDelegate: _buildSalomonBottomBarDelegate(),
-      // barDelegate: _buildBottomBarWithSheetDelegate(),
-      // barDelegate: _buildAnimatedBottomNavigationBarDelegate(),
-      // barDelegate: _buildWaterDropNavBarDelegate(),
+      // navBarDelegate: _buildSnakeNavigationBarDelegate(),
+      // navBarDelegate: _buildSalomonBottomBarDelegate(),
+      // navBarDelegate: _buildBottomBarWithSheetDelegate(),
+      // navBarDelegate: _buildWaterDropNavBarDelegate(),
     );
   }
 
@@ -97,12 +97,16 @@ class AllParametersQuickStartApp extends StatelessWidget {
     );
   }
 
-  NavBarDelegate? _buildBottomBarWithSheetDelegate() {
-    return null;
-  }
-
-  NavBarDelegate? _buildAnimatedBottomNavigationBarDelegate() {
-    return null;
+  NavBarDelegate _buildBottomBarWithSheetDelegate() {
+    return BottomBarWithSheetDelegate(
+      items: [
+        BottomBarWithSheetItem(icon: Icons.home),
+        BottomBarWithSheetItem(icon: Icons.linear_scale),
+        BottomBarWithSheetItem(icon: Icons.linear_scale),
+        BottomBarWithSheetItem(icon: Icons.search),
+      ],
+      sheetChild: Center(child: Text("Welcome to sheetChild")),
+    );
   }
 
   NavBarDelegate _buildWaterDropNavBarDelegate() {
