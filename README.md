@@ -215,7 +215,7 @@ So far, we only worked on Material design bottom nav bar. The layout also suppor
 
 The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to import the corresponding bottom bar package to be able to pass some of the parameters. Make sure to check out their documentation before using.
 
-Some of the packages' index constructor parameter acts as an initial index, not as a current index. Therefore, selected item doesn't change when the back button is pressed. To have the best result, only use `ReplacePageStack` with bottom bars that doesn't have `currentIndex` property.
+Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item doesn't change when the back button is pressed. To have the best result, only use `ReplacePageStack` with bottom bars that doesn't have the `currentIndex` property.
 
 ## 1. Material
 
