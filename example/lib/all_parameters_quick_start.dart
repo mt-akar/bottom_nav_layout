@@ -1,6 +1,7 @@
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:example/pages/slider_page.dart';
 import 'package:flutter/material.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class AllParametersQuickStartApp extends StatelessWidget {
   @override
@@ -69,6 +70,16 @@ class AllParametersQuickStartApp extends StatelessWidget {
       //     BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
       //   ],
       // ),
+    );
+  }
+
+  BarDelegate _buildSalomonBottomBarDelegate() {
+    return SalomonBottomBarDelegate(
+      items: [
+        SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
+        SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
+        SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
+      ],
     );
   }
 }
