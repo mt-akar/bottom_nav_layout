@@ -1,3 +1,7 @@
+## [2.0.1] - Jul 12, 2021
+
+Docs updated.
+ 
 ## [2.0.0] - Jul 12, 2021
 
 Alternative bottom bar usage API unified. (breaking)
