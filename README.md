@@ -97,7 +97,7 @@ class _SliderPageState extends State<SliderPage> {
 | `pages` | Top level destinations of your application. |
 | `pageBuilders` | Also top level destinations but can be lazily loaded. |
 | `savePageState` | Flag to enable/disable saving page state. |
-| `pageStack` | Navigation stack that remembers pages visited. |
+| `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
 | `keys` | Keys that help the layout manage in-page navigation. |
 | `bottomBarStyler` | Widget that wrap bottom bar. |
 | `extendBody` | Extends the page behind the bottom bar. |
@@ -213,9 +213,9 @@ keys: <GlobalKey<NavigatorState>?>[
 # Different Bar Designs
 So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs. To use the design you want, pass the corresponding `navBarDelegate` to the layout.
 
-The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to import the corresponding bottom bar package to be able to pass some of the parameters. Make sure to check out their documentation before using.
+The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to <b>import the corresponding bottom bar package</b> to be able to pass some of the parameters. Make sure to check out their documentation before using.
 
-Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item doesn't change when the back button is pressed. To have the best result, only use `ReplacePageStack` with bottom bars that doesn't have the `currentIndex` property.
+Warning: Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item cannot be changed when the back button is pressed. To have the best result, only use `ReplacePageStack` with bottom bars that doesn't have the `currentIndex` property.
 
 ## 1. Material
 
@@ -223,7 +223,25 @@ Some of the packages' index constructor parameter acts as an `initialIndex`, not
 | :------------ | :------------- | :------------- |
 | [BottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html) | `BottomNavigationBarDelegate` | Yes |
 
-## 2. flutter_snake_navigationbar
+## 2. convex_bottom_bar
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar) | `ConvexAppBarDelegate` | No |
+
+Example:
+
+```dart
+ navBarDelegate: ConvexAppBarDelegate(
+   items: [
+     TabItem(icon: Icon(Icons.home), title: 'Home'),
+     TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
+     TabItem(icon: Icon(Icons.search), title: 'Search'),
+   ],
+ ),
+```
+
+## 3. flutter_snake_navigationbar
 
 | Documentation | NavBarDelegate | Has `currentIndex` |
 | :------------ | :------------- | :------------- |
@@ -242,7 +260,7 @@ navBarDelegate: SnakeNavigationBarDelegate(
 ),
 ```
 
-## 3. salomon_bottom_bar
+## 4. salomon_bottom_bar
 
 | Documentation | NavBarDelegate | Has `currentIndex` |
 | :------------ | :------------- | :------------- |
@@ -260,7 +278,7 @@ navBarDelegate: SalomonBottomBarDelegate(
 ),
 ```
 
-## 4. bottom_bar_with_sheet
+## 5. bottom_bar_with_sheet
 
 | Documentation | NavBarDelegate | Has `currentIndex` |
 | :------------ | :------------- | :------------- |
@@ -280,7 +298,7 @@ navBarDelegate: BottomBarWithSheetDelegate(
 ),
 ```
 
-## 5. water_drop_nav_bar
+## 6. water_drop_nav_bar
 
 | Documentation | NavBarDelegate | Has `currentIndex` |
 | :------------ | :------------- | :------------- |
@@ -295,6 +313,25 @@ navBarDelegate: WaterDropNavBarDelegate(
     BarItem(filledIcon: Icons.linear_scale, outlinedIcon: Icons.linear_scale_outlined),
     BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
   ],
+),
+```
+
+## 7. sliding_clipped_nav_bar
+
+| Documentation | NavBarDelegate | Has `currentIndex` |
+| :------------ | :------------- | :------------- |
+| [sliding_clipped_nav_bar](https://pub.dev/packages/sliding_clipped_nav_bar) | `SlidingClippedNavBarDelegate` | Yes |
+
+Example:
+
+```dart
+navBarDelegate: SlidingClippedNavBarDelegate(
+  barItems: [
+    BarItem(icon: Icons.home, title: 'Home'),
+    BarItem(icon: Icons.linear_scale, title: 'Slider'),
+    BarItem(icon: Icons.search, title: 'Search'),
+  ],
+  activeColor: Colors.blue,
 ),
 ```
 
