@@ -62,7 +62,8 @@ class AllParametersQuickStartApp extends StatelessWidget {
     return [
       () => Center(child: Text("Welcome to bottom_nav_layout")),
       () => SliderPage(),
-      () => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+      () => Center(
+          child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
     ];
   }
 
@@ -112,7 +113,8 @@ class AllParametersQuickStartApp extends StatelessWidget {
   NavBarDelegate _buildWaterDropNavBarDelegate() {
     return WaterDropNavBarDelegate(
       barItems: [
-        BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
+        BarItem(
+            filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
         BarItem(filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
         BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
       ],
