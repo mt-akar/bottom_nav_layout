@@ -1,6 +1,10 @@
-## [1.1.1] - Jul 11, 2021
+## [2.0.0] - Jul 11, 2021
 
-Docs updated
+Alternative bottom bar design usage API unified.
+
+Bar Designs included:
+ - Flutter Snake Navigation Bar
+ - Bottom Bar With Sheet
  
 ## [1.1.0] - Jul 11, 2021
 
