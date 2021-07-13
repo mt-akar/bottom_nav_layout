@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import '../nav_bar_delegate.dart';
 import '../layout.dart';
+import '../nav_bar_delegate.dart';
 
 /// This class contains parameters used to create a [SalomonBottomBar] instance, except [SalomonBottomBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack].
@@ -42,11 +42,11 @@ class SalomonBottomBarDelegate extends NavBarDelegate {
       items: items,
       currentIndex: pageStackPeek,
       onTap: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onTap?.call(index);
+
+        // Layout functionality
+        onPageSelected(index);
       },
       selectedItemColor: selectedItemColor,
       unselectedItemColor: unselectedItemColor,

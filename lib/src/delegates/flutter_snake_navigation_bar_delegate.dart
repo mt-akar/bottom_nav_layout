@@ -43,7 +43,7 @@ class SnakeNavigationBarDelegate extends NavBarDelegate {
   final EdgeInsets padding;
   final double elevation;
   final ValueChanged<int>? onTap;
-  final SnakeBarBehaviour behaviour; // floating pinned
+  final SnakeBarBehaviour behaviour; // Options: floating, pinned
   /// Default: SnakeShape.circle. Others: rectangle, indicator, custom
   final SnakeShape snakeShape;
   final Color shadowColor;
@@ -66,11 +66,11 @@ class SnakeNavigationBarDelegate extends NavBarDelegate {
       padding: padding,
       elevation: elevation,
       onTap: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onTap?.call(index);
+
+        // Layout functionality
+        onPageSelected(index);
       },
       behaviour: behaviour,
       snakeShape: snakeShape,

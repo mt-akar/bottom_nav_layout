@@ -58,11 +58,11 @@ class BottomNavigationBarDelegate extends NavBarDelegate {
       key: key,
       items: items,
       onTap: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onTap?.call(index);
+
+        // Layout functionality
+        onPageSelected(index);
       },
       currentIndex: pageStackPeek,
       elevation: elevation,

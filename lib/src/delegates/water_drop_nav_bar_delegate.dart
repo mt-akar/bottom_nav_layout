@@ -34,11 +34,11 @@ class WaterDropNavBarDelegate extends NavBarDelegate {
         barItems: barItems,
         selectedIndex: pageStackPeek,
         onButtonPressed: (index) {
-          // Layout functionality
-          onPageSelected(index);
-
           // Passed in onTap call
           onButtonPressed?.call(index);
+
+          // Layout functionality
+          onPageSelected(index);
         },
         backgroundColor: backgroundColor,
         waterDropColor: waterDropColor,

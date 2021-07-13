@@ -18,6 +18,20 @@ class BottomBarWithSheetDelegate extends NavBarDelegate {
   // Constant taken from bottom_bar_with_sheet/lib/src/theme/defaults.dart
   static const constMainActionButtonTheme = const MainActionButtonTheme();
 
+  final Key? key;
+  final bool isOpened;
+  final MainAxisAlignment bottomBarMainAxisAlignment;
+  final Duration duration;
+  final Curve curve;
+  final bool disableMainActionButton;
+  final MainActionButton? mainActionButton;
+  final List<BottomBarWithSheetItem>? items;
+  final BottomBarTheme bottomBarTheme;
+  final MainActionButtonTheme? mainActionButtonTheme;
+  final bool autoClose;
+  final Widget sheetChild;
+  final ValueChanged<int>? onSelectItem;
+
   BottomBarWithSheetDelegate({
     this.key,
     this.isOpened = false,
@@ -33,20 +47,6 @@ class BottomBarWithSheetDelegate extends NavBarDelegate {
     required this.sheetChild,
     this.onSelectItem, // This parameter's API is deliberately different. The package expects a `Function` and requires it.
   });
-
-  final Key? key;
-  final bool isOpened;
-  final MainAxisAlignment bottomBarMainAxisAlignment;
-  final Duration duration;
-  final Curve curve;
-  final bool disableMainActionButton;
-  final MainActionButton? mainActionButton;
-  final List<BottomBarWithSheetItem>? items;
-  final BottomBarTheme bottomBarTheme;
-  final MainActionButtonTheme? mainActionButtonTheme;
-  final bool autoClose;
-  final Widget sheetChild;
-  final Function(int)? onSelectItem;
 
   Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return BottomBarWithSheet(
@@ -64,11 +64,11 @@ class BottomBarWithSheetDelegate extends NavBarDelegate {
       autoClose: autoClose,
       sheetChild: sheetChild,
       onSelectItem: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onSelectItem?.call(index);
+
+        // Layout functionality
+        onPageSelected(index);
       },
     );
   }

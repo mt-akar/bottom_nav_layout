@@ -16,7 +16,7 @@ class ConvexAppBarDelegate extends NavBarDelegate {
   final Key? key;
   final List<TabItem> items;
   final bool? disableDefaultTabController;
-  final GestureTapIndexCallback? onTap;
+  final void Function(int)? onTap;
   final TapNotifier? onTabNotify;
   final TabController? controller;
   final Color? color;
@@ -60,11 +60,11 @@ class ConvexAppBarDelegate extends NavBarDelegate {
       initialActiveIndex: pageStackPeek,
       disableDefaultTabController: disableDefaultTabController,
       onTap: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onTap?.call(index);
+
+        // Layout functionality
+        onPageSelected(index);
       },
       onTabNotify: onTabNotify,
       controller: controller,

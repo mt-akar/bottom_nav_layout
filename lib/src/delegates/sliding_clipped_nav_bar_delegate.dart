@@ -31,11 +31,11 @@ class SlidingClippedNavBarDelegate extends NavBarDelegate {
       barItems: barItems,
       selectedIndex: pageStackPeek,
       onButtonPressed: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onButtonPressed?.call(index);
+        
+        // Layout functionality
+        onPageSelected(index);
       },
       activeColor: activeColor,
       inactiveColor: inactiveColor,

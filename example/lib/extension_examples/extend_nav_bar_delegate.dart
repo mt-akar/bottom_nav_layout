@@ -31,11 +31,11 @@ class MyNavBarDelegate extends NavBarDelegate {
       items: items,
       currentIndex: pageStackPeek,
       onTap: (index) {
-        // Layout functionality
-        onPageSelected(index);
-
         // Passed in onTap call
         onTap?.call(index);
+
+        // Layout functionality
+        onPageSelected(index);
       },
       //
       // Other properties...
