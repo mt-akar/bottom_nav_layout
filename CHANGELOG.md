@@ -1,10 +1,16 @@
-## [2.0.1] - Jul 12, 2021
+## [2.1.0] - Jul 13, 2021
 
-Docs updated.
+`ReplaceTabStack` renamed to `NoTabStack` (breaking)
+
+`ReplaceExceptTabStack` renamed to `FirstAndLastTabStack` (breaking)
+
+Bar Designs included:
+ - Convex Bottom Bar
+ - Sliding Clipped Nav Bar
  
 ## [2.0.0] - Jul 12, 2021
 
-Alternative bottom bar usage API unified. (breaking)
+Alternative bottom bar usage API unified into `NavBarDelegate`s. (breaking)
 
 Bar Designs included:
  - Flutter Snake Navigation Bar
