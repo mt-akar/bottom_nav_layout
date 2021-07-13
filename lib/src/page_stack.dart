@@ -159,8 +159,7 @@ class ReorderToFrontExceptFirstPageStack extends PageStack {
 /// push(0); Stack: - (N/A).
 /// pop();   Stack: - (N/A).
 class NoPageStack extends PageStack {
-  NoPageStack({required int initialPage})
-      : super(initialPage: initialPage);
+  NoPageStack({required int initialPage}) : super(initialPage: initialPage);
 
   @override
   void push(int pageIndex) {

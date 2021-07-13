@@ -10,4 +10,3 @@ export 'package:bottom_nav_layout/src/delegates/salomon_bottom_bar_delegate.dart
 export 'package:bottom_nav_layout/src/delegates/bottom_bar_with_sheet_delegate.dart';
 export 'package:bottom_nav_layout/src/delegates/water_drop_nav_bar_delegate.dart';
 export 'package:bottom_nav_layout/src/delegates/sliding_clipped_nav_bar_delegate.dart';
-
