@@ -162,14 +162,14 @@ This behavior is used by Youtube app.
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->1->2 | 0->2->1 | 0->2 | 0->2->0 | 0->2 |
 
-### ReplacePageStack
+### NoPageStack
 This behavior is the same as the behavior in [`BottomNavigationBar` example given in flutter docs](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html). It is used by a lot of applications. It is also both Cupertino's and Material's default behavior.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 1 | 2 | 1 | Exit App | N/A | N/A |
 
-### ReplaceExceptFirstPageStack
+### FirstAndLastPageStack
 This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
@@ -179,11 +179,11 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 ## Using Page Stacks
 
 ```dart
-pageStack: StandardPageStack(initialPage: 0),
-// pageStack: ReorderToFrontPageStack(initialPage: 0),
-// pageStack: ReplacePageStack(initialPage: 0),
-// pageStack: ReplaceExceptFirstPageStack(initialPage: 0),
+pageStack: ReorderToFrontPageStack(initialPage: 0),
+// pageStack: StandardPageStack(initialPage: 0),
 // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
+// pageStack: NoPageStack(initialPage: 0),
+// pageStack: FirstAndLastPageStack(initialPage: 0),
 ```
 
 # In-Page Navigation Using GlobalKeys
@@ -215,7 +215,7 @@ So far, we only worked on Material design bottom nav bar. The layout also suppor
 
 The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to <b>import the corresponding bottom bar package</b> to be able to pass some of the parameters. Make sure to check out their documentation before using.
 
-Warning: Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item cannot be changed when the back button is pressed. To have the best result, only use `ReplacePageStack` with bottom bars that doesn't have the `currentIndex` property.
+Warning: Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item cannot be changed when the back button is pressed. To have the best result, only use `NoPageStack` with bottom bars that doesn't have the `currentIndex` property.
 
 ## 1. Material
 
