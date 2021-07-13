@@ -99,8 +99,8 @@ class _SliderPageState extends State<SliderPage> {
 | `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
 | `keys` | Keys that help the layout manage in-page navigation. |
 | `bottomBarWrapper` | Widget that wrap bottom bar. |
-| `extendBody` | Passed to `Scaffold.extendBody`. |
-| `resizeToAvoidBottomInset` | Passed to `Scaffold.resizeToAvoidBottomInset`. |
+| `extendBody` | Passed to [`Scaffold.extendBody`](https://api.flutter.dev/flutter/material/Scaffold/extendBody.html). |
+| `resizeToAvoidBottomInset` | Passed to [`Scaffold.resizeToAvoidBottomInset`](https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html). |
 | `navBarDelegate` | Properties passed into it such as `items`, `onTap`, `elevation`, etc. are used to construct the underlying bottom bar. |
 
 ## Inner Widget Tree
@@ -129,8 +129,18 @@ pageBuilders: [
 ],
 ```
 
+If `savePageState` is set to false, `pages` and `pageBuilders` do the same thing.
+
 # Page Back Stack
 The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are different ways of organizing a page back stack, many of which are readily implemented. You can also implement your own.
+
+```dart
+pageStack: ReorderToFrontPageStack(initialPage: 0), // Default
+// pageStack: StandardPageStack(initialPage: 0),
+// pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
+// pageStack: NoPageStack(initialPage: 0),
+// pageStack: FirstAndLastPageStack(initialPage: 0),
+```
 
 ## Page Back Stack Types
 
@@ -179,16 +189,6 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 | Event | Initial | push(1) | push(2) | push(1) | pop() | push(0) | pop() |
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | Stack | 0 | 0->1 | 0->2 | 0->1 | 0 | 0 | Exit App |
-
-## Using Page Stacks
-
-```dart
-pageStack: ReorderToFrontPageStack(initialPage: 0), // Default
-// pageStack: StandardPageStack(initialPage: 0),
-// pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
-// pageStack: NoPageStack(initialPage: 0),
-// pageStack: FirstAndLastPageStack(initialPage: 0),
-```
 
 # In-Page Navigation Using GlobalKeys
 
@@ -340,10 +340,10 @@ navBarDelegate: SlidingClippedNavBarDelegate(
 ```
 
 ## Other Bar Designs
-You can use any bottom bar design from pub.dev or create your own. To do this:
+You can use any bottom bar design from pub.dev (even if the package is not included here) or create your own. To do this:
 
  - Extend `NavBarDelegate` class .
- - Pass an instance to `BottomNavLayout.navBarDelegate`.
+ - Pass an instance of it to `BottomNavLayout.navBarDelegate`.
 
 Incompatible Packages:
 
