@@ -105,7 +105,7 @@ class _SliderPageState extends State<SliderPage> {
 
 ## Inner Widget Tree
 
-![Untitled Diagram (2)](https://user-images.githubusercontent.com/32205084/125398466-04443a80-e3b8-11eb-86a4-90c50d45a1fb.png)
+![inner_widget_tree](https://user-images.githubusercontent.com/32205084/125399522-6487ac00-e3b9-11eb-82e6-7d82167a9d8d.png)
 
 </br>
 
