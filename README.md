@@ -9,14 +9,13 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
 
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
- - Supports multiple, beautiful bar designs.
  - Uses identical APIs with the underlying bottom bars.
  - Offers additional common features, all of which are optional.
    - Page state preservation
    - Lazy page loading
    - Page backstack
    - Back button navigation management
-   - Bar Styling
+ - Works with any bottom bar you wish. Use the material desing, grab one from pub.dev or use your own.
 
 # Content
  - [Usage](#usage)
@@ -24,7 +23,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
  - [Lazy Page Loading](#lazy-page-loading)
  - [Page Back Stack](#page-back-stack)
  - [In-Page Navigation Using GlobalKeys](#in-page-navigation-using-globalkeys)
- - [Different Bar Designs](#different-bar-designs)
+ - [Different Bottom Bars](#different-bottom-bars)
  - [Bar Styling](#bar-styling)
  - [Improvements](#improvements)
  - [Community](#community)
@@ -211,7 +210,7 @@ keys: <GlobalKey<NavigatorState>?>[
 ],
 ```
 
-# Different Bar Designs
+# Different Bottom Bars
 So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs. To use the design you want, pass the corresponding `navBarDelegate` to the layout.
 
 The `navBarDelegate`'s APIs are all identical with the respective packages. You will need to <b>import the corresponding bottom bar package</b> to be able to pass some of the parameters. Make sure to check out their documentation before using.
@@ -336,13 +335,19 @@ navBarDelegate: SlidingClippedNavBarDelegate(
 ),
 ```
 
-## Incompatible Packages
+## Other Bar Designs
+You can use any bottom bar design from pub.dev or create your own. To do this:
+
+ - Extend `NavBarDelegate` class .
+ - Pass an instance to `BottomNavLayout.navBarDelegate`.
+
+Incompatible Packages:
 
  - [persistent_bottom_nav_bar](https://pub.dev/packages/persistent_bottom_nav_bar): Already a layout package
  - [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Uses a parent `Scaffold`'s properties to render.
 
 # Bar Styling
-### Bar Styler
+### Bar Wrapper
 Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
 ```dart
 bottomBarWrapper: (bottomBar) => Padding(
@@ -356,6 +361,7 @@ You can have the page extend behind the bottom bar.
 ```dart
 extendBody: true,
 ```
+
 # Improvements
  - I am planning to add more bottom bar designs, preferably from pub.dev.
  - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate that.
