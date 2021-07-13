@@ -1,3 +1,15 @@
+/////////////////////////////////////
+///////// bottom_nav_layout /////////
+/////////////////////////////////////
+//                                 //
+// Author: Mustafa Azyoksul        //
+// Email: m.azyoksul@gmail.com     //
+//                                 //
+// github: m-azyoksul              //
+// linked-in: mustafa-azyoksul     //
+//                                 //
+/////////////////////////////////////
+
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
