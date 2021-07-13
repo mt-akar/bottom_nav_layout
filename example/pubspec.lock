@@ -34,7 +34,7 @@ packages:
     description:
       path: "."
       ref: feature_new_designs
-      resolved-ref: "9f0fbee38923e759db5bfe41063a967ef65f8f66"
+      resolved-ref: ceadab4a95f91a3d2f95e0386fc16f9e4e6f29ea
       url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
     source: git
     version: "2.1.0"

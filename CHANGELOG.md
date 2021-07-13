@@ -2,6 +2,7 @@
 
  - `ReplacePageStack` renamed to `NoPageStack` (breaking)
  - `ReplaceExceptPageStack` renamed to `FirstAndLastPageStack` (breaking)
+ - `bottomBarStyler` renamed to `bottomBarWrapper` (breaking)
  - Added `resizeToAvoidBottomInset` parameter.
  - Bar Designs included:
    - Convex Bottom Bar
