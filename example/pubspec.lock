@@ -2,7 +2,7 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   animated_bottom_navigation_bar:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: animated_bottom_navigation_bar
       url: "https://pub.dartlang.org"
@@ -32,9 +32,11 @@ packages:
   bottom_nav_layout:
     dependency: "direct main"
     description:
-      name: bottom_nav_layout
-      url: "https://pub.dartlang.org"
-    source: hosted
+      path: "."
+      ref: feature_new_designs
+      resolved-ref: "577eced9481f25853f5969434b8fbcfd59bca842"
+      url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
+    source: git
     version: "2.0.1"
   characters:
     dependency: transitive
@@ -64,6 +66,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  convex_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: convex_bottom_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.0"
   fake_async:
     dependency: transitive
     description:
@@ -116,6 +125,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
+  persistent_bottom_nav_bar:
+    dependency: transitive
+    description:
+      name: persistent_bottom_nav_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.2"
   provider:
     dependency: transitive
     description:
@@ -135,6 +151,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliding_clipped_nav_bar:
+    dependency: "direct main"
+    description:
+      name: sliding_clipped_nav_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.3"
   source_span:
     dependency: transitive
     description:

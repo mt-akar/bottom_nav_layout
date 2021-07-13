@@ -8,7 +8,7 @@ import '../nav_bar_delegate.dart';
 /// This class contains parameters used to create a [ConvexAppBar] instance, except [ConvexAppBar.initialActiveIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack].
 ///
-/// This bottom bar doesn't have a currentIndex parameter. To ge the best result, use [ReplacePageStack] with it.
+/// This bottom bar doesn't have a currentIndex parameter. To ge the best result, use [NoPageStack] with it.
 ///
 /// Check out the documentation for [ConvexAppBar].
 /// https://pub.dev/packages/convex_bottom_bar

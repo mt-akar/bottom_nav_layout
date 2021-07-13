@@ -147,7 +147,8 @@ class ReorderToFrontExceptFirstPageStack extends PageStack {
 /// This is similar to the naive example given at flutter docs:
 /// https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 ///
-/// This behavior is used by a lot of applications. This is also Cupertino's default behavior.
+/// It is used by a lot of applications.
+/// It is also both Cupertino's and Material's default behavior.
 ///
 /// Example:
 /// Initial  Stack: 0.
@@ -157,8 +158,8 @@ class ReorderToFrontExceptFirstPageStack extends PageStack {
 /// pop();   Stack: - (Exit app).
 /// push(0); Stack: - (N/A).
 /// pop();   Stack: - (N/A).
-class ReplacePageStack extends PageStack {
-  ReplacePageStack({required int initialPage})
+class NoPageStack extends PageStack {
+  NoPageStack({required int initialPage})
       : super(initialPage: initialPage);
 
   @override
@@ -193,8 +194,8 @@ class ReplacePageStack extends PageStack {
 /// pop();   Stack: 0.
 /// push(0); Stack: 0.
 /// pop();   Stack: - (Exit app).
-class ReplaceExceptFirstPageStack extends PageStack {
-  ReplaceExceptFirstPageStack({required int initialPage})
+class FirstAndLastPageStack extends PageStack {
+  FirstAndLastPageStack({required int initialPage})
       : super(initialPage: initialPage);
 
   @override
