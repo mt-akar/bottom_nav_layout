@@ -99,10 +99,14 @@ class _SliderPageState extends State<SliderPage> {
 | `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
 | `keys` | Keys that help the layout manage in-page navigation. |
 | `bottomBarWrapper` | Widget that wrap bottom bar. |
-| `extendBody` | Similar to `Scaffold.extendBody`. |
-| `resizeToAvoidBottomInset` | Similar to `Scaffold.resizeToAvoidBottomInset`. |
-| `navBarDelegate` | Delegates parameters such as `items`, `selectedItemColor`, `elevation` etc. to the underlying bottom bar. |
- 
+| `extendBody` | Passed to `Scaffold.extendBody`. |
+| `resizeToAvoidBottomInset` | Passed to `Scaffold.resizeToAvoidBottomInset`. |
+| `navBarDelegate` | Properties passed into it such as `items`, `onTap`, `elevation`, etc. are used to construct the underlying bottom bar. |
+
+## Inner Widget Tree
+
+![Untitled Diagram (2)](https://user-images.githubusercontent.com/32205084/125398466-04443a80-e3b8-11eb-86a4-90c50d45a1fb.png)
+
 </br>
 
 ![image](https://user-images.githubusercontent.com/32205084/124861906-1f303c80-dfbd-11eb-8525-00ad827d9a32.png)
@@ -179,7 +183,7 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 ## Using Page Stacks
 
 ```dart
-pageStack: ReorderToFrontPageStack(initialPage: 0),
+pageStack: ReorderToFrontPageStack(initialPage: 0), // Default
 // pageStack: StandardPageStack(initialPage: 0),
 // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
 // pageStack: NoPageStack(initialPage: 0),
