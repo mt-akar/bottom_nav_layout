@@ -9,11 +9,11 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #bottom_nav_layout: ^2.1.0
-  bottom_nav_layout:
-    git:
-      url: https://github.com/m-azyoksul/bottom_nav_layout.git
-      ref: feature_new_designs
+  bottom_nav_layout: ^2.1.0
+  #  bottom_nav_layout:
+  #    git:
+  #      url: https://github.com/m-azyoksul/bottom_nav_layout.git
+  #      ref: feature_new_designs
 
   # Dependencies for different bottom bar designs
   convex_bottom_bar: ^3.0.0
