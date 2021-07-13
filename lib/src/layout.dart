@@ -19,7 +19,7 @@ class BottomNavLayout extends StatefulWidget {
     this.savePageState = true,
     this.pageStack,
     this.keys,
-    this.bottomBarStyler,
+    this.bottomBarWrapper,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
     required this.navBarDelegate,
@@ -60,12 +60,12 @@ class BottomNavLayout extends StatefulWidget {
   final List<GlobalKey<NavigatorState>?>? keys;
 
   /// A function that returns a styling widget to wrap bottom nav bar with.
-  final Widget Function(Widget)? bottomBarStyler;
+  final Widget Function(Widget)? bottomBarWrapper;
 
-  /// Weather the body will extend behind the bottom bar or not.
+  /// Similar to [Scaffold.extendBody].
   final bool extendBody;
 
-  /// This controls if the view cut when keyboard appears.
+  /// Similar to [Scaffold.resizeToAvoidBottomInset].
   final bool resizeToAvoidBottomInset;
 
   /// Property delegated to [BottomNavigationBar]
@@ -192,7 +192,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                   );
                 }).toList(),
               ),
-        bottomNavigationBar: widget.bottomBarStyler?.call(bottomBar) ?? bottomBar,
+        bottomNavigationBar: widget.bottomBarWrapper?.call(bottomBar) ?? bottomBar,
       ),
     );
   }

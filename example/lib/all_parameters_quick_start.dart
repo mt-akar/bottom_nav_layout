@@ -31,13 +31,16 @@ class AllParametersQuickStartApp extends StatelessWidget {
       keys: [null, null, null],
 
       // Widget that wraps the bottom bar. Default is null.
-      bottomBarStyler: (bottomBar) => Padding(
+      bottomBarWrapper: (bottomBar) => Padding(
         padding: EdgeInsets.zero,
         child: bottomBar,
       ),
 
       // Similar to [Scaffold.extendBody]. Default is false.
       extendBody: false,
+
+      // Similar to [Scaffold.resizeToAvoidBottomInset]. Default is true.
+      resizeToAvoidBottomInset: true,
 
       // Delegates all it's properties to a bottom bar.
       navBarDelegate: _buildBottomNavigationBarDelegate(),

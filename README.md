@@ -99,8 +99,9 @@ class _SliderPageState extends State<SliderPage> {
 | `savePageState` | Flag to enable/disable saving page state. |
 | `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
 | `keys` | Keys that help the layout manage in-page navigation. |
-| `bottomBarStyler` | Widget that wrap bottom bar. |
-| `extendBody` | Extends the page behind the bottom bar. |
+| `bottomBarWrapper` | Widget that wrap bottom bar. |
+| `extendBody` | Similar to `Scaffold.extendBody`. |
+| `resizeToAvoidBottomInset` | Similar to `Scaffold.resizeToAvoidBottomInset`. |
 | `navBarDelegate` | Delegates parameters such as `items`, `selectedItemColor`, `elevation` etc. to the underlying bottom bar. |
  
 </br>
@@ -344,7 +345,7 @@ navBarDelegate: SlidingClippedNavBarDelegate(
 ### Bar Styler
 Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
 ```dart
-bottomBarStyler: (bottomBar) => Padding(
+bottomBarWrapper: (bottomBar) => Padding(
   padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
   child: bottomBar,
 ),
