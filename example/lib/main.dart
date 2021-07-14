@@ -15,10 +15,18 @@ class AllParametersExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavLayout(
       // The app's top level destinations
-      pages: _buildPages(),
+      pages: [
+        Center(child: Text("Welcome to bottom_nav_layout")),
+        SliderPage(),
+        Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+      ],
 
-      // Also the app's top level destinations, but lazily loaded.
-      // pageBuilders: _buildPageBuilders(),
+      // // Also the app's top level destinations, but lazily loaded.
+      // pageBuilders: [
+      //   () => Center(child: Text("Welcome to bottom_nav_layout")),
+      //   () => SliderPage(),
+      //   () => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+      // ],
 
       // Enables or disables the page state preservation. Default is true.
       savePageState: true,
@@ -60,22 +68,10 @@ class AllParametersExample extends StatelessWidget {
   ///////////////// BUILD FUNCTIONS /////////////////
   ///////////////////////////////////////////////////
 
-  List<Widget> _buildPages() => [
-        Center(child: Text("Welcome to bottom_nav_layout")),
-        SliderPage(),
-        Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
-      ];
-
-  List<Widget Function()> _buildPageBuilders() => [
-        () => Center(child: Text("Welcome to bottom_nav_layout")),
-        () => SliderPage(),
-        () => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
-      ];
-
   NavBarDelegate _buildBottomNavigationBarDelegate() => BottomNavigationBarDelegate(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),
+          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
