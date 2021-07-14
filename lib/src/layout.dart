@@ -136,13 +136,16 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If there are more than one items in the pageStack, pops back to the previous page on the stack.
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
-    // Send pop event to the inner page
-    final consumedByPage = await keys?[pageStack.peek()].currentState?.maybePop() ?? false;
+    // If in page navigation is enabled.
+    if (widget.inPageNavManagement) {
+      // Send pop event to the inner page
+      final consumedByPage = await keys?[pageStack.peek()].currentState?.maybePop() ?? false;
 
-    // If the back event is consumed by the inner page
-    if (consumedByPage) {
-      // Consume pop event
-      return false;
+      // If the back event is consumed by the inner page
+      if (consumedByPage) {
+        // Consume pop event
+        return false;
+      }
     }
 
     // Pop the top element from bottom navigation stack
