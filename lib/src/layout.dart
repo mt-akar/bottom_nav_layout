@@ -191,23 +191,11 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         body: !widget.savePageState
             // Do not save page states
             ? pages[pageStack.peek()]
-            // Save page states using a stack/offstage structure.
-            // Stack view contains one Offstage widget per page.
-            // Offstages are hidden except for the currently selected page.
             : IndexedStack(
                 index: pageStack.peek(),
                 // If the page is not initialized, "not show" an invisible widget instead.
                 children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
               ),
-        //   Stack(
-        //    children: pages.asMap().entries.map((indexPageMap) {
-        //      return Offstage(
-        //        offstage: indexPageMap.key != pageStack.peek(),
-        //        // If the page is not initialized, "not show" an invisible widget instead.
-        //        child: indexPageMap.value ?? SizedBox.shrink(),
-        //      );
-        //    }).toList(),
-        //  ),
         bottomNavigationBar: widget.bottomBarWrapper?.call(bottomBar) ?? bottomBar,
       ),
     );
