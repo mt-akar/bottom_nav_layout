@@ -104,8 +104,7 @@ class _SliderPageState extends State<SliderPage> {
 | `navBarDelegate` | Properties passed into it such as `items`, `onTap`, `elevation`, etc. are used to construct the underlying bottom bar. |
 
 ## Inner Widget Tree
-
-![inner_widget_tree](https://user-images.githubusercontent.com/32205084/125399522-6487ac00-e3b9-11eb-82e6-7d82167a9d8d.png)
+![inner_widget_tree](https://user-images.githubusercontent.com/32205084/125547934-389fa034-02dd-4398-9a96-5cc96fd1b762.jpg)
 
 </br>
 
