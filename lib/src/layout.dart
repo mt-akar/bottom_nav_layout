@@ -186,13 +186,15 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
             : IndexedStack(
                 index: pageStack.peek(),
                 // If the page is not initialized, "not show" an invisible widget instead.
-                children: pages.map((page) {
-                  if (page == null) {
+                children: pages.asMap().entries.map((entry) {
+                  if (entry.value == null) {
                     return SizedBox.shrink();
                   }
+                  var page = entry.value!;
+
                   if (widget.inPageNavManagement) {
                     return Navigator(
-                      key: keys![pageStack.peek()],
+                      key: keys![entry.key],
                       initialRoute: "/",
                       onGenerateRoute: (_) => MaterialPageRoute(
                         builder: (_) => page,
