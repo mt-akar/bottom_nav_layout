@@ -10,6 +10,18 @@ import '../nav_bar_delegate.dart';
 /// Check out the documentation for [SalomonBottomBar].
 /// https://pub.dev/packages/salomon_bottom_bar
 class SalomonBottomBarDelegate extends NavBarDelegate {
+  final Key? key;
+  final List<SalomonBottomBarItem> items;
+  final Function(int)? onTap;
+  final Color? selectedItemColor;
+  final Color? unselectedItemColor;
+  final double? selectedColorOpacity;
+  final ShapeBorder itemShape;
+  final EdgeInsets margin;
+  final EdgeInsets itemPadding;
+  final Duration duration;
+  final Curve curve;
+
   SalomonBottomBarDelegate({
     this.key,
     required this.items,
@@ -23,18 +35,6 @@ class SalomonBottomBarDelegate extends NavBarDelegate {
     this.duration = const Duration(milliseconds: 500),
     this.curve = Curves.easeOutQuint,
   });
-
-  final Key? key;
-  final List<SalomonBottomBarItem> items;
-  final Function(int)? onTap;
-  final Color? selectedItemColor;
-  final Color? unselectedItemColor;
-  final double? selectedColorOpacity;
-  final ShapeBorder itemShape;
-  final EdgeInsets margin;
-  final EdgeInsets itemPadding;
-  final Duration duration;
-  final Curve curve;
 
   Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return SalomonBottomBar(

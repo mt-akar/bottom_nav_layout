@@ -33,7 +33,7 @@ class SlidingClippedNavBarDelegate extends NavBarDelegate {
       onButtonPressed: (index) {
         // Passed in onTap call
         onButtonPressed?.call(index);
-        
+
         // Layout functionality
         onPageSelected(index);
       },

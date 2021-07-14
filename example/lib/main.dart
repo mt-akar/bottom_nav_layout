@@ -4,10 +4,12 @@ import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:example/pages/slider_page.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
-import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart' as SlidingClipped;
+import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart'
+    as SlidingClipped;
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart' as WaterDrop;
 
-void main() => runApp(MaterialApp(home: AllParametersExample())); //home: QuickStartApp()
+void main() =>
+    runApp(MaterialApp(home: AllParametersExample())); //home: QuickStartApp()
 
 /// This example showcases all parameters
 class AllParametersExample extends StatelessWidget {
@@ -68,10 +70,12 @@ class AllParametersExample extends StatelessWidget {
   ///////////////// BUILD FUNCTIONS /////////////////
   ///////////////////////////////////////////////////
 
-  NavBarDelegate _buildBottomNavigationBarDelegate() => BottomNavigationBarDelegate(
+  NavBarDelegate _buildBottomNavigationBarDelegate() =>
+      BottomNavigationBarDelegate(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
@@ -84,7 +88,8 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
-  NavBarDelegate _buildSnakeNavigationBarDelegate() => SnakeNavigationBarDelegate(
+  NavBarDelegate _buildSnakeNavigationBarDelegate() =>
+      SnakeNavigationBarDelegate(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),
@@ -96,12 +101,14 @@ class AllParametersExample extends StatelessWidget {
   NavBarDelegate _buildSalomonBottomBarDelegate() => SalomonBottomBarDelegate(
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(icon: Icon(Icons.maximize), title: Text('Slider')),
+          SalomonBottomBarItem(
+              icon: Icon(Icons.maximize), title: Text('Slider')),
           SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
         ],
       );
 
-  NavBarDelegate _buildBottomBarWithSheetDelegate() => BottomBarWithSheetDelegate(
+  NavBarDelegate _buildBottomBarWithSheetDelegate() =>
+      BottomBarWithSheetDelegate(
         items: [
           BottomBarWithSheetItem(icon: Icons.home),
           BottomBarWithSheetItem(icon: Icons.linear_scale),
@@ -113,13 +120,17 @@ class AllParametersExample extends StatelessWidget {
 
   NavBarDelegate _buildWaterDropNavBarDelegate() => WaterDropNavBarDelegate(
         barItems: [
-          WaterDrop.BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
-          WaterDrop.BarItem(filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
-          WaterDrop.BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
+          WaterDrop.BarItem(
+              filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
+          WaterDrop.BarItem(
+              filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
+          WaterDrop.BarItem(
+              filledIcon: Icons.search, outlinedIcon: Icons.search),
         ],
       );
 
-  NavBarDelegate _buildSlidingClippedNavBarDelegate() => SlidingClippedNavBarDelegate(
+  NavBarDelegate _buildSlidingClippedNavBarDelegate() =>
+      SlidingClippedNavBarDelegate(
         barItems: [
           SlidingClipped.BarItem(icon: Icons.home, title: 'Home'),
           SlidingClipped.BarItem(icon: Icons.linear_scale, title: 'Slider'),

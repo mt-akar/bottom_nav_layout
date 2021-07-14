@@ -10,6 +10,26 @@ import '../nav_bar_delegate.dart';
 /// Check out the documentation for [SnakeNavigationBar].
 /// https://pub.dev/packages/flutter_snake_navigationbar
 class SnakeNavigationBarDelegate extends NavBarDelegate {
+  final Key? key;
+  final Color? snakeViewColor;
+  final Color? backgroundColor;
+  final Color? selectedItemColor;
+  final Color? unselectedItemColor;
+  final bool showSelectedLabels;
+  final bool showUnselectedLabels;
+  final List<BottomNavigationBarItem>? items;
+  final ShapeBorder? shape;
+  final EdgeInsets padding;
+  final double elevation;
+  final ValueChanged<int>? onTap;
+  final SnakeBarBehaviour behaviour; // Options: floating, pinned
+  /// Default: SnakeShape.circle. Others: rectangle, indicator, custom
+  final SnakeShape snakeShape;
+  final Color shadowColor;
+  final TextStyle? selectedLabelStyle;
+  final TextStyle? unselectedLabelStyle;
+  final double height;
+
   SnakeNavigationBarDelegate({
     this.key,
     this.snakeViewColor,
@@ -30,26 +50,6 @@ class SnakeNavigationBarDelegate extends NavBarDelegate {
     this.unselectedLabelStyle,
     required this.height,
   });
-
-  final Key? key;
-  final Color? snakeViewColor;
-  final Color? backgroundColor;
-  final Color? selectedItemColor;
-  final Color? unselectedItemColor;
-  final bool showSelectedLabels;
-  final bool showUnselectedLabels;
-  final List<BottomNavigationBarItem>? items;
-  final ShapeBorder? shape;
-  final EdgeInsets padding;
-  final double elevation;
-  final ValueChanged<int>? onTap;
-  final SnakeBarBehaviour behaviour; // Options: floating, pinned
-  /// Default: SnakeShape.circle. Others: rectangle, indicator, custom
-  final SnakeShape snakeShape;
-  final Color shadowColor;
-  final TextStyle? selectedLabelStyle;
-  final TextStyle? unselectedLabelStyle;
-  final double height;
 
   Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return SnakeNavigationBar.color(

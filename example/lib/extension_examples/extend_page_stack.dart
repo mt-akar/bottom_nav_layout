@@ -16,7 +16,8 @@ class MyPageStack extends PageStack {
   void push(int pageIndex) {
     // Prevent pushing the last element again,
     // even though the layout never pushes the last element again anyways.
-    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last index.");
+    if (pageIndex == last)
+      throw Exception("pageIndex pushed cannot be the same as the last index.");
 
     // For example, reset the stack when the initial index is pushed.
     // Then push the index.

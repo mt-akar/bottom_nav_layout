@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../nav_bar_delegate.dart';
 import '../layout.dart';
+import '../nav_bar_delegate.dart';
 
 /// This class contains parameters used to create a [BottomNavigationBar] instance, except [BottomNavigationBar.currentIndex]
 /// which is encapsulated in [BottomNavLayout.pageStack].
@@ -9,6 +9,27 @@ import '../layout.dart';
 /// Check out the documentation for [BottomNavigationBar].
 /// https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html
 class BottomNavigationBarDelegate extends NavBarDelegate {
+  final Key? key;
+  final List<BottomNavigationBarItem> items;
+  final ValueChanged<int>? onTap;
+  final double? elevation;
+  final BottomNavigationBarType? type;
+  final Color? fixedColor;
+  final Color? backgroundColor;
+  final double iconSize;
+  final Color? selectedItemColor;
+  final Color? unselectedItemColor;
+  final IconThemeData? selectedIconTheme;
+  final IconThemeData? unselectedIconTheme;
+  final double selectedFontSize;
+  final double unselectedFontSize;
+  final TextStyle? selectedLabelStyle;
+  final TextStyle? unselectedLabelStyle;
+  final bool? showSelectedLabels;
+  final bool? showUnselectedLabels;
+  final MouseCursor? mouseCursor;
+  final bool? enableFeedback;
+
   BottomNavigationBarDelegate({
     this.key,
     required this.items,
@@ -31,27 +52,6 @@ class BottomNavigationBarDelegate extends NavBarDelegate {
     this.mouseCursor,
     this.enableFeedback,
   });
-
-  final Key? key;
-  final List<BottomNavigationBarItem> items;
-  final ValueChanged<int>? onTap;
-  final double? elevation;
-  final BottomNavigationBarType? type;
-  final Color? fixedColor;
-  final Color? backgroundColor;
-  final double iconSize;
-  final Color? selectedItemColor;
-  final Color? unselectedItemColor;
-  final IconThemeData? selectedIconTheme;
-  final IconThemeData? unselectedIconTheme;
-  final double selectedFontSize;
-  final double unselectedFontSize;
-  final TextStyle? selectedLabelStyle;
-  final TextStyle? unselectedLabelStyle;
-  final bool? showSelectedLabels;
-  final bool? showUnselectedLabels;
-  final MouseCursor? mouseCursor;
-  final bool? enableFeedback;
 
   Widget createBar(int pageStackPeek, void Function(int) onPageSelected) {
     return BottomNavigationBar(
