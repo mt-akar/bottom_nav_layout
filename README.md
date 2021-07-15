@@ -96,18 +96,23 @@ savePageState: true, // Default is false
 The layout offers the option to lazily create the pages using the passed in page builders. When `lazyLoadPages` is set to true, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page;
  - Has a load animation.
  - Runs a heavy process that is not needed until the page is opened.
+ ```dart
+ lazyLoadPages: true, // Default is false
+ ```
 
 # Page Back Stack
-The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are a lot of page back stack behaviors such as reorder-to-front or replace-except-first behaviors, many of which are readily implemented. You can also implement your own.
+The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
 
-You also specify the `initialPage` from here.
+There are many useful page back stack behaviors implemented such as reorder-to-front and replace-except-first. You can also implement your own.
+
+You also specify the `initialPage` inside `PageStack`.
 
 ```dart
 // Default is ReorderToFrontPageStack for Android and NoPageStack for iOS.
 pageStack: ReorderToFrontPageStack(initialPage: 0),
 ```
 
-See [Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/docs/PageBackStack/README.md) for more information on page back stack.
+[Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/PageBackStack) for details.
 
 # In-Page Navigation Using GlobalKeys
 
@@ -134,9 +139,9 @@ keys: <GlobalKey<NavigatorState>?>[
 ```
 
 # Different Bottom Bars
-So far, we only worked on Material bottom nav bar. The layout also supports any bottom bar.
+So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
 
-Example usage of [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar):
+Example usage of `[flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)`:
 
 ```dart
 bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
