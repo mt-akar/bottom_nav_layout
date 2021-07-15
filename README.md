@@ -13,7 +13,6 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
  - Offers additional common features, all of which are optional.
    - Page state preservation
    - Lazy page loading
-   - Page backstack
    - Navigation management
  - Works with any bottom bar you wish. Use the material desing, grab one from pub.dev or use your own.
 
@@ -24,7 +23,6 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
  - [Page Back Stack](#page-back-stack)
  - [In-Page Navigation](#in-page-navigation)
  - [Different Bottom Bars](#different-bottom-bars)
- - [Bar Styling](#bar-styling)
  - [Improvements](#improvements)
  - [Community](#community)
 
@@ -36,13 +34,10 @@ dependencies:
   bottom_nav_layout: latest_version
 ```
 
-## Import
-```dart
-import 'package:bottom_nav_layout/bottom_nav_layout.dart';
-```
-
 ## Quick Start Example
 ```dart
+import 'package:bottom_nav_layout/bottom_nav_layout.dart';
+
 void main() => runApp(MaterialApp(
       home: BottomNavLayout(
         // The app's destinations
@@ -53,7 +48,7 @@ void main() => runApp(MaterialApp(
         ],
         bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
           currentIndex: currentIndex,
-          onTap: onTap,
+          onTap: (index) => onTap(index),
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
@@ -138,12 +133,7 @@ Example usage of [`flutter_snake_navigationbar`](https://pub.dev/packages/flutte
 ```dart
 bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
   currentIndex: currentIndex,
-  onTap: onTap,
-  // Or you can insert your code as following:
-  // onTap: (index) => {
-  //   // Your code
-  //   onTap(index);
-  // },
+  onTap: (index) => onTap(index),
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
@@ -153,12 +143,14 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
 ```
 
 # Improvements
- - I am planning to add more bottom bar designs, preferably from pub.dev.
- - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate that.
+ - I am planning to add page transition animations.
+ - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate it.
  - I am also considering to make a drawer_nav_layout package. If you are interested, let me know!
 
 # Community
 Any feedback is appreciated. 🚀🚀
+
+I love talking about code. Find me on discord at ViraL#2868
 
 If you have queries, feel free to create an [issue](https://github.com/m-azyoksul/bottom_nav_layout/issues).
 
