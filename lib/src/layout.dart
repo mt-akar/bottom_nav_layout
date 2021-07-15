@@ -18,13 +18,13 @@ class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     Key? key,
     required this.pages,
+    required this.bottomNavigationBar,
     this.savePageState = false,
     this.lazyLoadPages = false,
     this.pageStack,
     this.bottomBarWrapper,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
-    required this.bottomNavigationBar,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
         assert(
@@ -43,6 +43,9 @@ class BottomNavLayout extends StatefulWidget {
   /// [GlobalKey] passed as parameter can be used as a [Navigator] key.
   /// See: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart
   final List<PageBuilder> pages;
+
+  /// The bottom navbar of the layout.
+  final Widget Function(int, Function(int)) bottomNavigationBar;
 
   /// When false, the pages are reinitialized every time they are navigated to. (Material Design behavior)
   /// When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior)
@@ -64,13 +67,11 @@ class BottomNavLayout extends StatefulWidget {
   /// A function that returns a styling widget to wrap bottom nav bar with.
   final Widget Function(Widget)? bottomBarWrapper;
 
-  /// Similar to [Scaffold.extendBody].
+  /// Passed to [Scaffold.extendBody]. Default is false.
   final bool extendBody;
 
-  /// Similar to [Scaffold.resizeToAvoidBottomInset].
+  /// Passed to [Scaffold.resizeToAvoidBottomInset]. Default is true.
   final bool resizeToAvoidBottomInset;
-
-  final Widget Function(int, Function(int)) bottomNavigationBar;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();

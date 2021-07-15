@@ -68,17 +68,16 @@ Done. You have a complete, working application.
 [SliderPage code](https://github.com/m-azyoksul/bottom_nav_layout/blob/feature_bottom_bar_predicate/example/lib/pages/slider_page.dart)
 
 ## Parameters
-| Name | Description |
-| :--- | :--- |
-| `pages` | Top level destinations of your application. |
-| `savePageState` | When false, the pages are reinitialized every time they are navigated. (Material behavior). When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior) |
-| `lazyLoadPages` | Flag to enable/disable lazy loading pages. |
-| `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
-| `keys` | Keys that help the layout manage in-page navigation. |
-| `bottomBarWrapper` | Widget that wrap bottom bar. |
-| `extendBody` | Passed to [`Scaffold.extendBody`](https://api.flutter.dev/flutter/material/Scaffold/extendBody.html). |
-| `resizeToAvoidBottomInset` | Passed to [`Scaffold.resizeToAvoidBottomInset`](https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html). |
-| `navBarDelegate` | Properties passed into it such as `items`, `onTap`, `elevation`, etc. are used to construct the underlying bottom bar. |
+| Name | Description | Default |
+| :--- | :--- | :--- |
+| `pages` | The app's destinations. | N/A. |
+| `bottomNavigationBar` | The bottom navbar of the layout. | N/A. |
+| `savePageState` | When false, the pages are reinitialized every time they are navigated. (Material behavior). When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior) | false |
+| `lazyLoadPages` | When false, pages are created in the beginning. When true, pages are created when they are navigated for the first time. | false |
+| `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. | [ReorderToFrontPageStack] for Android and [NoPageStack] for iOS |
+| `bottomBarWrapper` | Widget that wrap bottom bar. | (bar) => bar |
+| `extendBody` | Passed to [`Scaffold.extendBody`](https://api.flutter.dev/flutter/material/Scaffold/extendBody.html). | false |
+| `resizeToAvoidBottomInset` | Passed to [`Scaffold.resizeToAvoidBottomInset`](https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html). | true |
 
 ## Inner Widget Tree
 ![inner_widget_tree](https://user-images.githubusercontent.com/32205084/125547934-389fa034-02dd-4398-9a96-5cc96fd1b762.jpg)

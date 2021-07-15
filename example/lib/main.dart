@@ -49,10 +49,10 @@ class AllParametersExample extends StatelessWidget {
         child: bottomBar,
       ),
 
-      // Similar to [Scaffold.extendBody]. Default is false.
+      // Passed to [Scaffold.extendBody]. Default is false.
       extendBody: false,
 
-      // Similar to [Scaffold.resizeToAvoidBottomInset]. Default is true.
+      // Passed to [Scaffold.resizeToAvoidBottomInset]. Default is true.
       resizeToAvoidBottomInset: true,
 
       //pageStack: NoPageStack(initialPage: 0),
