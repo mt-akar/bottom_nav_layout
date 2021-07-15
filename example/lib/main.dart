@@ -18,47 +18,25 @@ var navigationExample = NavigationExample();
 /// Use different example code here
 void main() => runApp(MaterialApp(home: allParametersExample));
 
-/// Example that explain parameters.
+/// README: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/README.md#parameters
 class AllParametersExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavLayout(
-      // The app's destinations
       pages: [
         (_) => Center(child: Text("Welcome to bottom_nav_layout")),
         (_) => SliderPage(),
         (_) => Center(
             child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
-
-      // Default is false.
       savePageState: false,
-
-      // Default is false.
       lazyLoadPages: false,
-
-      // Default is ReorderToFrontPageStack for Android and NoPageStack for iOS.
+      // StandardPageStack, ReorderToFrontExceptFirstPageStack, NoPageStack, FirstAndLastPageStack
       pageStack: ReorderToFrontPageStack(initialPage: 0),
-      // pageStack: StandardPageStack(initialPage: 0),
-      // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
-      // pageStack: NoPageStack(initialPage: 0),
-      // pageStack: FirstAndLastPageStack(initialPage: 0),
-
-      // Passed to [Scaffold.extendBody]. Default is false.
       extendBody: false,
-
-      // Passed to [Scaffold.resizeToAvoidBottomInset]. Default is true.
       resizeToAvoidBottomInset: true,
-
-      //pageStack: NoPageStack(initialPage: 0),
       bottomNavigationBar: (currentIndex, onTap) =>
           _buildBottomNavigationBar(currentIndex, onTap),
-      // _buildConvexAppBar(currentIndex, onTap)
-      // _buildSnakeNavigationBar(currentIndex, onTap)
-      // _buildSalomonBottomBar(currentIndex, onTap)
-      // _buildBottomBarWithSheet(currentIndex, onTap)
-      // _buildWaterDropNavBar(currentIndex, onTap)
-      // _buildSlidingClippedNavBar(currentIndex, onTap)
     );
   }
 
