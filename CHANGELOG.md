@@ -14,10 +14,6 @@
  - State management inside library is improved.
  - Documentation updated.
 
-## 2.1.1
- - Jul 14, 2021
- - Example updated.
-
 ## 2.1.0
  - Jul 13, 2021
  - `ReplacePageStack` renamed to `NoPageStack` (breaking)
