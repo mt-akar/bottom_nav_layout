@@ -19,10 +19,12 @@ class NavigationExample extends StatelessWidget {
               initialPage: StackablePage(0, "Profile"),
             ), // NavigatorWithoutRouteNames
       ],
-      navBarDelegate: BottomNavigationBarDelegate(
+      bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.dashboard), label: 'Dashboard'),
+          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),
