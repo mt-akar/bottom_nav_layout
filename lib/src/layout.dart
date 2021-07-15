@@ -77,7 +77,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   ///
   /// If pages are directly passed is, all pages will be present in this list at all times.
   /// If pageBuilders are passed in, the corresponding entry in the list will contain null until that page is navigated for the first time.
-  final List<Widget?> pages = List.empty(growable: true);
+  late List<Widget?> pages;
 
   /// [BottomNavLayout]'s page backstack. The main focus of this package.
   ///
@@ -96,25 +96,18 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // Set the pageStack. If not passed in, initialize with default.
     pageStack = widget.pageStack ?? ReorderToFrontPageStack(initialPage: 0);
 
-    // Initialize keys.
     setState(() {
+      // Initialize keys.
       widget.pages.forEach((_) {
         keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
-        //keys.add(GlobalKey<NavigatorState>());
       });
-    });
-    //keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
 
-    if (!widget.lazyLoadPages)
-      widget.pages.asMap().entries.forEach((element) {
-        pages.add(element.value.call(keys[element.key]));
-      });
-    //pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
-    else
-      widget.pages.forEach((element) {
-        pages.add(null);
-      });
-    //pages = widget.pages.asMap().entries.map((entry) => null).toList();
+      // Initialize pages
+      if (!widget.lazyLoadPages)
+        pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
+      else
+        pages = widget.pages.asMap().entries.map((entry) => null).toList();
+    });
 
     super.initState();
   }
