@@ -14,7 +14,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
    - Page state preservation
    - Lazy page loading
    - Page backstack
-   - Back button navigation management
+   - Navigation management
  - Works with any bottom bar you wish. Use the material desing, grab one from pub.dev or use your own.
 
 # Content
