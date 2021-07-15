@@ -3,17 +3,19 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/// This uses Flutter's standard navigation widget.
-/// You can achieve navigation by pushing and popping widgets without using routes.
+/// [NavigatorWithoutRouteNames] is a quick way to create a navigator.
+/// It uses Flutter's standard navigation widget.
+/// It doesn't use route names. You can achieve full navigation
+/// by pushing and popping widgets without using routes.
 ///
 /// Use the following calls inside your page:
-/// Navigator.push(context, MaterialPageRoute(builder: (_) => MyPage()));
+/// Navigator.push(context, MaterialPageRoute(builder: (_) => NextPage()));
 /// Navigator.pop(context);
+/// Navigator.popUntil(context, (route) => route.isFirst);
 /// var canPop = Navigator.canPop(context);
 /// var popped = Navigator.maybePop(context);
-/// Navigator.popUntil(context, (route) => route.isFirst);
-class NamelessNavigator extends StatelessWidget {
-  NamelessNavigator({required this.navKey, required this.initialPage});
+class NavigatorWithoutRouteNames extends StatelessWidget {
+  NavigatorWithoutRouteNames({required this.navKey, required this.initialPage});
 
   final GlobalKey<NavigatorState> navKey;
   final Widget initialPage;
@@ -29,7 +31,10 @@ class NamelessNavigator extends StatelessWidget {
   }
 }
 
+/// This class contains extension methods.
 class NavExtensions {
+
+  /// Simply push a widget.
   static void push(BuildContext context, Widget page) {
     var route;
 
