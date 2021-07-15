@@ -4,11 +4,13 @@ import 'package:flutter/material.dart';
 class AnimatedIndexedStack extends StatefulWidget {
   final int index;
   final List<Widget> children;
+  final Widget Function(AnimationController, Widget) pageTransitionAnimationBuilder;
 
   const AnimatedIndexedStack({
     Key? key,
     required this.index,
     required this.children,
+    required this.pageTransitionAnimationBuilder,
   }) : super(key: key);
 
   @override
@@ -17,7 +19,6 @@ class AnimatedIndexedStack extends StatefulWidget {
 
 class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  late Animation<double> _animation;
   int _index = 0;
 
   @override
@@ -25,12 +26,6 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
     _controller = AnimationController(
       duration: Duration(milliseconds: 5000),
       vsync: this,
-    );
-    _animation = Tween(begin: 0.0, end: 1.0).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.ease,
-      ),
     );
 
     _index = widget.index;
@@ -57,18 +52,9 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _animation,
-      builder: (context, child) {
-        return Opacity(
-          opacity: _controller.value,
-          child: Transform.scale(
-            scale: 1.015 - (_controller.value * 0.015),
-            child: child,
-          ),
-        );
-      },
-      child: IndexedStack(
+    return widget.pageTransitionAnimationBuilder(
+      _controller,
+      IndexedStack(
         index: _index,
         children: widget.children,
       ),
