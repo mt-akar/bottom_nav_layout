@@ -94,9 +94,15 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
 
     if (!widget.lazyLoadPages)
-      pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
+      widget.pages.asMap().entries.forEach((element) {
+        pages.add(element.value.call(keys[element.key]));
+      });
+    //pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
     else
-      pages = widget.pages.asMap().entries.map((entry) => null).toList();
+      widget.pages.forEach((element) {
+        pages.add(null);
+      });
+    //pages = widget.pages.asMap().entries.map((entry) => null).toList();
 
     super.initState();
   }
