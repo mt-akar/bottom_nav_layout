@@ -92,6 +92,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// Navigation keys used for in-page navigation.
   late List<GlobalKey<NavigatorState>> keys;
 
+  final valueKeys = List<int>.generate(10, (i) => i + 1).map((e) => ValueKey<int>(e)).toList();
+
   /// Initialize [pageStack] and [pages]
   @override
   void initState() {
@@ -171,8 +173,6 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[currentIndex] = widget.pages[currentIndex].call(keys[currentIndex]);
     }
 
-    if (widget.animatedSwitcher == null) var animationWrapper = widget.animatedSwitcher ?? (w) => w;
-
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
@@ -190,7 +190,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
                   )
                 : widget.animatedSwitcher!.call(IndexedStack(
-                    key: ValueKey<int>(currentIndex),
+                    key: valueKeys[currentIndex],
                     index: currentIndex,
                     // If the page is not initialized, "not show" an invisible widget instead.
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
