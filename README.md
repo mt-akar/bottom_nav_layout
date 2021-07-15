@@ -75,7 +75,6 @@ Done. You have a complete, working application.
 | `savePageState` | When false, the pages are reinitialized every time they are navigated. (Material behavior). When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior) | false |
 | `lazyLoadPages` | When false, pages are created in the beginning. When true, pages are created when they are navigated for the first time. | false |
 | `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. | ReorderToFrontPageStack for Android, NoPageStack for iOS |
-| `bottomBarWrapper` | Widget that wrap bottom bar. | (bar) => bar |
 | `extendBody` | Passed to [`Scaffold.extendBody`](https://api.flutter.dev/flutter/material/Scaffold/extendBody.html). | false |
 | `resizeToAvoidBottomInset` | Passed to [`Scaffold.resizeToAvoidBottomInset`](https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html). | true |
 
@@ -151,23 +150,6 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
   ],
 ),
-```
-
-
-# Bar Styling
-### Bar Wrapper
-Do you not like how your bottom bar looks? You can style it by wrapping it inside any widget.
-```dart
-bottomBarWrapper: (bottomBar) => Padding(
-  padding: EdgeInsets.fromLTRB(16, 0, 16, 0),
-  child: bottomBar,
-),
-```
-
-### Extend Body
-You can have the page extend behind the bottom bar.
-```dart
-extendBody: true,
 ```
 
 # Improvements
