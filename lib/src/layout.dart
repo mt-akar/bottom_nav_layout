@@ -28,7 +28,7 @@ class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     Key? key,
     required this.pages,
-    this.pageLazyLoading = false,
+    this.lazyLoadPages = false,
     this.savePageState = true,
     this.pageStack,
     this.bottomBarWrapper,
@@ -42,7 +42,7 @@ class BottomNavLayout extends StatefulWidget {
 
   final List<PageBuilder> pages;
 
-  final bool pageLazyLoading;
+  final bool lazyLoadPages;
 
   /// Whether the page states are saved or not.
   final bool savePageState;
@@ -93,7 +93,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // Create keys
     keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
 
-    if (!widget.pageLazyLoading)
+    if (!widget.lazyLoadPages)
       pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
     else
       pages = widget.pages.asMap().entries.map((entry) => null).toList();
@@ -151,14 +151,22 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If the current page is null, then it needs to be built from the [widget.pageBuilders] before being shown.
   @override
   Widget build(BuildContext context) {
+    var currentIndex = pageStack.peek();
+
     // If the current page hasn't been initialized.
-    if (pages[pageStack.peek()] == null) {
+    if (pages[currentIndex] == null) {
       // Create the page from the builder and put it into page list.
-      pages[pageStack.peek()] = widget.pages[pageStack.peek()].call(keys[pageStack.peek()]);
+      var key = keys[currentIndex];
+      var pageBuilder = widget.pages[currentIndex];
+      var page = pageBuilder(key);
+      pages[currentIndex] = page;
+      int y = 0;
+
+      //pages[currentIndex] = widget.pages[currentIndex].call(keys[currentIndex]);
     }
 
     // Create the bottom bar
-    var bottomBar = widget.navBarDelegate.createBar(pageStack.peek(), onPageSelected);
+    var bottomBar = widget.navBarDelegate.createBar(currentIndex, onPageSelected);
 
     // Return the view
     return WillPopScope(
@@ -169,9 +177,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         // Depending on if the user wants to save the page states
         body: !widget.savePageState
             // Do not save page states
-            ? pages[pageStack.peek()]
+            ? pages[currentIndex]
             : IndexedStack(
-                index: pageStack.peek(),
+                index: currentIndex,
                 // If the page is not initialized, "not show" an invisible widget instead.
                 children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
               ),

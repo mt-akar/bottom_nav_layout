@@ -9,7 +9,7 @@ import 'package:flutter/widgets.dart';
 /// which is what [NavBarDelegate.itemLength] for.
 abstract class NavBarDelegate {
   /// Creates the corresponding bar object, using the passed in parameters.
-  Widget createBar(int pageStackPeek, void Function(int) onPageSelected);
+  Widget createBar(int currentIndex, void Function(int) onPageSelected);
 
   /// Is used to validate the number of items in the layout.
   int itemLength();
