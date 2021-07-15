@@ -6,6 +6,7 @@ class TwoWayAnimatedIndexedStack extends StatefulWidget {
   final List<Widget> children;
   final Widget Function(AnimationController, Widget) animationBuilder;
   final int animationDuration;
+  final AnimationDirection animationDirection;
 
   const TwoWayAnimatedIndexedStack({
     Key? key,
@@ -13,6 +14,7 @@ class TwoWayAnimatedIndexedStack extends StatefulWidget {
     required this.children,
     required this.animationBuilder,
     required this.animationDuration,
+    required this.animationDirection,
   }) : super(key: key);
 
   @override
@@ -40,12 +42,19 @@ class _TwoWayAnimatedIndexedStackState extends State<TwoWayAnimatedIndexedStack>
     super.didUpdateWidget(oldWidget);
     // If the index has changed
     if (widget.index != _index) {
-      // Play the animation backwards
-      _controller.reverse().then((_) {
+      if (widget.animationDirection == AnimationDirection.inAndOut) {
+        _controller.reverse().then((_) {
+          setState(() => _index = widget.index);
+          _controller.forward();
+        });
+      } else if (widget.animationDirection == AnimationDirection.in_) {
         setState(() => _index = widget.index);
-        // Then forwards
         _controller.forward();
-      });
+      } else if (widget.animationDirection == AnimationDirection.out) {
+        _controller.reverse().then((_) {
+          setState(() => _index = widget.index);
+        });
+      }
     }
   }
 
@@ -66,3 +75,5 @@ class _TwoWayAnimatedIndexedStackState extends State<TwoWayAnimatedIndexedStack>
     );
   }
 }
+
+enum AnimationDirection { out, in_, inAndOut }
