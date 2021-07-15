@@ -11,8 +11,8 @@
  - Parameter defaults are changed to make the user more aware of their design choices.
    - `savePageState` default is change to false.
    - `pageStack` default is change to `NoPageStack` for iOS apps.
- - State management inside library is improved.
- - Documentation updated.
+ - State management inside the library is improved.
+ - Comprehensive documentation added.
 
 ## 2.1.0
  - Jul 13, 2021

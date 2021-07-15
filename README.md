@@ -167,136 +167,22 @@ keys: <GlobalKey<NavigatorState>?>[
 ```
 
 # Different Bottom Bars
-So far, we only worked on Material design bottom nav bar. The layout also supports other bar designs. To use the design you want, pass the corresponding `navBarDelegate` to the layout.
+So far, we only worked on Material bottom nav bar. The layout also supports any bottom bar.
 
-## 1. Material
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [BottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html) | `BottomNavigationBarDelegate` | Yes |
-
-## 2. convex_bottom_bar
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar) | `ConvexAppBarDelegate` | No |
-
-Example:
+Example usage of [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar):
 
 ```dart
- navBarDelegate: ConvexAppBarDelegate(
-   items: [
-     TabItem(icon: Icon(Icons.home), title: 'Home'),
-     TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
-     TabItem(icon: Icon(Icons.search), title: 'Search'),
-   ],
- ),
-```
-
-## 3. flutter_snake_navigationbar
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar) | `SnakeNavigationBarDelegate` | Yes |
-
-Example:
-
-```dart
-navBarDelegate: SnakeNavigationBarDelegate(
+bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
+  currentIndex: currentIndex,
+  onTap: onTap,
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
   ],
-  height: 56,
 ),
 ```
 
-## 4. salomon_bottom_bar
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar) | `SalomonBottomBarDelegate` | Yes |
-
-Example:
-
-```dart
-navBarDelegate: SalomonBottomBarDelegate(
-  items: [
-    SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-    SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
-    SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
-  ],
-),
-```
-
-## 5. bottom_bar_with_sheet
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet) | `BottomBarWithSheetDelegate` | No |
-
-Example:
-
-```dart
-navBarDelegate: BottomBarWithSheetDelegate(
-  items: [
-    BottomBarWithSheetItem(icon: Icons.home),
-    BottomBarWithSheetItem(icon: Icons.linear_scale),
-    BottomBarWithSheetItem(icon: Icons.linear_scale),
-    BottomBarWithSheetItem(icon: Icons.search),
-  ],
-  sheetChild: Center(child: Text("Welcome to sheetChild")),
-),
-```
-
-## 6. water_drop_nav_bar
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) | `WaterDropNavBarDelegate` | Yes |
-
-Example:
-
-```dart
-navBarDelegate: WaterDropNavBarDelegate(
-  barItems: [
-    BarItem(filledIcon: Icons.home_filled, outlinedIcon: Icons.home_outlined),
-    BarItem(filledIcon: Icons.linear_scale, outlinedIcon: Icons.linear_scale_outlined),
-    BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
-  ],
-),
-```
-
-## 7. sliding_clipped_nav_bar
-
-| Documentation | NavBarDelegate | Has `currentIndex` |
-| :------------ | :------------- | :------------- |
-| [sliding_clipped_nav_bar](https://pub.dev/packages/sliding_clipped_nav_bar) | `SlidingClippedNavBarDelegate` | Yes |
-
-Example:
-
-```dart
-navBarDelegate: SlidingClippedNavBarDelegate(
-  barItems: [
-    BarItem(icon: Icons.home, title: 'Home'),
-    BarItem(icon: Icons.linear_scale, title: 'Slider'),
-    BarItem(icon: Icons.search, title: 'Search'),
-  ],
-  activeColor: Colors.blue,
-),
-```
-
-## Other Bar Designs
-You can use any bottom bar design from pub.dev (even if the package is not included here) or create your own. To do this:
-
- - Extend `NavBarDelegate` class .
- - Pass an instance of it to `BottomNavLayout.navBarDelegate`.
-
-Incompatible Packages:
-
- - [persistent_bottom_nav_bar](https://pub.dev/packages/persistent_bottom_nav_bar): Already a layout package
- - [animated_bottom_navigation_bar](https://pub.dev/packages/animated_bottom_navigation_bar): Uses a parent `Scaffold`'s properties to render.
 
 # Bar Styling
 ### Bar Wrapper

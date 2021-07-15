@@ -19,8 +19,7 @@ bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
   onTap: onTap,
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.linear_scale), label: 'Slider'),
+    BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
   ],
 ),
@@ -52,8 +51,7 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
   onTap: onTap,
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(
-        icon: Icon(Icons.linear_scale), label: 'Slider'),
+    BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
   ],
 ),
@@ -69,8 +67,7 @@ bottomNavigationBar: (currentIndex, onTap) => SalomonBottomBar(
   onTap: onTap,
   items: [
     SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-    SalomonBottomBarItem(
-        icon: Icon(Icons.linear_scale), title: Text('Slider')),
+    SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
     SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
   ],
 ),
@@ -90,8 +87,7 @@ bottomNavigationBar: (currentIndex, onTap) => BottomBarWithSheet(
     BottomBarWithSheetItem(icon: Icons.search, label: 'Search'),
   ],
   sheetChild: Center(child: Text("Welcome to sheetChild")),
-  bottomBarTheme:
-      BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
+  bottomBarTheme: BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
 ),
 ```
 
