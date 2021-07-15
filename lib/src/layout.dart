@@ -88,7 +88,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   late final PageStack pageStack;
 
   /// Navigation keys used for in-page navigation.
-  late List<GlobalKey<NavigatorState>> keys;
+  late final List<GlobalKey<NavigatorState>> keys;
 
   /// Initialize [pageStack] and [pages]
   @override
@@ -97,7 +97,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     pageStack = widget.pageStack ?? ReorderToFrontPageStack(initialPage: 0);
 
     // Initialize keys.
-    keys = pages.map((e) => GlobalKey<NavigatorState>()).toList();
+    keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
 
     if (!widget.lazyLoadPages)
       widget.pages.asMap().entries.forEach((element) {
