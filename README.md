@@ -115,6 +115,7 @@ pageStack: ReorderToFrontPageStack(initialPage: 0),
 [Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/PageBackStack) for details.
 
 # In-Page Navigation
+The layout can manage [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/32205084/125260520-1024f380-e309-11eb-8c2d-4b10fc3dbc41.png">
@@ -122,21 +123,13 @@ pageStack: ReorderToFrontPageStack(initialPage: 0),
   <i>Figure: Flat Navigation</i>
 </p>
 
- 1. Allows the layout to manage a [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
- 2. Let's us go back to the root route, when the bottom bar item on the current index is selected again.
+Benefits
+ 1. Android back button navigates both in-page and among pages.
+ 2. Bottom bar pops all in-page stack when the current bar item is reselected.
 
-To do this, the page should have a `Navigator` widget and the same instance of the key should be used as the `Navigator`'s key in the corresponding page.
+To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
-Example code to be added here...
-
-To use keys, pass all the keys you passed to the pages in the same order.
-```dart
-keys: <GlobalKey<NavigatorState>?>[
-  homePageKey,
-  null, // If a page doesn't use a key, pass null so that layout knows the order
-  placePageKey,
-],
-```
+[In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/InPageNavigation) for more information.
 
 # Different Bottom Bars
 So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
@@ -147,6 +140,11 @@ Example usage of [`flutter_snake_navigationbar`](https://pub.dev/packages/flutte
 bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
   currentIndex: currentIndex,
   onTap: onTap,
+  // Or you can insert your code as following:
+  // onTap: (index) => {
+  //   // Your code
+  //   onTap(index);
+  // },
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
     BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
