@@ -14,7 +14,7 @@ Warning: Some of the packages' index constructor parameter acts as an `initialIn
 Has `currentIndex`: Yes
 
 ```dart
-BottomNavigationBar(
+bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
   currentIndex: currentIndex,
   onTap: onTap,
   items: [
@@ -31,7 +31,7 @@ BottomNavigationBar(
 Has `currentIndex`: No
 
 ```dart
-ConvexAppBar(
+bottomNavigationBar: (currentIndex, onTap) => ConvexAppBar(
   initialActiveIndex: currentIndex,
   onTap: onTap,
   items: [
@@ -47,7 +47,7 @@ ConvexAppBar(
 Has `currentIndex`: Yes
 
 ```dart
-SnakeNavigationBar.color(
+bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
   currentIndex: currentIndex,
   onTap: onTap,
   items: [
@@ -64,7 +64,7 @@ SnakeNavigationBar.color(
 Has `currentIndex`: Yes
 
 ```dart
-SalomonBottomBar(
+bottomNavigationBar: (currentIndex, onTap) => SalomonBottomBar(
   currentIndex: currentIndex,
   onTap: onTap,
   items: [
@@ -81,7 +81,7 @@ SalomonBottomBar(
 Has `currentIndex`: No
 
 ```dart
-BottomBarWithSheet(
+bottomNavigationBar: (currentIndex, onTap) => BottomBarWithSheet(
   selectedIndex: currentIndex,
   onSelectItem: onTap,
   items: [
@@ -100,7 +100,7 @@ BottomBarWithSheet(
 Has `currentIndex`: Yes
 
 ```dart
-WaterDropNavBar(
+bottomNavigationBar: (currentIndex, onTap) => WaterDropNavBar(
   selectedIndex: currentIndex,
   onButtonPressed: onTap,
   barItems: [
@@ -116,7 +116,7 @@ WaterDropNavBar(
 Has `currentIndex`: Yes
 
 ```dart
-SlidingClippedNavBar(
+bottomNavigationBar: (currentIndex, onTap) => SlidingClippedNavBar(
   selectedIndex: currentIndex,
   onButtonPressed: onTap,
   barItems: [
