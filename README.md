@@ -45,15 +45,15 @@ import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 ```dart
 void main() => runApp(MaterialApp(
       home: BottomNavLayout(
-        // The app's top level destinations
+        // The app's destinations
         pages: [
-          Center(child: Text("Welcome to bottom_nav_layout")),
-          SliderPage(),
-          Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
+          (_) => Center(child: Text("Welcome to bottom_nav_layout")),
+          (_) => SliderPage(),
+          (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
         ],
-        
-        // Delegates its properties to a BottomNavigationBar.
-        navBarDelegate: BottomNavigationBarDelegate(
+        bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: onTap,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
@@ -66,20 +66,13 @@ void main() => runApp(MaterialApp(
 Done. You have a complete, working application.
 
 [SliderPage code](https://github.com/m-azyoksul/bottom_nav_layout/blob/feature_bottom_bar_predicate/example/lib/pages/slider_page.dart)
- 
-<details>
-<summary></summary>
-<p>
-
-</p>
-</details>
 
 ## Parameters
 | Name | Description |
 | :--- | :--- |
 | `pages` | Top level destinations of your application. |
-| `pageBuilders` | Also top level destinations but can be lazily loaded. |
-| `savePageState` | Flag to enable/disable saving page state. |
+| `savePageState` | When false, the pages are reinitialized every time they are navigated. (Material behavior). When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior) |
+| `lazyLoadPages` | Flag to enable/disable lazy loading pages. |
 | `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. |
 | `keys` | Keys that help the layout manage in-page navigation. |
 | `bottomBarWrapper` | Widget that wrap bottom bar. |
