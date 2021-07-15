@@ -15,6 +15,8 @@ import 'package:flutter/widgets.dart';
 
 import 'nav_bar_delegate.dart';
 
+typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);
+
 /// [BottomNavLayout] is a quick and powerful layout tool.
 /// You can create an app with fluent bottom bar behavior in less than 15 lines.
 /// It coordinates all behavior regarding bottom nav bar and app's top level destinations.
@@ -34,11 +36,11 @@ class BottomNavLayout extends StatefulWidget {
     this.resizeToAvoidBottomInset = true,
     required this.navBarDelegate,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
-        assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottomNavBarItems as pages"),
-        assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the max page index or be negative"),
+        assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"),
+        assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
-  final List<Widget Function(GlobalKey<NavigatorState>)> pages;
+  final List<PageBuilder> pages;
 
   final bool pageLazyLoading;
 

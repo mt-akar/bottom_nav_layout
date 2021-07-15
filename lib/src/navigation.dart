@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 /// by pushing and popping widgets without using routes.
 ///
 /// Use the following calls inside your page:
-/// Navigator.push(context, MaterialPageRoute(builder: (_) => NextPage()));
+/// Navigator.push(context, MaterialPageRoute(builder: (_) => PageToPush()));
 /// Navigator.pop(context);
 /// Navigator.popUntil(context, (route) => route.isFirst);
 /// var canPop = Navigator.canPop(context);
