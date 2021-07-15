@@ -24,10 +24,13 @@ class BottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
+    this.animatedSwitcher,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
+
+  final Widget Function(Widget)? animatedSwitcher;
 
   /// The app's destinations.
   /// Each destination corresponds to one bottom navbar item.
@@ -168,6 +171,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[currentIndex] = widget.pages[currentIndex].call(keys[currentIndex]);
     }
 
+    var animationWrapper = widget.animatedSwitcher ?? (w) => w;
+
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
@@ -178,10 +183,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         body: !widget.savePageState
             // Do not save page states
             ? pages[currentIndex]
-            : AnimatedSwitcher(
-                transitionBuilder: AnimatedSwitcher.defaultTransitionBuilder,
-                duration: const Duration(milliseconds: 500),
-                child: IndexedStack(
+            : animationWrapper(
+                IndexedStack(
                   key: ValueKey<int>(currentIndex), // ad
                   index: currentIndex,
                   // If the page is not initialized, "not show" an invisible widget instead.
