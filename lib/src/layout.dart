@@ -22,7 +22,6 @@ class BottomNavLayout extends StatefulWidget {
     this.savePageState = false,
     this.lazyLoadPages = false,
     this.pageStack,
-    this.bottomBarWrapper,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
@@ -63,9 +62,6 @@ class BottomNavLayout extends StatefulWidget {
   /// Default is [ReorderToFrontPageStack] for Android and [NoPageStack] for iOS.
   /// There are other stack implementations. You can also implement your own.
   final PageStack? pageStack;
-
-  /// A function that returns a styling widget to wrap bottom nav bar with.
-  final Widget Function(Widget)? bottomBarWrapper;
 
   /// Passed to [Scaffold.extendBody]. Default is false.
   final bool extendBody;
@@ -179,9 +175,6 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[currentIndex] = widget.pages[currentIndex].call(keys[currentIndex]);
     }
 
-    // Create the bottom bar
-    var bottomBar = widget.bottomNavigationBar(currentIndex, onPageSelected);
-
     // Return the view
     return WillPopScope(
       onWillPop: onWillPop,
@@ -199,7 +192,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                     pages.map((page) => page ?? SizedBox.shrink()).toList(),
               ),
         bottomNavigationBar:
-            widget.bottomBarWrapper?.call(bottomBar) ?? bottomBar,
+            widget.bottomNavigationBar(currentIndex, onPageSelected),
       ),
     );
   }

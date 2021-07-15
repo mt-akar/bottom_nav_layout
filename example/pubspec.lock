@@ -33,11 +33,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: feature_bottom_bar_predicate
-      resolved-ref: "9b05c817df9fc375950d48b3f79ed18b36034517"
+      ref: main
+      resolved-ref: "98d5b1ba24618fcd6ae4e3dc9b2e8159af1d8e33"
       url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
     source: git
-    version: "2.1.1"
+    version: "3.0.0"
   characters:
     dependency: transitive
     description:

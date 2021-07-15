@@ -27,7 +27,8 @@ class AllParametersExample extends StatelessWidget {
       pages: [
         (_) => Center(child: Text("Welcome to bottom_nav_layout")),
         (_) => SliderPage(),
-        (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+        (_) => Center(
+            child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
 
       // Default is false.
@@ -43,12 +44,6 @@ class AllParametersExample extends StatelessWidget {
       // pageStack: NoPageStack(initialPage: 0),
       // pageStack: FirstAndLastPageStack(initialPage: 0),
 
-      // Widget that styles the bottom bar. Default is null.
-      bottomBarWrapper: (bottomBar) => Padding(
-        padding: EdgeInsets.zero,
-        child: bottomBar,
-      ),
-
       // Passed to [Scaffold.extendBody]. Default is false.
       extendBody: false,
 
@@ -56,7 +51,8 @@ class AllParametersExample extends StatelessWidget {
       resizeToAvoidBottomInset: true,
 
       //pageStack: NoPageStack(initialPage: 0),
-      bottomNavigationBar: (currentIndex, onTap) => _buildBottomNavigationBar(currentIndex, onTap),
+      bottomNavigationBar: (currentIndex, onTap) =>
+          _buildBottomNavigationBar(currentIndex, onTap),
       // _buildConvexAppBar(currentIndex, onTap)
       // _buildSnakeNavigationBar(currentIndex, onTap)
       // _buildSalomonBottomBar(currentIndex, onTap)
@@ -73,17 +69,20 @@ class AllParametersExample extends StatelessWidget {
   ///   // Your code
   ///   onTap(index);
   /// },
-  Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) => BottomNavigationBar(
+  Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) =>
+      BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
 
-  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) => ConvexAppBar(
+  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) =>
+      ConvexAppBar(
         initialActiveIndex: currentIndex,
         onTap: onTap,
         items: [
@@ -93,27 +92,32 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
-  Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) => SnakeNavigationBar.color(
+  Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) =>
+      SnakeNavigationBar.color(
         currentIndex: currentIndex,
         onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
 
-  Widget _buildSalomonBottomBar(int currentIndex, Function(int) onTap) => SalomonBottomBar(
+  Widget _buildSalomonBottomBar(int currentIndex, Function(int) onTap) =>
+      SalomonBottomBar(
         currentIndex: currentIndex,
         onTap: onTap,
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
+          SalomonBottomBarItem(
+              icon: Icon(Icons.linear_scale), title: Text('Slider')),
           SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
         ],
       );
 
-  Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) => BottomBarWithSheet(
+  Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) =>
+      BottomBarWithSheet(
         selectedIndex: currentIndex,
         onSelectItem: onTap,
         items: [
@@ -122,10 +126,12 @@ class AllParametersExample extends StatelessWidget {
           BottomBarWithSheetItem(icon: Icons.search, label: 'Search'),
         ],
         sheetChild: Center(child: Text("Welcome to sheetChild")),
-        bottomBarTheme: BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
+        bottomBarTheme:
+            BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
       );
 
-  Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) => WD.WaterDropNavBar(
+  Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) =>
+      WD.WaterDropNavBar(
         selectedIndex: currentIndex,
         onButtonPressed: onTap,
         barItems: [
@@ -135,7 +141,8 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
-  Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) => SC.SlidingClippedNavBar(
+  Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) =>
+      SC.SlidingClippedNavBar(
         selectedIndex: currentIndex,
         onButtonPressed: onTap,
         barItems: [
