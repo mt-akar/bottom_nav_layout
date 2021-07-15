@@ -9,7 +9,8 @@ class SliderPage extends StatefulWidget {
   _SliderPageState createState() => _SliderPageState();
 }
 
-class _SliderPageState extends State<SliderPage> with SingleTickerProviderStateMixin {
+class _SliderPageState extends State<SliderPage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
 
   @override
@@ -40,7 +41,8 @@ class _SliderPageState extends State<SliderPage> with SingleTickerProviderStateM
             animation: _animationController,
             builder: (_, __) => Slider(
               value: _animationController.value,
-              onChanged: (double d) => setState(() => _animationController.value = d),
+              onChanged: (double d) =>
+                  setState(() => _animationController.value = d),
             ),
           ),
         ),

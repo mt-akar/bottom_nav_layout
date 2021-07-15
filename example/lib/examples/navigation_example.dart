@@ -24,7 +24,8 @@ class NavigationExample extends StatelessWidget {
         onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),
@@ -128,7 +129,10 @@ class StackablePage extends StatelessWidget {
             Text("${id < 5 ? "" : "You have come very far. "}Id: $id"),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => StackablePage(id + 1, name)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => StackablePage(id + 1, name)));
 
                 // You can also call
                 // NavExtensions.push(context, StackablePage(id + 1, name));

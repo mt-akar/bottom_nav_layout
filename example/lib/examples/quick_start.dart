@@ -8,16 +8,18 @@ class QuickStartApp extends StatelessWidget {
     return BottomNavLayout(
       // The app's destinations
       pages: [
-            (_) => Center(child: Text("Welcome to bottom_nav_layout")),
-            (_) => SliderPage(),
-            (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+        (_) => Center(child: Text("Welcome to bottom_nav_layout")),
+        (_) => SliderPage(),
+        (_) => Center(
+            child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
       bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),

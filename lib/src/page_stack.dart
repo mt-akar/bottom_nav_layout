@@ -39,11 +39,13 @@ abstract class PageStack extends ListQueue<int> {
 /// push(0); Stack: 0->1->2->0.
 /// pop();   Stack: 0->1->2.
 class StandardPageStack extends PageStack {
-  StandardPageStack({required int initialPage}) : super(initialPage: initialPage);
+  StandardPageStack({required int initialPage})
+      : super(initialPage: initialPage);
 
   void push(int pageIndex) {
     // Check if the last index is pushed again
-    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last index.");
+    if (pageIndex == last)
+      throw Exception("pageIndex pushed cannot be the same as the last index.");
 
     // Add index
     addLast(pageIndex);
@@ -67,11 +69,13 @@ class StandardPageStack extends PageStack {
 /// push(0); Stack: 2->0.
 /// pop();   Stack: 2.
 class ReorderToFrontPageStack extends PageStack {
-  ReorderToFrontPageStack({required int initialPage}) : super(initialPage: initialPage);
+  ReorderToFrontPageStack({required int initialPage})
+      : super(initialPage: initialPage);
 
   void push(int pageIndex) {
     // Check if the last index is pushed again
-    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last index.");
+    if (pageIndex == last)
+      throw Exception("pageIndex pushed cannot be the same as the last index.");
 
     // If the pushed item exist on the stack, remove it
     remove(pageIndex);
@@ -98,11 +102,13 @@ class ReorderToFrontPageStack extends PageStack {
 /// push(0); Stack: 0->2->0.
 /// pop();   Stack: 0->2.
 class ReorderToFrontExceptFirstPageStack extends PageStack {
-  ReorderToFrontExceptFirstPageStack({required int initialPage}) : super(initialPage: initialPage);
+  ReorderToFrontExceptFirstPageStack({required int initialPage})
+      : super(initialPage: initialPage);
 
   void push(int pageIndex) {
     // Check if the last index is pushed again
-    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last index.");
+    if (pageIndex == last)
+      throw Exception("pageIndex pushed cannot be the same as the last index.");
 
     // If the the item pushed is not the first item
     if (pageIndex != first)
@@ -148,7 +154,8 @@ class NoPageStack extends PageStack {
 
   void push(int pageIndex) {
     // Check if the last index is pushed again
-    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last index.");
+    if (pageIndex == last)
+      throw Exception("pageIndex pushed cannot be the same as the last index.");
 
     // Remove the only index
     removeLast();
@@ -175,11 +182,13 @@ class NoPageStack extends PageStack {
 /// push(0); Stack: 0.
 /// pop();   Stack: - (Exit app).
 class FirstAndLastPageStack extends PageStack {
-  FirstAndLastPageStack({required int initialPage}) : super(initialPage: initialPage);
+  FirstAndLastPageStack({required int initialPage})
+      : super(initialPage: initialPage);
 
   void push(int pageIndex) {
     // Check if the last index is pushed again
-    if (pageIndex == last) throw Exception("pageIndex pushed cannot be the same as the last index.");
+    if (pageIndex == last)
+      throw Exception("pageIndex pushed cannot be the same as the last index.");
 
     // If the stack have 2 items
     if (length == 2)

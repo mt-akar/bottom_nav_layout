@@ -33,7 +33,6 @@ class NavigatorWithoutRouteNames extends StatelessWidget {
 
 /// This class contains extension methods.
 class NavExtensions {
-
   /// Simply push a widget.
   static void push(BuildContext context, Widget page) {
     var route;
