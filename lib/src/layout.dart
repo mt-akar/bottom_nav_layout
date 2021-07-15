@@ -190,7 +190,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
                   )
                 : widget.animatedSwitcher!.call(IndexedStack(
-                    //key: valueKeys[currentIndex],
+                    key: valueKeys[currentIndex],
                     index: currentIndex,
                     // If the page is not initialized, "not show" an invisible widget instead.
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
