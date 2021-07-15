@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Credit: https://gist.github.com/cirnok/e1b70f5d841e47c9d85ccdf6ae866984
 class AnimatedIndexedStack extends StatefulWidget {
   final int index;
   final List<Widget> children;
@@ -22,8 +23,8 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
   @override
   void initState() {
     _controller = AnimationController(
+      duration: Duration(milliseconds: 5000),
       vsync: this,
-      duration: Duration(milliseconds: 150),
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
