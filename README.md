@@ -64,31 +64,15 @@ void main() => runApp(MaterialApp(
     ));
 ```
 Done. You have a complete, working application.
+
+[SliderPage code](https://github.com/m-azyoksul/bottom_nav_layout/blob/feature_bottom_bar_predicate/example/lib/pages/slider_page.dart)
  
 <details>
-<summary>SliderPage code</summary>
+<summary></summary>
 <p>
 
-```dart
-class SliderPage extends StatefulWidget {
-  @override
-  _SliderPageState createState() => _SliderPageState();
-}
-
-class _SliderPageState extends State<SliderPage> {
-  double r = 0;
-
-  @override
-  Widget build(BuildContext context) => Center(
-        child: Slider(
-          value: r,
-          onChanged: (double d) => setState(() => r = d),
-        ),
-      );
-}
-```
 </p>
-</details>  
+</details>
 
 ## Parameters
 | Name | Description |
