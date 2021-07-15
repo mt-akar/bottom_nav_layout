@@ -88,7 +88,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   late final PageStack pageStack;
 
   /// Navigation keys used for in-page navigation.
-  late final List<GlobalKey<NavigatorState>> keys;
+  late List<GlobalKey<NavigatorState>> keys;
 
   /// Initialize [pageStack] and [pages]
   @override
