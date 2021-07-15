@@ -24,9 +24,9 @@ class BottomNavLayout extends StatefulWidget {
     this.bottomBarWrapper,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
-    required this.navBarDelegate,
+    required this.bottomNavigationBar,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
-        assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"),
+        //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
@@ -65,8 +65,7 @@ class BottomNavLayout extends StatefulWidget {
   /// Similar to [Scaffold.resizeToAvoidBottomInset].
   final bool resizeToAvoidBottomInset;
 
-  /// Property delegated to [BottomNavigationBar]
-  final NavBarDelegate navBarDelegate;
+  final Widget Function(int, Function(int)) bottomNavigationBar;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
@@ -171,7 +170,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     }
 
     // Create the bottom bar
-    var bottomBar = widget.navBarDelegate.createBar(currentIndex, onPageSelected);
+    var bottomBar = widget.bottomNavigationBar(currentIndex, onPageSelected);
 
     // Return the view
     return WillPopScope(
