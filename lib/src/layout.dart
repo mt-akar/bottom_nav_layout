@@ -31,6 +31,8 @@ class BottomNavLayout extends StatefulWidget {
         super(key: key);
 
   /// The app's destinations.
+  /// Each destination corresponds to one bottom navbar item.
+  /// You can navigate between these destinations using bottom navbar items.
   ///
   /// Pages are given as builders, this enables lazy page loading and in-page navigation.
   /// The layout builds the pages using these builders and manages its state and navigation.
@@ -39,12 +41,16 @@ class BottomNavLayout extends StatefulWidget {
   /// See: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart
   final List<PageBuilder> pages;
 
-  /// If false, the pages are reinitialized every time they are navigated to. (Material Design behavior)
-  /// If true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior)
+  /// When false, the pages are reinitialized every time they are navigated to. (Material Design behavior)
+  /// When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior)
+  ///
+  /// Default is false.
   final bool savePageState;
 
-  /// If false, pages are created on layout creation.
-  /// If true, pages are created when they are navigated for the first time.
+  /// When false, pages are created on layout creation.
+  /// When true, pages are created when they are navigated for the first time.
+  ///
+  /// Default is false.
   final bool lazyLoadPages;
 
   /// Initial page stack that user passed in.
