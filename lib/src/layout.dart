@@ -28,7 +28,7 @@ class BottomNavLayout extends StatefulWidget {
     this.resizeToAvoidBottomInset = true,
     this.pageTransitionBuilder,
     this.pageTransitionDuration = 150,
-    this.pageTransitionDirection = AnimationDirection.inAndOut;
+    this.pageTransitionDirection = AnimationDirection.inAndOut,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
