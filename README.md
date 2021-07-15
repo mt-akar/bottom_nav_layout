@@ -70,11 +70,11 @@ Done. You have a complete, working application.
 ## Parameters
 | Name | Description | Default |
 | :--- | :--- | :--- |
-| `pages` | The app's destinations. | N/A. |
-| `bottomNavigationBar` | The bottom navbar of the layout. | N/A. |
+| `pages` | The app's destinations. | N/A |
+| `bottomNavigationBar` | The bottom navbar of the layout. | N/A |
 | `savePageState` | When false, the pages are reinitialized every time they are navigated. (Material behavior). When true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior) | false |
 | `lazyLoadPages` | When false, pages are created in the beginning. When true, pages are created when they are navigated for the first time. | false |
-| `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. | [ReorderToFrontPageStack] for Android and [NoPageStack] for iOS |
+| `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. | ReorderToFrontPageStack for Android, NoPageStack for iOS |
 | `bottomBarWrapper` | Widget that wrap bottom bar. | (bar) => bar |
 | `extendBody` | Passed to [`Scaffold.extendBody`](https://api.flutter.dev/flutter/material/Scaffold/extendBody.html). | false |
 | `resizeToAvoidBottomInset` | Passed to [`Scaffold.resizeToAvoidBottomInset`](https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html). | true |
@@ -89,25 +89,16 @@ Done. You have a complete, working application.
 # Page State Preservation
 The state changes you made in a page such as scroll amount, sub-navigation, form inputs etc. are preserved. You can enable it as per [Cupertino Design Guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/) or disable it as per [Material Design Guidelines](https://material.io/components/bottom-navigation#behavior)
 ```dart
-savePageState: true, // Default is true
+savePageState: true, // Default is false
 ```
 
 # Lazy Page Loading
-Instead of passing `pages`, pass `pageBuilders`.
-
-`pageBuilders` are simple Functions that immediately return the corresponding page. When used, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page has a load animation or runs an unnecessary heavy process.
-```dart
-pageBuilders: [
-  () => Center(child: Text("Welcome to bottom_nav_layout")),
-  () => GamePage('TicTacToe'),
-  () => Center(child: TextField(decoration: InputDecoration(hintText: 'Search...'))),
-],
-```
-
-If `savePageState` is set to false, `pages` and `pageBuilders` do the same thing.
+The layout offers the option to lazily create the pages using the passed in page builders. When `lazyLoadPages` is set to true, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page;
+ - Has a load animation.
+ - Runs a heavy process that is not needed until the page is opened.
 
 # Page Back Stack
-The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
+The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page. There are a lot of page back stack behaviors such as reorder-to-front or replace-except-first behaviors, many of which are readily implemented. You can also implement your own.
 
 You also specify the `initialPage` from here.
 
