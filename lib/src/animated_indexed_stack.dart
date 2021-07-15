@@ -23,7 +23,7 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
   @override
   void initState() {
     _controller = AnimationController(
-      duration: Duration(milliseconds: 5000),
+      duration: Duration(milliseconds: 150),
       vsync: this,
     );
     _animation = Tween(begin: 0.0, end: 1.0).animate(
