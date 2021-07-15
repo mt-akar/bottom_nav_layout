@@ -171,7 +171,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       pages[currentIndex] = widget.pages[currentIndex].call(keys[currentIndex]);
     }
 
-    var animationWrapper = widget.animatedSwitcher ?? (w) => w;
+    if (widget.animatedSwitcher == null) var animationWrapper = widget.animatedSwitcher ?? (w) => w;
 
     // Return the view
     return WillPopScope(
@@ -183,14 +183,18 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         body: !widget.savePageState
             // Do not save page states
             ? pages[currentIndex]
-            : animationWrapper(
-                IndexedStack(
-                  key: ValueKey<int>(currentIndex), // ad
-                  index: currentIndex,
-                  // If the page is not initialized, "not show" an invisible widget instead.
-                  children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
-                ),
-              ),
+            : (widget.animatedSwitcher == null)
+                ? IndexedStack(
+                    index: currentIndex,
+                    // If the page is not initialized, "not show" an invisible widget instead.
+                    children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
+                  )
+                : widget.animatedSwitcher!.call(IndexedStack(
+                    key: ValueKey<int>(currentIndex),
+                    index: currentIndex,
+                    // If the page is not initialized, "not show" an invisible widget instead.
+                    children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
+                  )),
         bottomNavigationBar: widget.bottomNavigationBar(currentIndex, onPageSelected),
       ),
     );
