@@ -32,9 +32,7 @@ BottomNavigationBar(
 
 ## 2. [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar) | No |
+| Has `currentIndex`: | No |
 
 Example:
 
