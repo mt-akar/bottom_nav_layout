@@ -26,10 +26,7 @@ class BottomNavLayout extends StatefulWidget {
     this.resizeToAvoidBottomInset = true,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
-        assert(
-            pageStack == null ||
-                pages.length > pageStack.peek() && pageStack.peek() >= 0,
-            "initialPageIndex cannot exceed the page number or be negative"),
+        assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
   /// The app's destinations.
@@ -96,10 +93,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   @override
   void initState() {
     // Set the pageStack. If not passed in, initialize with default.
-    pageStack = widget.pageStack ??
-        (Platform.isAndroid
-            ? ReorderToFrontPageStack(initialPage: 0)
-            : NoPageStack(initialPage: 0));
+    pageStack = widget.pageStack ?? (Platform.isAndroid ? ReorderToFrontPageStack(initialPage: 0) : NoPageStack(initialPage: 0));
 
     setState(() {
       // Initialize keys.
@@ -139,8 +133,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
     // Send pop event to the inner page
-    final consumedByPage =
-        await keys[pageStack.peek()].currentState?.maybePop() ?? false;
+    final consumedByPage = await keys[pageStack.peek()].currentState?.maybePop() ?? false;
 
     // If the back event is consumed by the inner page
     if (consumedByPage) {
@@ -185,14 +178,17 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         body: !widget.savePageState
             // Do not save page states
             ? pages[currentIndex]
-            : IndexedStack(
-                index: currentIndex,
-                // If the page is not initialized, "not show" an invisible widget instead.
-                children:
-                    pages.map((page) => page ?? SizedBox.shrink()).toList(),
+            : AnimatedSwitcher(
+                transitionBuilder: AnimatedSwitcher.defaultTransitionBuilder,
+                duration: const Duration(milliseconds: 500),
+                child: IndexedStack(
+                  key: ValueKey<int>(currentIndex), // ad
+                  index: currentIndex,
+                  // If the page is not initialized, "not show" an invisible widget instead.
+                  children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
+                ),
               ),
-        bottomNavigationBar:
-            widget.bottomNavigationBar(currentIndex, onPageSelected),
+        bottomNavigationBar: widget.bottomNavigationBar(currentIndex, onPageSelected),
       ),
     );
   }
