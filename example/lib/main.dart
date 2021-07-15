@@ -2,35 +2,29 @@ import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart' as SC;
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart' as WD;
 
-import 'examples/navigation_example.dart';
-import 'examples/quick_start.dart';
-import 'pages/slider_page.dart';
+import 'slider_page.dart';
 
-var quickStartExample = QuickStartApp();
-var allParametersExample = AllParametersExample();
-var navigationExample = NavigationExample();
-
-/// Use different example code here
-void main() => runApp(MaterialApp(home: allParametersExample));
-
-/// Example that explain parameters.
-class AllParametersExample extends StatelessWidget {
+class QuickStartApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavLayout(
       // The app's destinations
       pages: [
-        (_) => Center(child: Text("Welcome to bottom_nav_layout")),
-        (_) => SliderPage(),
-        (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+            (_) => Center(child: Text("Welcome to bottom_nav_layout")),
+            (_) => SliderPage(),
+            (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
 
-      // Enables or disables the page state preservation. Default is true.
-      savePageState: true,
+      // Enables or disables the page state preservation. Default is false.
+      savePageState: false,
+
+      // Enables or disables the lazy loading of pages. Default is false.
+      lazyLoadPages: false,
 
       // Default is `ReorderToFrontPageStack(initialPage: 0)`
       pageStack: ReorderToFrontPageStack(initialPage: 0),
@@ -51,76 +45,85 @@ class AllParametersExample extends StatelessWidget {
       // Similar to [Scaffold.resizeToAvoidBottomInset]. Default is true.
       resizeToAvoidBottomInset: true,
 
-      // Delegates all it's properties to a bottom bar.
-      navBarDelegate: _buildBottomNavigationBarDelegate(),
-      // navBarDelegate: _buildConvexAppBarDelegate(),
-      // navBarDelegate: _buildSnakeNavigationBarDelegate(),
-      // navBarDelegate: _buildSalomonBottomBarDelegate(),
-      // navBarDelegate: _buildBottomBarWithSheetDelegate(),
-      // navBarDelegate: _buildWaterDropNavBarDelegate(),
-      // navBarDelegate: _buildSlidingClippedNavBarDelegate(),
+      //pageStack: NoPageStack(initialPage: 0),
+      bottomNavigationBar: (currentIndex, onTap) => _buildSnakeNavigationBar(currentIndex, onTap),
     );
   }
 
-  //// BUILD FUNCTIONS ////
+  /// You can pass onTap directly or you can insert your code as following:
+  /// onTap: (index) => {
+  ///   // Your code
+  ///   onTap(index);
+  /// },
+  Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) => BottomNavigationBar(
+    currentIndex: currentIndex,
+    onTap: onTap,
+    items: [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+    ],
+  );
 
-  NavBarDelegate _buildBottomNavigationBarDelegate() => BottomNavigationBarDelegate(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        ],
-      );
+  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) => ConvexAppBar(
+    initialActiveIndex: currentIndex,
+    onTap: onTap,
+    items: [
+      TabItem(icon: Icon(Icons.home), title: 'Home'),
+      TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
+      TabItem(icon: Icon(Icons.search), title: 'Search'),
+    ],
+  );
 
-  NavBarDelegate _buildConvexAppBarDelegate() => ConvexAppBarDelegate(
-        items: [
-          TabItem(icon: Icon(Icons.home), title: 'Home'),
-          TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
-          TabItem(icon: Icon(Icons.search), title: 'Search'),
-        ],
-      );
+  Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) => SnakeNavigationBar.color(
+    currentIndex: currentIndex,
+    onTap: onTap,
+    items: [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+    ],
+  );
 
-  NavBarDelegate _buildSnakeNavigationBarDelegate() => SnakeNavigationBarDelegate(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        ],
-        height: 56,
-      );
+  Widget _buildSalomonBottomBar(int currentIndex, Function(int) onTap) => SalomonBottomBar(
+    currentIndex: currentIndex,
+    onTap: onTap,
+    items: [
+      SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
+      SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
+      SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
+    ],
+  );
 
-  NavBarDelegate _buildSalomonBottomBarDelegate() => SalomonBottomBarDelegate(
-        items: [
-          SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(icon: Icon(Icons.maximize), title: Text('Slider')),
-          SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
-        ],
-      );
+  Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) => BottomBarWithSheet(
+    selectedIndex: currentIndex,
+    onSelectItem: onTap,
+    items: [
+      BottomBarWithSheetItem(icon: Icons.home, label: 'Home'),
+      BottomBarWithSheetItem(icon: Icons.linear_scale, label: 'Slider'),
+      BottomBarWithSheetItem(icon: Icons.search, label: 'Search'),
+    ],
+    sheetChild: Center(child: Text("Welcome to sheetChild")),
+  );
 
-  NavBarDelegate _buildBottomBarWithSheetDelegate() => BottomBarWithSheetDelegate(
-        items: [
-          BottomBarWithSheetItem(icon: Icons.home),
-          BottomBarWithSheetItem(icon: Icons.linear_scale),
-          BottomBarWithSheetItem(icon: Icons.linear_scale),
-          BottomBarWithSheetItem(icon: Icons.search),
-        ],
-        sheetChild: Center(child: Text("Welcome to sheetChild")),
-      );
+  Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) => WD.WaterDropNavBar(
+    selectedIndex: currentIndex,
+    onButtonPressed: onTap,
+    barItems: [
+      WD.BarItem(filledIcon: Icons.home, outlinedIcon: Icons.home),
+      WD.BarItem(filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
+      WD.BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
+    ],
+  );
 
-  NavBarDelegate _buildWaterDropNavBarDelegate() => WaterDropNavBarDelegate(
-        barItems: [
-          WD.BarItem(filledIcon: Icons.home, outlinedIcon: Icons.home),
-          WD.BarItem(filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
-          WD.BarItem(filledIcon: Icons.search, outlinedIcon: Icons.search),
-        ],
-      );
-
-  NavBarDelegate _buildSlidingClippedNavBarDelegate() => SlidingClippedNavBarDelegate(
-        barItems: [
-          SC.BarItem(icon: Icons.home, title: 'Home'),
-          SC.BarItem(icon: Icons.linear_scale, title: 'Slider'),
-          SC.BarItem(icon: Icons.search, title: 'Search'),
-        ],
-        activeColor: Colors.blue,
-      );
+  Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) => SC.SlidingClippedNavBar(
+    selectedIndex: currentIndex,
+    onButtonPressed: onTap,
+    barItems: [
+      SC.BarItem(icon: Icons.home, title: 'Home'),
+      SC.BarItem(icon: Icons.linear_scale, title: 'Slider'),
+      SC.BarItem(icon: Icons.search, title: 'Search'),
+    ],
+    activeColor: Colors.blue,
+  );
 }

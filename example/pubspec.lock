@@ -33,8 +33,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: feature_nav_management_predicate
-      resolved-ref: d4ff88d8cefa98147cdfede75fb567b9effe6c04
+      ref: feature_bottom_bar_predicate
+      resolved-ref: "2e87f4d09da97559cb62fe8874e8218e5ca555a8"
       url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
     source: git
     version: "2.1.1"

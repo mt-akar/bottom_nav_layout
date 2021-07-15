@@ -13,7 +13,7 @@ dependencies:
   bottom_nav_layout:
     git:
       url: https://github.com/m-azyoksul/bottom_nav_layout.git
-      ref: feature_nav_management_predicate
+      ref: feature_bottom_bar_predicate
 
   # Dependencies for different bottom bar designs
   convex_bottom_bar: ^3.0.0
