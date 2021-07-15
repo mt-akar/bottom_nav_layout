@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 /// Credit: https://gist.github.com/cirnok/e1b70f5d841e47c9d85ccdf6ae866984
-class AnimatedIndexedStack extends StatefulWidget {
+class TwoWayAnimatedIndexedStack extends StatefulWidget {
   final int index;
   final List<Widget> children;
   final Widget Function(AnimationController, Widget) animationBuilder;
   final int animationDuration;
 
-  const AnimatedIndexedStack({
+  const TwoWayAnimatedIndexedStack({
     Key? key,
     required this.index,
     required this.children,
@@ -16,10 +16,10 @@ class AnimatedIndexedStack extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AnimatedIndexedStackState createState() => _AnimatedIndexedStackState();
+  _TwoWayAnimatedIndexedStackState createState() => _TwoWayAnimatedIndexedStackState();
 }
 
-class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with SingleTickerProviderStateMixin {
+class _TwoWayAnimatedIndexedStackState extends State<TwoWayAnimatedIndexedStack> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   int _index = 0;
 
@@ -36,11 +36,14 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
   }
 
   @override
-  void didUpdateWidget(AnimatedIndexedStack oldWidget) {
+  void didUpdateWidget(TwoWayAnimatedIndexedStack oldWidget) {
     super.didUpdateWidget(oldWidget);
+    // If the index has changed
     if (widget.index != _index) {
+      // Play the animation backwards
       _controller.reverse().then((_) {
         setState(() => _index = widget.index);
+        // Then forwards
         _controller.forward();
       });
     }

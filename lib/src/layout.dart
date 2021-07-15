@@ -33,7 +33,7 @@ class BottomNavLayout extends StatefulWidget {
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
-  final Widget Function(AnimationController, Widget)? pageTransitionBuilder;
+  final Widget Function(AnimationController, AnimatedBuilder)? pageTransitionBuilder;
   final int pageTransitionDuration;
 
   /// The app's destinations.
@@ -191,7 +191,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
                     // If the page is not initialized, "not show" an invisible widget instead.
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
                   )
-                : AnimatedIndexedStack(
+                : TwoWayAnimatedIndexedStack(
                     animationBuilder: widget.pageTransitionBuilder!,
                     animationDuration: widget.pageTransitionDuration,
                     index: currentIndex,
