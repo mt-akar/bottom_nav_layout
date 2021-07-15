@@ -1,62 +1,33 @@
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:example/pages/slider_page.dart';
 import 'package:flutter/material.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart' as SC;
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart' as WD;
 
-//void main() => runApp(MaterialApp(home: QuickStartApp()));
-void main() => runApp(MaterialApp(home: AllParametersExample()));
+import 'examples/navigation_example.dart';
+import 'examples/quick_start.dart';
+import 'pages/slider_page.dart';
 
-///////////////////////////////////////////////////
-/////////////////// QUICK START ///////////////////
-///////////////////////////////////////////////////
-class QuickStartApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return BottomNavLayout(
-      // The app's top level destinations
-      pages: [
-        Center(child: Text("Welcome to bottom_nav_layout")),
-        SliderPage(),
-        Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
-      ],
+var quickStartExample = QuickStartApp();
+var allParametersExample = AllParametersExample();
+var navigationExample = NavigationExample();
 
-      // Delegates all it's properties to a [BottomNavigationBar] instance.
-      navBarDelegate: BottomNavigationBarDelegate(
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.linear_scale), label: 'Slider'),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-        ],
-      ),
-    );
-  }
-}
+/// Use different example code here
+void main() => runApp(MaterialApp(home: allParametersExample));
 
-///////////////////////////////////////////////////
-///////////////// ALL PARAMETERS //////////////////
-///////////////////////////////////////////////////
+/// Example that explain parameters.
 class AllParametersExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavLayout(
-      // The app's top level destinations
+      // The app's destinations
       pages: [
-        Center(child: Text("Welcome to bottom_nav_layout")),
-        SliderPage(),
-        Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+        (_) => Center(child: Text("Welcome to bottom_nav_layout")),
+        (_) => SliderPage(),
+        (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
-
-      // // Also the app's top level destinations, but lazily loaded.
-      // pageBuilders: [
-      //   () => Center(child: Text("Welcome to bottom_nav_layout")),
-      //   () => SliderPage(),
-      //   () => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
-      // ],
 
       // Enables or disables the page state preservation. Default is true.
       savePageState: true,
@@ -67,9 +38,6 @@ class AllParametersExample extends StatelessWidget {
       // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
       // pageStack: NoPageStack(initialPage: 0),
       // pageStack: FirstAndLastPageStack(initialPage: 0),
-
-      // Navigation keys. Default is null.
-      keys: <GlobalKey<NavigatorState>?>[null, null, null],
 
       // Widget that styles the bottom bar. Default is null.
       bottomBarWrapper: (bottomBar) => Padding(
@@ -96,12 +64,10 @@ class AllParametersExample extends StatelessWidget {
 
   //// BUILD FUNCTIONS ////
 
-  NavBarDelegate _buildBottomNavigationBarDelegate() =>
-      BottomNavigationBarDelegate(
+  NavBarDelegate _buildBottomNavigationBarDelegate() => BottomNavigationBarDelegate(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
@@ -114,8 +80,7 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
-  NavBarDelegate _buildSnakeNavigationBarDelegate() =>
-      SnakeNavigationBarDelegate(
+  NavBarDelegate _buildSnakeNavigationBarDelegate() => SnakeNavigationBarDelegate(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.maximize), label: 'Slider'),
@@ -127,14 +92,12 @@ class AllParametersExample extends StatelessWidget {
   NavBarDelegate _buildSalomonBottomBarDelegate() => SalomonBottomBarDelegate(
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(
-              icon: Icon(Icons.maximize), title: Text('Slider')),
+          SalomonBottomBarItem(icon: Icon(Icons.maximize), title: Text('Slider')),
           SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
         ],
       );
 
-  NavBarDelegate _buildBottomBarWithSheetDelegate() =>
-      BottomBarWithSheetDelegate(
+  NavBarDelegate _buildBottomBarWithSheetDelegate() => BottomBarWithSheetDelegate(
         items: [
           BottomBarWithSheetItem(icon: Icons.home),
           BottomBarWithSheetItem(icon: Icons.linear_scale),
@@ -152,8 +115,7 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
-  NavBarDelegate _buildSlidingClippedNavBarDelegate() =>
-      SlidingClippedNavBarDelegate(
+  NavBarDelegate _buildSlidingClippedNavBarDelegate() => SlidingClippedNavBarDelegate(
         barItems: [
           SC.BarItem(icon: Icons.home, title: 'Home'),
           SC.BarItem(icon: Icons.linear_scale, title: 'Slider'),

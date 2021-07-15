@@ -1,3 +1,15 @@
+/////////////////////////////////////
+///////// bottom_nav_layout /////////
+/////////////////////////////////////
+//                                 //
+// Author: Mustafa Azyoksul        //
+//                                 //
+// Email: m.azyoksul@gmail.com     //
+// Github: m-azyoksul              //
+// LinkedIn: mustafa-azyoksul      //
+//                                 //
+/////////////////////////////////////
+
 export 'package:bottom_nav_layout/src/layout.dart';
 export 'package:bottom_nav_layout/src/nav_bar_delegate.dart';
 export 'package:bottom_nav_layout/src/navigation.dart';

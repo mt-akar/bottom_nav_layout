@@ -1,14 +1,3 @@
-/////////////////////////////////////
-///////// bottom_nav_layout /////////
-/////////////////////////////////////
-//                                 //
-// Author: Mustafa Azyoksul        //
-// Email: m.azyoksul@gmail.com     //
-//                                 //
-// github: m-azyoksul              //
-// linked-in: mustafa-azyoksul     //
-//                                 //
-/////////////////////////////////////
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -41,7 +30,13 @@ class BottomNavLayout extends StatefulWidget {
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
-  /// TODO: Add docs
+  /// The app's destinations.
+  ///
+  /// Pages are given as builders, this enables lazy page loading and in-page navigation.
+  /// The layout builds the pages using these builders and manages its state and navigation.
+  ///
+  /// [GlobalKey] passed as parameter can be used as a [Navigator] key.
+  /// See: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart
   final List<PageBuilder> pages;
 
   /// If false, the pages are reinitialized every time they are navigated to. (Material Design behavior)
@@ -103,10 +98,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       });
 
       // Initialize pages
-      if (!widget.lazyLoadPages)
-        pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
-      else
-        pages = widget.pages.asMap().entries.map((entry) => null).toList();
+      pages = widget.pages.asMap().entries.map((entry) {
+        return widget.lazyLoadPages ? null : entry.value.call(keys[entry.key]);
+      }).toList();
     });
 
     super.initState();
