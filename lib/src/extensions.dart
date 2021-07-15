@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 /// This is an extension class inside bottom_nav_layout package.
 class NavExtensions {
-  static push(BuildContext context, Widget page) {
+  static void push(BuildContext context, Widget page) {
     var route;
 
     if (Platform.isIOS)
