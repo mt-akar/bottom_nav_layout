@@ -4,6 +4,8 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'animated_indexed_stack.dart';
+
 /// Type definition for the page builder
 typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);
 
@@ -185,7 +187,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         body: !widget.savePageState
             // Do not save page states
             ? pages[currentIndex]
-            : IndexedStack(
+            : AnimatedIndexedStack(
                 index: currentIndex,
                 // If the page is not initialized, "not show" an invisible widget instead.
                 children:
