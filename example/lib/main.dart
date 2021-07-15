@@ -7,9 +7,19 @@ import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart' as SC;
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart' as WD;
 
+import 'examples/navigation_example.dart';
+import 'examples/quick_start.dart';
 import 'pages/slider_page.dart';
 
-class QuickStartApp extends StatelessWidget {
+var quickStartExample = QuickStartApp();
+var allParametersExample = AllParametersExample();
+var navigationExample = NavigationExample();
+
+/// Use different example code here
+void main() => runApp(MaterialApp(home: allParametersExample));
+
+/// Example that explain parameters.
+class AllParametersExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavLayout(
@@ -26,7 +36,7 @@ class QuickStartApp extends StatelessWidget {
       // Enables or disables the lazy loading of pages. Default is false.
       lazyLoadPages: false,
 
-      // Default is `ReorderToFrontPageStack(initialPage: 0)`
+      // Default is ReorderToFrontPageStack for Android and NoPageStack for iOS.
       pageStack: ReorderToFrontPageStack(initialPage: 0),
       // pageStack: StandardPageStack(initialPage: 0),
       // pageStack: ReorderToFrontExceptFirstPageStack(initialPage: 0),
@@ -46,9 +56,11 @@ class QuickStartApp extends StatelessWidget {
       resizeToAvoidBottomInset: true,
 
       //pageStack: NoPageStack(initialPage: 0),
-      bottomNavigationBar: (currentIndex, onTap) => _buildSnakeNavigationBar(currentIndex, onTap),
+      bottomNavigationBar: (currentIndex, onTap) => _buildBottomNavigationBar(currentIndex, onTap),
     );
   }
+
+  //// BUILD FUNCTIONS ////
 
   /// You can pass onTap directly or you can insert your code as following:
   /// onTap: (index) => {
@@ -104,6 +116,7 @@ class QuickStartApp extends StatelessWidget {
           BottomBarWithSheetItem(icon: Icons.search, label: 'Search'),
         ],
         sheetChild: Center(child: Text("Welcome to sheetChild")),
+        bottomBarTheme: BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
       );
 
   Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) => WD.WaterDropNavBar(

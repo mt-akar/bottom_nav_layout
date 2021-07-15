@@ -1,8 +1,8 @@
+import 'dart:io';
+
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import 'nav_bar_delegate.dart';
 
 /// Type definition for the page builder
 typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);
@@ -53,7 +53,9 @@ class BottomNavLayout extends StatefulWidget {
   /// Default is false.
   final bool lazyLoadPages;
 
-  /// Initial page stack that user passed in.
+  /// Keeps track of which tabs are navigated in what order.
+  /// Default is [ReorderToFrontPageStack] for Android and [NoPageStack] for iOS.
+  /// There are other stack implementations. You can also implement your own.
   final PageStack? pageStack;
 
   /// A function that returns a styling widget to wrap bottom nav bar with.
@@ -94,7 +96,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   @override
   void initState() {
     // Set the pageStack. If not passed in, initialize with default.
-    pageStack = widget.pageStack ?? ReorderToFrontPageStack(initialPage: 0);
+    pageStack = widget.pageStack ?? (Platform.isAndroid ? ReorderToFrontPageStack(initialPage: 0) : NoPageStack(initialPage: 0));
 
     setState(() {
       // Initialize keys.
