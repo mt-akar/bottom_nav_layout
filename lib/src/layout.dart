@@ -26,13 +26,15 @@ class BottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
-    this.pageTransitionAnimationBuilder,
+    this.pageTransitionBuilder,
+    this.pageTransitionDuration = 150,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
-  final Widget Function(AnimationController, Widget)? pageTransitionAnimationBuilder;
+  final Widget Function(AnimationController, Widget)? pageTransitionBuilder;
+  final int pageTransitionDuration;
 
   /// The app's destinations.
   /// Each destination corresponds to one bottom navbar item.
@@ -183,14 +185,15 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
         body: !widget.savePageState
             // Do not save page states
             ? pages[currentIndex]
-            : widget.pageTransitionAnimationBuilder == null
+            : widget.pageTransitionBuilder == null
                 ? IndexedStack(
                     index: currentIndex,
                     // If the page is not initialized, "not show" an invisible widget instead.
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),
                   )
                 : AnimatedIndexedStack(
-                    pageTransitionAnimationBuilder: widget.pageTransitionAnimationBuilder!,
+                    animationBuilder: widget.pageTransitionBuilder!,
+                    animationDuration: widget.pageTransitionDuration,
                     index: currentIndex,
                     // If the page is not initialized, "not show" an invisible widget instead.
                     children: pages.map((page) => page ?? SizedBox.shrink()).toList(),

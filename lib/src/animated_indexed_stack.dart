@@ -4,13 +4,15 @@ import 'package:flutter/material.dart';
 class AnimatedIndexedStack extends StatefulWidget {
   final int index;
   final List<Widget> children;
-  final Widget Function(AnimationController, Widget) pageTransitionAnimationBuilder;
+  final Widget Function(AnimationController, Widget) animationBuilder;
+  final int animationDuration;
 
   const AnimatedIndexedStack({
     Key? key,
     required this.index,
     required this.children,
-    required this.pageTransitionAnimationBuilder,
+    required this.animationBuilder,
+    required this.animationDuration,
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
   @override
   void initState() {
     _controller = AnimationController(
-      duration: Duration(milliseconds: 5000),
+      duration: Duration(milliseconds: widget.animationDuration),
       vsync: this,
     );
 
@@ -52,7 +54,7 @@ class _AnimatedIndexedStackState extends State<AnimatedIndexedStack> with Single
 
   @override
   Widget build(BuildContext context) {
-    return widget.pageTransitionAnimationBuilder(
+    return widget.animationBuilder(
       _controller,
       IndexedStack(
         index: _index,
