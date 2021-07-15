@@ -15,6 +15,7 @@ import 'package:flutter/widgets.dart';
 
 import 'nav_bar_delegate.dart';
 
+/// Type definition for the page builder
 typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);
 
 /// [BottomNavLayout] is a quick and powerful layout tool.
@@ -22,14 +23,14 @@ typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);
 /// It coordinates all behavior regarding bottom nav bar and app's top level destinations.
 ///
 /// [BottomNavLayout] layout consists of a [Scaffold].
-/// which has one of the [pages] as [Scaffold.body] and a [BottomNavigationBar] as [Scaffold.bottomNavigationBar].
-/// [BottomNavigationBar] controls which one of the [pages] is currently visible.
+/// which shows one of the [pages] inside [Scaffold.body] and has a bottom navbar as [Scaffold.bottomNavigationBar].
+/// Bottom navbar controls which one of the [pages] is currently visible.
 class BottomNavLayout extends StatefulWidget {
   BottomNavLayout({
     Key? key,
     required this.pages,
+    this.savePageState = false,
     this.lazyLoadPages = false,
-    this.savePageState = true,
     this.pageStack,
     this.bottomBarWrapper,
     this.extendBody = false,
@@ -38,14 +39,21 @@ class BottomNavLayout extends StatefulWidget {
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"),
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
-        super(key: key);
+        super(key: key) {
+    // Create keys
+    keys = pages.map((e) => GlobalKey<NavigatorState>()).toList();
+  }
 
+  /// TODO: Add docs
   final List<PageBuilder> pages;
 
-  final bool lazyLoadPages;
-
-  /// Whether the page states are saved or not.
+  /// If false, the pages are reinitialized every time they are navigated to. (Material Design behavior)
+  /// If true, the pages are initialized once and hidden/shown on navigation. (Cupertino behavior)
   final bool savePageState;
+
+  /// If false, pages are created on layout creation.
+  /// If true, pages are created when they are navigated for the first time.
+  final bool lazyLoadPages;
 
   /// Initial page stack that user passed in.
   final PageStack? pageStack;
@@ -62,6 +70,9 @@ class BottomNavLayout extends StatefulWidget {
   /// Property delegated to [BottomNavigationBar]
   final NavBarDelegate navBarDelegate;
 
+  /// Navigation keys used for in-page navigation.
+  late List<GlobalKey<NavigatorState>> keys;
+
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
 }
@@ -75,10 +86,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// There are different versions of stack pattern readily implemented. Users can also implement their own.
   late final PageStack pageStack;
 
-  late List<GlobalKey<NavigatorState>> keys;
-
   /// The main content of the layout.
-  /// Respective widget in this list is shown above the [BottomNavigationBar].
+  /// Respective widget in this list is shown above the bottom navbar.
   ///
   /// If pages are directly passed is, all pages will be present in this list at all times.
   /// If pageBuilders are passed in, the corresponding entry in the list will contain null until that page is navigated for the first time.
@@ -90,12 +99,9 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // Set the pageStack. If not passed in, initialize with default.
     pageStack = widget.pageStack ?? ReorderToFrontPageStack(initialPage: 0);
 
-    // Create keys
-    keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
-
     if (!widget.lazyLoadPages)
       widget.pages.asMap().entries.forEach((element) {
-        pages.add(element.value.call(keys[element.key]));
+        pages.add(element.value.call(widget.keys[element.key]));
       });
     //pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
     else
@@ -113,7 +119,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     // If the current item is selected
     if (index == pageStack.peek()) {
       // Pop until the base route
-      keys[index].currentState?.popUntil((route) => route.isFirst);
+      widget.keys[index].currentState?.popUntil((route) => route.isFirst);
     }
     // If something else than current item is selected
     else {
@@ -130,7 +136,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
     // Send pop event to the inner page
-    final consumedByPage = await keys[pageStack.peek()].currentState?.maybePop() ?? false;
+    final consumedByPage = await widget.keys[pageStack.peek()].currentState?.maybePop() ?? false;
 
     // If the back event is consumed by the inner page
     if (consumedByPage) {
@@ -161,14 +167,8 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
 
     // If the current page hasn't been initialized.
     if (pages[currentIndex] == null) {
-      // Create the page from the builder and put it into page list.
-      var key = keys[currentIndex];
-      var pageBuilder = widget.pages[currentIndex];
-      var page = pageBuilder(key);
-      pages[currentIndex] = page;
-      int y = 0;
-
-      //pages[currentIndex] = widget.pages[currentIndex].call(keys[currentIndex]);
+      // Lazy load the page.
+      pages[currentIndex] = widget.pages[currentIndex].call(widget.keys[currentIndex]);
     }
 
     // Create the bottom bar
