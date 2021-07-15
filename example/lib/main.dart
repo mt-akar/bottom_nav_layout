@@ -72,7 +72,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) =>
       BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: onTap,
+        onTap: (index) => onTap(index),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
@@ -84,7 +84,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) =>
       ConvexAppBar(
         initialActiveIndex: currentIndex,
-        onTap: onTap,
+        onTap: (index) => onTap(index),
         items: [
           TabItem(icon: Icon(Icons.home), title: 'Home'),
           TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
@@ -95,7 +95,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) =>
       SnakeNavigationBar.color(
         currentIndex: currentIndex,
-        onTap: onTap,
+        onTap: (index) => onTap(index),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
@@ -107,7 +107,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildSalomonBottomBar(int currentIndex, Function(int) onTap) =>
       SalomonBottomBar(
         currentIndex: currentIndex,
-        onTap: onTap,
+        onTap: (index) => onTap(index),
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
           SalomonBottomBarItem(
@@ -119,7 +119,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) =>
       BottomBarWithSheet(
         selectedIndex: currentIndex,
-        onSelectItem: onTap,
+        onSelectItem: (index) => onTap(index),
         items: [
           BottomBarWithSheetItem(icon: Icons.home, label: 'Home'),
           BottomBarWithSheetItem(icon: Icons.linear_scale, label: 'Slider'),
@@ -133,7 +133,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) =>
       WD.WaterDropNavBar(
         selectedIndex: currentIndex,
-        onButtonPressed: onTap,
+        onButtonPressed: (index) => onTap(index),
         barItems: [
           WD.BarItem(filledIcon: Icons.home, outlinedIcon: Icons.home),
           WD.BarItem(filledIcon: Icons.maximize, outlinedIcon: Icons.maximize),
@@ -144,7 +144,7 @@ class AllParametersExample extends StatelessWidget {
   Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) =>
       SC.SlidingClippedNavBar(
         selectedIndex: currentIndex,
-        onButtonPressed: onTap,
+        onButtonPressed: (index) => onTap(index),
         barItems: [
           SC.BarItem(icon: Icons.home, title: 'Home'),
           SC.BarItem(icon: Icons.linear_scale, title: 'Slider'),
