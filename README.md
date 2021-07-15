@@ -22,7 +22,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
  - [Page State Preservation](#page-state-preservation)
  - [Lazy Page Loading](#lazy-page-loading)
  - [Page Back Stack](#page-back-stack)
- - [In-Page Navigation Using GlobalKeys](#in-page-navigation-using-globalkeys)
+ - [In-Page Navigation](#in-page-navigation)
  - [Different Bottom Bars](#different-bottom-bars)
  - [Bar Styling](#bar-styling)
  - [Improvements](#improvements)
@@ -114,7 +114,7 @@ pageStack: ReorderToFrontPageStack(initialPage: 0),
 
 [Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/PageBackStack) for details.
 
-# In-Page Navigation Using GlobalKeys
+# In-Page Navigation
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/32205084/125260520-1024f380-e309-11eb-8c2d-4b10fc3dbc41.png">
@@ -141,7 +141,7 @@ keys: <GlobalKey<NavigatorState>?>[
 # Different Bottom Bars
 So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
 
-Example usage of `[flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)`:
+Example usage of [`flutter_snake_navigationbar`](https://pub.dev/packages/flutter_snake_navigationbar):
 
 ```dart
 bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
