@@ -89,7 +89,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
     pageStack = widget.pageStack ?? ReorderToFrontPageStack(initialPage: 0);
 
     // Create keys
-    keys = pages.map((e) => GlobalKey<NavigatorState>()).toList();
+    keys = widget.pages.map((e) => GlobalKey<NavigatorState>()).toList();
 
     if (!widget.pageLazyLoading)
       pages = widget.pages.asMap().entries.map((entry) => entry.value.call(keys[entry.key])).toList();
