@@ -9,13 +9,9 @@ Example usages of some of the bottom bars. You can use the ones which aren't her
 
 Warning: Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item cannot be changed when the back button is pressed. To have the best result, only use `NoPageStack` with bottom bars that doesn't have the `currentIndex` property.
 
-## 1. Material
+## 1. [Material](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [BottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html) | Yes |
-
-Example:
+Has `currentIndex`: Yes
 
 ```dart
 BottomNavigationBar(
@@ -34,8 +30,6 @@ BottomNavigationBar(
 
 Has `currentIndex`: No
 
-Example:
-
 ```dart
 ConvexAppBar(
   initialActiveIndex: currentIndex,
@@ -48,13 +42,9 @@ ConvexAppBar(
 ),
 ```
 
-## 3. flutter_snake_navigationbar
+## 3. [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar) | Yes |
-
-Example:
+Has `currentIndex`: Yes
 
 ```dart
 SnakeNavigationBar.color(
@@ -69,13 +59,9 @@ SnakeNavigationBar.color(
 ),
 ```
 
-## 4. salomon_bottom_bar
+## 4. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar) | Yes |
-
-Example:
+Has `currentIndex`: Yes
 
 ```dart
 SalomonBottomBar(
@@ -90,13 +76,9 @@ SalomonBottomBar(
 ),
 ```
 
-## 5. bottom_bar_with_sheet
+## 5. [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet) | No |
-
-Example:
+Has `currentIndex`: No
 
 ```dart
 BottomBarWithSheet(
@@ -113,13 +95,9 @@ BottomBarWithSheet(
 ),
 ```
 
-## 6. water_drop_nav_bar
+## 6. [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar) | Yes |
-
-Example:
+Has `currentIndex`: Yes
 
 ```dart
 WaterDropNavBar(
@@ -133,13 +111,9 @@ WaterDropNavBar(
 ),
 ```
 
-## 7. sliding_clipped_nav_bar
+## 7. [sliding_clipped_nav_bar](https://pub.dev/packages/sliding_clipped_nav_bar)
 
-| Documentation | Has `currentIndex` |
-| :------------ | :------------- |
-| [sliding_clipped_nav_bar](https://pub.dev/packages/sliding_clipped_nav_bar) | Yes |
-
-Example:
+Has `currentIndex`: Yes
 
 ```dart
 SlidingClippedNavBar(
