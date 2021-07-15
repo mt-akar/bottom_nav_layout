@@ -33,7 +33,7 @@ class BottomNavLayout extends StatefulWidget {
         assert(pageStack == null || pages.length > pageStack.peek() && pageStack.peek() >= 0, "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
 
-  final Widget Function(AnimationController, AnimatedBuilder)? pageTransitionBuilder;
+  final AnimatedBuilder Function(AnimationController, Widget)? pageTransitionBuilder;
   final int pageTransitionDuration;
 
   /// The app's destinations.
