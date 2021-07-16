@@ -1,22 +1,28 @@
 import 'package:bottom_bar_with_sheet/bottom_bar_with_sheet.dart';
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart' as SC;
 import 'package:water_drop_nav_bar/water_drop_nav_bar.dart' as WD;
 
+import 'examples/app_in_demo.dart';
 import 'examples/navigation_example.dart';
+import 'examples/page_transition_example.dart';
 import 'examples/quick_start.dart';
 import 'pages/slider_page.dart';
 
 var quickStartExample = QuickStartApp();
 var allParametersExample = AllParametersExample();
+var pageTransitionExampleApp = PageTransitionExample();
 var navigationExample = NavigationExample();
+var appInDemo = AppInDemo();
 
-/// Use different example code here
-void main() => runApp(MaterialApp(home: allParametersExample));
+/// Use different examples
+void main() => runApp(MaterialApp(home: pageTransitionExampleApp));
 
 /// README: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/README.md#parameters
 class AllParametersExample extends StatelessWidget {
@@ -36,17 +42,15 @@ class AllParametersExample extends StatelessWidget {
       extendBody: false,
       resizeToAvoidBottomInset: true,
       bottomNavigationBar: (currentIndex, onTap) =>
-          _buildBottomNavigationBar(currentIndex, onTap),
+          _buildGNav(currentIndex, onTap),
     );
   }
 
-  //// BUILD FUNCTIONS ////
+  ///////////////////////////////////////////////
+  /////////////// BUILD FUNCTIONS ///////////////
+  //// There are 9 example bottom bars here. ////
+  ///////////////////////////////////////////////
 
-  /// You can pass onTap directly or you can insert your code as following:
-  /// onTap: (index) => {
-  ///   // Your code
-  ///   onTap(index);
-  /// },
   Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) =>
       BottomNavigationBar(
         currentIndex: currentIndex,
@@ -56,6 +60,28 @@ class AllParametersExample extends StatelessWidget {
           BottomNavigationBarItem(
               icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        ],
+      );
+
+  Widget _buildCupertinoTabBar(int currentIndex, Function(int) onTap) =>
+      CupertinoTabBar(
+        currentIndex: currentIndex,
+        onTap: (index) => onTap(index),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+        ],
+      );
+
+  Widget _buildGNav(int currentIndex, Function(int) onTap) => GNav(
+        selectedIndex: currentIndex,
+        onTabChange: (index) => onTap(index),
+        tabs: [
+          GButton(icon: Icons.home, text: 'Home'),
+          GButton(icon: Icons.linear_scale, text: 'Slider'),
+          GButton(icon: Icons.search, text: 'Search'),
         ],
       );
 

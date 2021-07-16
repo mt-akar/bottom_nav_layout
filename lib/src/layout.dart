@@ -4,6 +4,8 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+import 'animated_indexed_stack.dart';
+
 /// Type definition for the page builder
 typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);
 
@@ -24,8 +26,8 @@ class BottomNavLayout extends StatefulWidget {
     this.pageStack,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
+    this.pageTransitionData,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
-        //assert(pages.length == navBarDelegate.itemLength(), "Pass as many bottom navbar items as pages"), TODO: ?
         assert(
             pageStack == null ||
                 pages.length > pageStack.peek() && pageStack.peek() >= 0,
@@ -44,6 +46,9 @@ class BottomNavLayout extends StatefulWidget {
   final List<PageBuilder> pages;
 
   /// The bottom navbar of the layout.
+  ///
+  /// Make sure bottom navbar items count is the same as the page count.
+  /// Otherwise, you might get a [RangeError].
   final Widget Function(int, Function(int)) bottomNavigationBar;
 
   /// When false, the pages are reinitialized every time they are navigated to. (Material Design behavior)
@@ -68,6 +73,10 @@ class BottomNavLayout extends StatefulWidget {
 
   /// Passed to [Scaffold.resizeToAvoidBottomInset]. Default is true.
   final bool resizeToAvoidBottomInset;
+
+  /// Page transition data delegate.
+  /// If null, no transition is applied.
+  final PageTransitionData? pageTransitionData;
 
   @override
   State<StatefulWidget> createState() => _BottomNavLayoutState();
@@ -119,6 +128,10 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If the selected page is the current page, pops the page until it reaches it's root route.
   /// If the selected page is not the current page, navigates to that page.
   void onPageSelected(int index) {
+    if (index >= pages.length)
+      throw ArgumentError(
+          "There is no page corresponding to the selected navbar item at index $index.");
+
     // If the current item is selected
     if (index == pageStack.peek()) {
       // Pop until the base route
@@ -181,11 +194,17 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       child: Scaffold(
         extendBody: widget.extendBody,
         resizeToAvoidBottomInset: widget.resizeToAvoidBottomInset,
-        // Depending on if the user wants to save the page states
-        body: !widget.savePageState
-            // Do not save page states
-            ? pages[currentIndex]
-            : IndexedStack(
+        body: widget.pageTransitionData == null
+            ? IndexedStack(
+                key: ValueKey<int>(widget.savePageState ? 0 : currentIndex),
+                index: currentIndex,
+                // If the page is not initialized, "not show" an invisible widget instead.
+                children:
+                    pages.map((page) => page ?? SizedBox.shrink()).toList(),
+              )
+            : TwoWayAnimatedIndexedStack(
+                key: ValueKey<int>(widget.savePageState ? 0 : currentIndex),
+                animData: widget.pageTransitionData!,
                 index: currentIndex,
                 // If the page is not initialized, "not show" an invisible widget instead.
                 children:
