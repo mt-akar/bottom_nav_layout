@@ -19,7 +19,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
    - Page transition animations
    - In-page navigation
    - Back button navigation for Android
- - Works with any bottom bar you want. Use the material desing, grab one from pub.dev or use your own.
+ - Works with any bottom bar you want. Use the material or cupertino bottom bar, [grab one from pub.dev](https://pub.dev/packages?q=bottom+navigation+bar) or use your own.
 
 # Content
  - [Usage](#usage)
