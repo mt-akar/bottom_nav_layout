@@ -130,7 +130,7 @@ pageTransitionData: PageTransitionData(
 [Page transition animation example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_transition_example.dart)
 
 # In-Page Navigation
-The layout can manage [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
+The layout maintains a [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
 
 <p align="center">
   <img src="https://user-images.githubusercontent.com/32205084/125260520-1024f380-e309-11eb-8c2d-4b10fc3dbc41.png">
@@ -139,12 +139,14 @@ The layout can manage [flat navigation pattern](https://developer.apple.com/desi
 </p>
 
 Benefits
- 1. Android back button navigates both in-page and among pages.
- 2. Bottom bar pops all in-page stack when the current bar item is reselected.
+ 1. A [`Navigator`](https://api.flutter.dev/flutter/widgets/Navigator-class.html) per page can be used with ease.
+ 2. Android back button navigates both in-page and among pages.
+ 3. Bottom bar pops all in-page stack when the current bar item is reselected.
 
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
-[In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/InPageNavigation) for more information.
+[In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/InPageNavigation) for more information.
+
 [In-page navigation example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart)
 
 
@@ -165,8 +167,11 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
 ),
 ```
 
+[Different Bottom Bars Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/DifferentBottomBars) for more information.
+
+[Different bottom bars example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/main.dart)
+
 # Improvements
- - I am planning to add page transition animations.
  - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate it.
  - I am also considering to make a drawer_nav_layout package. If you are interested, let me know!
 
