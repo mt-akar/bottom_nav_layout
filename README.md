@@ -2,9 +2,9 @@
 
 ---
 
-<img align="right" src="https://user-images.githubusercontent.com/32205084/125892687-a4c3549b-5980-447b-b80a-2ce355c04f49.gif">
+<img align="right" src="https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif">
 
-![stack_gif](https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif)
+![demo_gif](https://user-images.githubusercontent.com/32205084/125894923-49f26a3b-f871-4cda-8a6a-18db1abefa72.gif)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
