@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
-<img align="right" src="https://user-images.githubusercontent.com/32205084/125895433-e13240d4-c4f1-4303-9086-c08b80cd465a.gif">
+<img align="right" src="https://user-images.githubusercontent.com/32205084/125896822-a5de5f37-0da5-44ae-a93c-79c08d08c30d.gif">
 
 ### Demo
 ![stack_gif](https://user-images.githubusercontent.com/32205084/125896572-5b5ed300-a86a-4217-9761-bd382a5e7e77.gif)
