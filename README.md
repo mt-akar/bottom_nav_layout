@@ -1,10 +1,9 @@
 ![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 
 ---
+<img align="right" src="https://user-images.githubusercontent.com/32205084/125895201-5a3caf23-5c66-4c1e-8c64-e2399eaf5085.gif">
 
-<img align="right" src="https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif">
-
-![demo_gif](https://user-images.githubusercontent.com/32205084/125894923-49f26a3b-f871-4cda-8a6a-18db1abefa72.gif)
+![stack_gif](https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
