@@ -1,3 +1,7 @@
+## 3.0.1
+ - Jul 16, 2021
+ - Docs updated
+
 ## 3.0.0
  - Jul 16, 2021
  - In-page navigation is simplified.
