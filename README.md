@@ -2,10 +2,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
-<img align="right" src="https://user-images.githubusercontent.com/32205084/125903104-e89423e6-5dcc-43fd-a035-3c362ee74373.gif">
+<img align="right" src="https://user-images.githubusercontent.com/32205084/125903612-92e0d0ac-eaf1-4714-850d-90747b94cee5.gif">
 
 ### Demo
-![stack](https://user-images.githubusercontent.com/32205084/125903190-ff77cc6e-3ac5-48e2-8b5d-b604ebf91744.gif)
+![stack](https://user-images.githubusercontent.com/32205084/125903755-6e532a4f-3f16-46f2-a25c-a8cb9f4432dd.gif)
 
 
 ### What is `bottom_nav_layout`?
