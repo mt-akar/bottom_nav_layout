@@ -1,7 +1,7 @@
 ![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 
 ---
-<img align="right" src="https://user-images.githubusercontent.com/32205084/125895201-5a3caf23-5c66-4c1e-8c64-e2399eaf5085.gif">
+<img align="right" src="https://user-images.githubusercontent.com/32205084/125895433-e13240d4-c4f1-4303-9086-c08b80cd465a.gif">
 
 ![stack_gif](https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif)
 
