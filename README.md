@@ -1,23 +1,23 @@
 ![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
 <img align="right" src="https://user-images.githubusercontent.com/32205084/125895433-e13240d4-c4f1-4303-9086-c08b80cd465a.gif">
 
+### Demo
 ![stack_gif](https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### What is `bottom_nav_layout`?
 It is a quick flutter app layout for building an app with a bottom nav bar. You can get an app with fluent behavior running in 15 lines of code.
 
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
- - Uses identical APIs with the underlying bottom bars.
- - Offers additional common features, all of which are optional.
+ - Offers additional common features.
+   - Navigation management
    - Page state preservation
    - Lazy page loading
-   - Navigation management
- - Works with any bottom bar you wish. Use the material desing, grab one from pub.dev or use your own.
+ - Works with any bottom bar you want. Use the material desing, grab one from pub.dev or use your own.
 
 # Content
  - [Usage](#usage)
@@ -63,7 +63,7 @@ void main() => runApp(MaterialApp(
 ```
 Done. You have a complete, working application.
 
-[SliderPage code](https://github.com/m-azyoksul/bottom_nav_layout/blob/feature_bottom_bar_predicate/example/lib/pages/slider_page.dart)
+[SliderPage code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/pages/slider_page.dart)
 
 ## Parameters
 | Name | Description | Default |
@@ -75,6 +75,7 @@ Done. You have a complete, working application.
 | `pageStack` | Navigation stack that remembers pages visited. Enhances back button management on Android. | ReorderToFrontPageStack for Android, NoPageStack for iOS |
 | `extendBody` | Passed to [`Scaffold.extendBody`](https://api.flutter.dev/flutter/material/Scaffold/extendBody.html). | false |
 | `resizeToAvoidBottomInset` | Passed to [`Scaffold.resizeToAvoidBottomInset`](https://api.flutter.dev/flutter/material/Scaffold/resizeToAvoidBottomInset.html). | true |
+| `pageTransitionData` | Animation configuration for page transitions. | null |
 
 ## Inner Widget Tree
 ![inner_widget_tree](https://user-images.githubusercontent.com/32205084/125547934-389fa034-02dd-4398-9a96-5cc96fd1b762.jpg)
