@@ -5,7 +5,7 @@
 <img align="right" src="https://user-images.githubusercontent.com/32205084/125895433-e13240d4-c4f1-4303-9086-c08b80cd465a.gif">
 
 ### Demo
-![stack_gif](https://user-images.githubusercontent.com/32205084/125892907-c5bb50e7-1d3e-409b-b588-8fb4f4e0fb2a.gif)
+![stack_gif](https://user-images.githubusercontent.com/32205084/125896572-5b5ed300-a86a-4217-9761-bd382a5e7e77.gif)
 
 
 ### What is `bottom_nav_layout`?
