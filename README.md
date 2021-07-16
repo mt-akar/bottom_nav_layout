@@ -14,9 +14,11 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
 ### Why `bottom_nav_layout`?
  - Eliminates all boilerplate code for bottom nav bar coordination.
  - Offers additional common features.
-   - Navigation management
    - Page state preservation
    - Lazy page loading
+   - Page transition animations
+   - In-page navigation
+   - Back button navigation for Android
  - Works with any bottom bar you want. Use the material desing, grab one from pub.dev or use your own.
 
 # Content
