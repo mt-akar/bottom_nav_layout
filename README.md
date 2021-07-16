@@ -127,7 +127,7 @@ pageTransitionData: PageTransitionData(
   direction: AnimationDirection.inAndOut,
 ),
 ```
-[Page transition animation example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_transition_example.dart)
+[Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_transition_example.dart)
 
 # In-Page Navigation
 The layout maintains a [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
@@ -146,8 +146,7 @@ Benefits
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
 [In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/InPageNavigation) for more information.
-
-[In-page navigation example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart)
+[Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart)
 
 
 # Different Bottom Bars
@@ -168,8 +167,7 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
 ```
 
 [Different Bottom Bars Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/DifferentBottomBars) for more information.
-
-[Different bottom bars example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/main.dart)
+[Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/main.dart)
 
 # Improvements
  - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate it.
