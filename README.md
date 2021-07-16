@@ -1,6 +1,8 @@
 ![bottom_nav_layout](https://user-images.githubusercontent.com/32205084/124828867-8380db00-df80-11eb-859e-7a087ef8073b.png)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub Repo stars](https://img.shields.io/github/stars/m-azyoksul/bottom_nav_layout?style=social)](https://github.com/m-azyoksul/bottom_nav_layout)
+[![GitHub followers](https://img.shields.io/github/followers/m-azyoksul?style=social)](https://github.com/m-azyoksul/)
 ---
 <img align="right" src="https://user-images.githubusercontent.com/32205084/125903612-92e0d0ac-eaf1-4714-850d-90747b94cee5.gif">
 
