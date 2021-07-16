@@ -1,7 +1,7 @@
 name: example
 description: Sample app for bottom_nav_layout package.
 publish_to: 'none'
-version: 3.0.1
+version: 3.0.2
 environment:
   sdk: ">=2.12.0 <3.0.0"
 
@@ -9,7 +9,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  bottom_nav_layout: ^3.0.1
+  bottom_nav_layout: ^3.0.2
   #bottom_nav_layout:
   #  path: ../../bottom_nav_layout
 
