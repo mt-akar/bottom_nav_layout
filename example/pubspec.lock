@@ -32,10 +32,10 @@ packages:
   bottom_nav_layout:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
-    version: "3.0.0"
+      name: bottom_nav_layout
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   characters:
     dependency: transitive
     description:

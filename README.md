@@ -26,6 +26,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
  - [Page State Preservation](#page-state-preservation)
  - [Lazy Page Loading](#lazy-page-loading)
  - [Page Back Stack](#page-back-stack)
+ - [Page Transition Animation](#page-transition-animation)
  - [In-Page Navigation](#in-page-navigation)
  - [Different Bottom Bars](#different-bottom-bars)
  - [Improvements](#improvements)
@@ -114,6 +115,20 @@ pageStack: ReorderToFrontPageStack(initialPage: 0),
 
 [Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/PageBackStack) for details.
 
+# Page Transition Animation
+You can set an transition animation between pages. Create your own `AnimationBuilder` or use one of the built in ones.
+
+These animation work with both bottom navbar and Android back button.
+```dart
+// Default is null.
+pageTransitionData: PageTransitionData(
+  builder: PrebuiltAnimationBuilderBuilders.zoomInAndFadeOut,
+  duration: 150,
+  direction: AnimationDirection.inAndOut,
+),
+```
+[Page transition animation example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_transition_example.dart)
+
 # In-Page Navigation
 The layout can manage [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
 
@@ -130,6 +145,8 @@ Benefits
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
 [In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/InPageNavigation) for more information.
+[In-page navigation example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart)
+
 
 # Different Bottom Bars
 So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
