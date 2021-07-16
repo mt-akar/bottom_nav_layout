@@ -25,7 +25,6 @@ class PageTransitionExample extends StatelessWidget {
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           //BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
         ],
-        type: BottomNavigationBarType.fixed,
       ),
 
       // If savePageState is false, pages cannot be transitioned out.
@@ -33,26 +32,10 @@ class PageTransitionExample extends StatelessWidget {
 
       // Parameters related to the page transitions
       pageTransitionData: PageTransitionData(
-        builder: _animationBuilder,
+        builder: PrebuiltAnimationBuilderBuilders.zoomInAndFadeOut,
         duration: 150,
         direction: AnimationDirection.inAndOut,
       ),
-    );
-  }
-
-  /// A builder that returns an [AnimatedBuilder]
-  AnimatedBuilder _animationBuilder(
-      AnimationController controller, Widget child) {
-    return AnimatedBuilder(
-      animation: Tween(begin: 0.0, end: 1.0).animate(controller),
-      builder: (context, child) => Opacity(
-        opacity: controller.value,
-        child: Transform.scale(
-          scale: 1.05 - (controller.value * 0.05),
-          child: child,
-        ),
-      ),
-      child: child,
     );
   }
 }

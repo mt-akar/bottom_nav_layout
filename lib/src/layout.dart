@@ -4,7 +4,7 @@ import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'animated_indexed_stack.dart';
+import 'page_transition/animated_indexed_stack.dart';
 
 /// Type definition for the page builder
 typedef PageBuilder = Widget Function(GlobalKey<NavigatorState>);

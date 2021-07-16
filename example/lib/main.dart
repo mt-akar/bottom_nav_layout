@@ -17,12 +17,14 @@ import 'pages/slider_page.dart';
 
 var quickStartExample = QuickStartApp();
 var allParametersExample = AllParametersExample();
-var pageTransitionExampleApp = PageTransitionExample();
+var pageTransitionExample = PageTransitionExample();
 var navigationExample = NavigationExample();
 var appInDemo = AppInDemo();
 
-/// Use different examples
-void main() => runApp(MaterialApp(home: pageTransitionExampleApp));
+void main() => runApp(MaterialApp(
+      // Change the example
+      home: allParametersExample,
+    ));
 
 /// README: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/README.md#parameters
 class AllParametersExample extends StatelessWidget {
@@ -35,14 +37,15 @@ class AllParametersExample extends StatelessWidget {
         (_) => Center(
             child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
+      bottomNavigationBar: (currentIndex, onTap) =>
+          _buildBottomNavigationBar(currentIndex, onTap),
       savePageState: false,
       lazyLoadPages: false,
       // StandardPageStack, ReorderToFrontExceptFirstPageStack, NoPageStack, FirstAndLastPageStack
       pageStack: ReorderToFrontPageStack(initialPage: 0),
       extendBody: false,
       resizeToAvoidBottomInset: true,
-      bottomNavigationBar: (currentIndex, onTap) =>
-          _buildGNav(currentIndex, onTap),
+      pageTransitionData: null,
     );
   }
 
@@ -85,17 +88,6 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
-  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) =>
-      ConvexAppBar(
-        initialActiveIndex: currentIndex,
-        onTap: (index) => onTap(index),
-        items: [
-          TabItem(icon: Icon(Icons.home), title: 'Home'),
-          TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
-          TabItem(icon: Icon(Icons.search), title: 'Search'),
-        ],
-      );
-
   Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) =>
       SnakeNavigationBar.color(
         currentIndex: currentIndex,
@@ -120,6 +112,23 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
+  /// [ConvexAppBar.initialActiveIndex] doesn't act like a currentIndex.
+  /// Therefore, navigation between pages with back button is not possible.
+  /// Use [NoPageStack] with it.
+  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) =>
+      ConvexAppBar(
+        initialActiveIndex: currentIndex,
+        onTap: (index) => onTap(index),
+        items: [
+          TabItem(icon: Icon(Icons.home), title: 'Home'),
+          TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
+          TabItem(icon: Icon(Icons.search), title: 'Search'),
+        ],
+      );
+
+  /// [BottomBarWithSheet.selectedIndex] doesn't act like a currentIndex.
+  /// Therefore, navigation between pages with back button is not possible.
+  /// Use [NoPageStack] with it.
   Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) =>
       BottomBarWithSheet(
         selectedIndex: currentIndex,
@@ -134,6 +143,9 @@ class AllParametersExample extends StatelessWidget {
             BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
       );
 
+  /// [WaterDropNavBar.selectedIndex] acts like a current index but
+  /// changing the page through [selectedIndex] causes visual problems.
+  /// Use [NoPageStack] with it.
   Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) =>
       WD.WaterDropNavBar(
         selectedIndex: currentIndex,
@@ -145,6 +157,9 @@ class AllParametersExample extends StatelessWidget {
         ],
       );
 
+  /// [SlidingClippedNavBar.selectedIndex] acts like a current index but
+  /// changing the page through [selectedIndex] causes visual problems.
+  /// Use [NoPageStack] with it.
   Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) =>
       SC.SlidingClippedNavBar(
         selectedIndex: currentIndex,

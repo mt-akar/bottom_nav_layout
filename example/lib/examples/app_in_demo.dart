@@ -3,9 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'navigation_example.dart';
-import 'page_transition_example.dart';
 
-/// In-page navigation example with bottom_nav_layout package.
+/// This doesn't introduce something new.
+/// This is the code used in the gif demo at the top of README
 class AppInDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,26 +33,10 @@ class AppInDemo extends StatelessWidget {
       ),
       savePageState: true,
       pageTransitionData: PageTransitionData(
-        builder: _animationBuilder,
+        builder: PrebuiltAnimationBuilderBuilders.zoomInAndFadeOut,
         duration: 150,
         direction: AnimationDirection.inAndOut,
       ),
-    );
-  }
-
-  /// A builder that returns an [AnimatedBuilder]
-  AnimatedBuilder _animationBuilder(
-      AnimationController controller, Widget child) {
-    return AnimatedBuilder(
-      animation: Tween(begin: 0.0, end: 1.0).animate(controller),
-      builder: (context, child) => Opacity(
-        opacity: controller.value,
-        child: Transform.scale(
-          scale: 1.05 - (controller.value * 0.05),
-          child: child,
-        ),
-      ),
-      child: child,
     );
   }
 }

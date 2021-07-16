@@ -9,15 +9,15 @@ dependencies:
   flutter:
     sdk: flutter
 
-  #bottom_nav_layout: ^3.0.0
-  bottom_nav_layout:
-    path: ../../bottom_nav_layout
+  bottom_nav_layout: ^3.0.0
+  #bottom_nav_layout:
+  #  path: ../../bottom_nav_layout
 
   # Dependencies for different bottom bar designs
   google_nav_bar: ^5.0.5
-  convex_bottom_bar: ^3.0.0
   flutter_snake_navigationbar: ^0.5.0
   salomon_bottom_bar: ^3.1.0
+  convex_bottom_bar: ^3.0.0
   bottom_bar_with_sheet: ^1.1.1
   animated_bottom_navigation_bar: ^0.3.2
   water_drop_nav_bar: ^1.0.1
