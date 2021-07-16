@@ -115,7 +115,7 @@ You also specify the `initialPage` inside `PageStack`.
 pageStack: ReorderToFrontPageStack(initialPage: 0),
 ```
 
-[Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/docs/PageBackStack) for details.
+[Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) for details.
 
 # Page Transition Animation
 You can set an transition animation between pages. Create your own `AnimationBuilder` or use one of the built in ones.
