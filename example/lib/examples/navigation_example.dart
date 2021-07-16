@@ -16,7 +16,7 @@ class NavigationExample extends StatelessWidget {
             ),
         (navKey) => NavigatorWithoutRouteNames(
               navKey: navKey,
-              initialPage: StackablePage(0, "Profile"),
+              initialPage: StackablePage(0, "Search"),
             ), // NavigatorWithoutRouteNames
       ],
       bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
@@ -25,7 +25,7 @@ class NavigationExample extends StatelessWidget {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.linear_scale), label: 'Slider'),
+              icon: Icon(Icons.dashboard), label: 'Dashboard'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),

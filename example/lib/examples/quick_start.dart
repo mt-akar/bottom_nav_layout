@@ -15,7 +15,7 @@ class QuickStartApp extends StatelessWidget {
       ],
       bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
         currentIndex: currentIndex,
-        onTap: (index) => onTap(index),
+        onTap: (index) => onTap(index), // onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(

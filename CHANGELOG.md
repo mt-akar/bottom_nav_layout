@@ -1,17 +1,19 @@
 ## 3.0.0
- - 
+ - Jul 16, 2021
  - In-page navigation is simplified.
    - `pages`, `pageBuilders` and `keys` parameters are combined into `pages` parameter. (breaking)
    - User don't need to create keys anymore.
    - Helper methods and documentation added for in-page navigation.
  - Bottom bar delegates are removed.
    - Bottom navbar is created by the user, using a builder.
-   - Removes one layer of API.
+   - Removes a layer of adapters in between.
    - Removes all bottom bar dependencies.
  - Parameter defaults are changed to make the user more aware of their design choices.
    - `savePageState` default is change to false.
    - `pageStack` default is change to `NoPageStack` for iOS apps.
- - State management inside the library is improved.
+ - Page transition animations added.
+   - Use `pageTransitionData` parameter to add animations while changing the page.
+ - State management inside the library and performance is improved.
  - Comprehensive documentation added.
 
 ## 2.1.0

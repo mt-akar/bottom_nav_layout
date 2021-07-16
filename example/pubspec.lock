@@ -32,11 +32,9 @@ packages:
   bottom_nav_layout:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "98d5b1ba24618fcd6ae4e3dc9b2e8159af1d8e33"
-      url: "https://github.com/m-azyoksul/bottom_nav_layout.git"
-    source: git
+      path: ".."
+      relative: true
+    source: path
     version: "3.0.0"
   characters:
     dependency: transitive
@@ -97,6 +95,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  google_nav_bar:
+    dependency: "direct main"
+    description:
+      name: google_nav_bar
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.5"
   matcher:
     dependency: transitive
     description:
