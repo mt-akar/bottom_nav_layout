@@ -150,7 +150,6 @@ To do this, the page should have a `Navigator` widget that use the passed in `Gl
 [In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/InPageNavigation) for more information.
 [Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart)
 
-
 # Different Bottom Bars
 So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
 
