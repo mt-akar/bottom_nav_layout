@@ -60,23 +60,7 @@ bottomNavigationBar: (currentIndex, onTap) => GNav(
 ),
 ```
 
-## 4. [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar)
-
-Has `currentIndex`: No
-
-```dart
-bottomNavigationBar: (currentIndex, onTap) => ConvexAppBar(
-  initialActiveIndex: currentIndex,
-  onTap: onTap,
-  items: [
-    TabItem(icon: Icon(Icons.home), title: 'Home'),
-    TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
-    TabItem(icon: Icon(Icons.search), title: 'Search'),
-  ],
-),
-```
-
-## 5. [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)
+## 4. [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)
 
 Has `currentIndex`: Yes
 
@@ -92,7 +76,7 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
 ),
 ```
 
-## 6. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar)
+## 5. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar)
 
 Has `currentIndex`: Yes
 
@@ -104,6 +88,22 @@ bottomNavigationBar: (currentIndex, onTap) => SalomonBottomBar(
     SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
     SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
     SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
+  ],
+),
+```
+
+## 6. [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar)
+
+Has `currentIndex`: No
+
+```dart
+bottomNavigationBar: (currentIndex, onTap) => ConvexAppBar(
+  initialActiveIndex: currentIndex,
+  onTap: onTap,
+  items: [
+    TabItem(icon: Icon(Icons.home), title: 'Home'),
+    TabItem(icon: Icon(Icons.linear_scale), title: 'Slider'),
+    TabItem(icon: Icon(Icons.search), title: 'Search'),
   ],
 ),
 ```
