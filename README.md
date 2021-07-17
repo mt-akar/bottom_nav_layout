@@ -105,6 +105,10 @@ The layout offers the option to lazily create the pages using the passed in page
  ```
 
 # Page Back Stack
+| Documentation | Example |
+| :--- | :--- |
+| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) | - |
+
 The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
 
 There are many useful page back stack behaviors implemented such as reorder-to-front and replace-except-first. You can also implement your own.
@@ -116,9 +120,13 @@ You also specify the `initialPage` inside `PageStack`.
 pageStack: ReorderToFrontPageStack(initialPage: 0),
 ```
 
-[Page Back Stack Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) for details.
+ for details.
 
 # Page Transition Animation
+| Documentation | Example |
+| :--- | :--- |
+| - | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_transition_example.dart) |
+
 You can set an transition animation between pages. Create your own `AnimationBuilder` or use one of the built in ones.
 
 These animation work with both bottom navbar and Android back button.
@@ -130,9 +138,12 @@ pageTransitionData: PageTransitionData(
   direction: AnimationDirection.inAndOut,
 ),
 ```
-[Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_transition_example.dart)
 
 # In-Page Navigation
+| Documentation | Example |
+| :--- | :--- |
+| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/InPageNavigation) | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart) |
+
 The layout maintains a [flat navigation pattern](https://developer.apple.com/design/human-interface-guidelines/ios/app-architecture/navigation/).
 
 <p align="center">
@@ -148,10 +159,11 @@ Benefits
 
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
-[In-Page Navigation Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/InPageNavigation) for more information.
-[Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart)
-
 # Different Bottom Bars
+| Documentation | Example |
+| :--- | :--- |
+| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/DifferentBottomBars) | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/different_bottom_bars.dart) |
+
 So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
 
 Example usage of [`flutter_snake_navigationbar`](https://pub.dev/packages/flutter_snake_navigationbar):
@@ -167,9 +179,6 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
   ],
 ),
 ```
-
-[Different Bottom Bars Documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/DifferentBottomBars) for more information.
-[Example code](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/main.dart)
 
 # Improvements
  - Tell me if you want to see a feature your app has/needs in this package. I will do my best to integrate it.
