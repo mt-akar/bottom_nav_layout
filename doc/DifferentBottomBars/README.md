@@ -4,7 +4,7 @@ It is possible to use any bottom bar with this layout. You can use
  - Any bottom bar package from pub.dev
  - Custom implemented bottom bar.
 
-# Usage
+# Example Usage
 Example usages of some of the bottom bars. You can use the ones which aren't here as well.
 
 Warning: Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item cannot be changed when the back button is pressed. To have the best result, only use `NoPageStack` with bottom bars that doesn't have the `currentIndex` property.
@@ -123,6 +123,9 @@ bottomNavigationBar: (currentIndex, onTap) => SlidingClippedNavBar(
   activeColor: Colors.blue,
 ),
 ```
+
+## 8. Other Packages
+You can use any bottom bar package. Go to [this](https://pub.dev/packages?q=bottom+navigation+bar) page and pick a bottom navbar package. Or implement your own.
 
 ## Incompatible Packages
  - [persistent_bottom_nav_bar](https://pub.dev/packages/persistent_bottom_nav_bar): Already a layout package
