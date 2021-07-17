@@ -1,4 +1,4 @@
-# Page Stacks
+# Page Back Stack
 The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
 
 There are many useful page back stack behaviors implemented such as reorder-to-front and replace-except-first. You can also implement your own.
