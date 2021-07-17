@@ -1,31 +1,66 @@
 # Different Bottom Bars
 It is possible to use any bottom bar with this layout. You can use
  - [Material Design Bottom Bar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html).
+ - [Cupertino Bar](https://api.flutter.dev/flutter/cupertino/CupertinoTabBar-class.html).
  - Any bottom bar package from pub.dev
  - Custom implemented bottom bar.
 
-# Example Usage
+# Example Package Usage
 Example usages of some of the bottom bars. You can use the ones which aren't here as well.
 
 Warning: Some of the packages' index constructor parameter acts as an `initialIndex`, not as a `currentIndex`, therefore, selected item cannot be changed when the back button is pressed. To have the best result, only use `NoPageStack` with bottom bars that doesn't have the `currentIndex` property.
 
-## 1. [Material](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
+## 1. [Material's BottomNavigationBar](https://api.flutter.dev/flutter/material/BottomNavigationBar-class.html)
 
 Has `currentIndex`: Yes
 
 ```dart
 bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
   currentIndex: currentIndex,
-  onTap: onTap,
+  onTap: (index) => onTap(index),
   items: [
     BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-    BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.linear_scale), label: 'Slider'),
     BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
   ],
 ),
 ```
 
-## 2. [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar)
+## 2. [CupertinoTabBar](https://api.flutter.dev/flutter/cupertino/CupertinoTabBar-class.html)
+
+Has `currentIndex`: Yes
+
+```dart
+bottomNavigationBar: (currentIndex, onTap) => CupertinoTabBar(
+  currentIndex: currentIndex,
+  onTap: (index) => onTap(index),
+  items: [
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+    BottomNavigationBarItem(
+        icon: Icon(Icons.linear_scale), label: 'Slider'),
+    BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+  ],
+),
+```
+
+## 3. [google_nav_bar](https://pub.dev/packages/google_nav_bar)
+
+Has `currentIndex`: Yes
+
+```dart
+bottomNavigationBar: (currentIndex, onTap) => GNav(
+  selectedIndex: currentIndex,
+  onTabChange: (index) => onTap(index),
+  tabs: [
+    GButton(icon: Icons.home, text: 'Home'),
+    GButton(icon: Icons.linear_scale, text: 'Slider'),
+    GButton(icon: Icons.search, text: 'Search'),
+  ],
+),
+```
+
+## 4. [convex_bottom_bar](https://pub.dev/packages/convex_bottom_bar)
 
 Has `currentIndex`: No
 
@@ -41,7 +76,7 @@ bottomNavigationBar: (currentIndex, onTap) => ConvexAppBar(
 ),
 ```
 
-## 3. [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)
+## 5. [flutter_snake_navigationbar](https://pub.dev/packages/flutter_snake_navigationbar)
 
 Has `currentIndex`: Yes
 
@@ -57,7 +92,7 @@ bottomNavigationBar: (currentIndex, onTap) => SnakeNavigationBar.color(
 ),
 ```
 
-## 4. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar)
+## 6. [salomon_bottom_bar](https://pub.dev/packages/salomon_bottom_bar)
 
 Has `currentIndex`: Yes
 
@@ -73,7 +108,7 @@ bottomNavigationBar: (currentIndex, onTap) => SalomonBottomBar(
 ),
 ```
 
-## 5. [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet)
+## 7. [bottom_bar_with_sheet](https://pub.dev/packages/bottom_bar_with_sheet)
 
 Has `currentIndex`: No
 
@@ -91,7 +126,7 @@ bottomNavigationBar: (currentIndex, onTap) => BottomBarWithSheet(
 ),
 ```
 
-## 6. [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar)
+## 8. [water_drop_nav_bar](https://pub.dev/packages/water_drop_nav_bar)
 
 Has `currentIndex`: Yes
 
@@ -107,7 +142,7 @@ bottomNavigationBar: (currentIndex, onTap) => WaterDropNavBar(
 ),
 ```
 
-## 7. [sliding_clipped_nav_bar](https://pub.dev/packages/sliding_clipped_nav_bar)
+## 9. [sliding_clipped_nav_bar](https://pub.dev/packages/sliding_clipped_nav_bar)
 
 Has `currentIndex`: Yes
 
@@ -124,7 +159,7 @@ bottomNavigationBar: (currentIndex, onTap) => SlidingClippedNavBar(
 ),
 ```
 
-## 8. Other Packages
+## 10. Other Packages
 You can use any bottom bar package. Go to [this](https://pub.dev/packages?q=bottom+navigation+bar) page and pick a bottom navbar package. Or implement your own.
 
 ## Incompatible Packages
