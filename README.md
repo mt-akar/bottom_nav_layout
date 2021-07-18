@@ -160,36 +160,24 @@ Benefits
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
 ```dart
-BottomNavLayout(
-  pages: [
-    (navKey) => Navigator(
-          key: navKey,
-          initialRoute: "/",
-          onGenerateRoute: (routeSettings) => MaterialPageRoute(
-            builder: (context) {
-              if (routeSettings.name == "/")
-                return OverviewPage();
-              else if (routeSettings.name == "/details")
-                return DetailsPage();
-              else
-                return Center(child: Text("Unknown route."));
-            },
-          ),
+pages: [
+  (navKey) => Navigator(
+        key: navKey,
+        initialRoute: "/",
+        onGenerateRoute: (routeSettings) => MaterialPageRoute(
+          builder: (context) {
+            if (routeSettings.name == "/")
+              return OverviewPage();
+            else if (routeSettings.name == "/details")
+              return DetailsPage();
+            else
+              return Center(child: Text("Unknown route."));
+          },
         ),
-    (_) => SliderPage(),
-    (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
-  ],
-  bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
-    currentIndex: currentIndex,
-    onTap: (index) => onTap(index),
-    items: [
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
-      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-    ],
-  ),
-  savePageState: true,
-);
+      ),
+  (_) => SliderPage(),
+  (_) => SliderPage(),
+],
 ```
 
 # Different Bottom Bars
