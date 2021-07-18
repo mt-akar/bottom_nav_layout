@@ -120,8 +120,6 @@ You also specify the `initialPage` inside `PageStack`.
 pageStack: ReorderToFrontPageStack(initialPage: 0),
 ```
 
- for details.
-
 # Page Transition Animation
 | Documentation | Example |
 | :--- | :--- |
