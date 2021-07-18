@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -106,7 +104,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   void initState() {
     // Set the pageStack. If not passed in, initialize with default.
     pageStack = widget.pageStack ??
-        (Platform.isAndroid
+        (Theme.of(context).platform == TargetPlatform.android
             ? ReorderToFrontPageStack(initialPage: 0)
             : NoPageStack(initialPage: 0));
 

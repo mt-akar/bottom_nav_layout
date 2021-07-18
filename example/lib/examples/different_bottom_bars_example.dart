@@ -18,9 +18,11 @@ class DifferentBottomBarsExample extends StatelessWidget {
       pages: [
         (_) => Center(child: Text("Welcome to bottom_nav_layout")),
         (_) => SliderPage(),
-        (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+        (_) => Center(
+            child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
-      bottomNavigationBar: (currentIndex, onTap) => _buildBottomNavigationBar(currentIndex, onTap),
+      bottomNavigationBar: (currentIndex, onTap) =>
+          _buildBottomNavigationBar(currentIndex, onTap),
     );
   }
 
@@ -29,22 +31,26 @@ class DifferentBottomBarsExample extends StatelessWidget {
   //// There are 9 example bottom bars here. ////
   ///////////////////////////////////////////////
 
-  Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) => BottomNavigationBar(
+  Widget _buildBottomNavigationBar(int currentIndex, Function(int) onTap) =>
+      BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) => onTap(index),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
 
-  Widget _buildCupertinoTabBar(int currentIndex, Function(int) onTap) => CupertinoTabBar(
+  Widget _buildCupertinoTabBar(int currentIndex, Function(int) onTap) =>
+      CupertinoTabBar(
         currentIndex: currentIndex,
         onTap: (index) => onTap(index),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
@@ -59,22 +65,26 @@ class DifferentBottomBarsExample extends StatelessWidget {
         ],
       );
 
-  Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) => SnakeNavigationBar.color(
+  Widget _buildSnakeNavigationBar(int currentIndex, Function(int) onTap) =>
+      SnakeNavigationBar.color(
         currentIndex: currentIndex,
         onTap: (index) => onTap(index),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       );
 
-  Widget _buildSalomonBottomBar(int currentIndex, Function(int) onTap) => SalomonBottomBar(
+  Widget _buildSalomonBottomBar(int currentIndex, Function(int) onTap) =>
+      SalomonBottomBar(
         currentIndex: currentIndex,
         onTap: (index) => onTap(index),
         items: [
           SalomonBottomBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          SalomonBottomBarItem(icon: Icon(Icons.linear_scale), title: Text('Slider')),
+          SalomonBottomBarItem(
+              icon: Icon(Icons.linear_scale), title: Text('Slider')),
           SalomonBottomBarItem(icon: Icon(Icons.search), title: Text('Search')),
         ],
       );
@@ -82,7 +92,8 @@ class DifferentBottomBarsExample extends StatelessWidget {
   /// [ConvexAppBar.initialActiveIndex] doesn't act like a currentIndex.
   /// Therefore, navigation between pages with back button is not possible.
   /// Use [NoPageStack] with it.
-  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) => ConvexAppBar(
+  Widget _buildConvexAppBar(int currentIndex, Function(int) onTap) =>
+      ConvexAppBar(
         initialActiveIndex: currentIndex,
         onTap: (index) => onTap(index),
         items: [
@@ -95,7 +106,8 @@ class DifferentBottomBarsExample extends StatelessWidget {
   /// [BottomBarWithSheet.selectedIndex] doesn't act like a currentIndex.
   /// Therefore, navigation between pages with back button is not possible.
   /// Use [NoPageStack] with it.
-  Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) => BottomBarWithSheet(
+  Widget _buildBottomBarWithSheet(int currentIndex, Function(int) onTap) =>
+      BottomBarWithSheet(
         selectedIndex: currentIndex,
         onSelectItem: (index) => onTap(index),
         items: [
@@ -104,13 +116,15 @@ class DifferentBottomBarsExample extends StatelessWidget {
           BottomBarWithSheetItem(icon: Icons.search, label: 'Search'),
         ],
         sheetChild: Center(child: Text("Welcome to sheetChild")),
-        bottomBarTheme: BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
+        bottomBarTheme:
+            BottomBarTheme(mainButtonPosition: MainButtonPosition.right),
       );
 
   /// [WaterDropNavBar.selectedIndex] acts like a current index but
   /// changing the page through [selectedIndex] causes visual problems.
   /// Use [NoPageStack] with it.
-  Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) => WD.WaterDropNavBar(
+  Widget _buildWaterDropNavBar(int currentIndex, Function(int) onTap) =>
+      WD.WaterDropNavBar(
         selectedIndex: currentIndex,
         onButtonPressed: (index) => onTap(index),
         barItems: [
@@ -123,7 +137,8 @@ class DifferentBottomBarsExample extends StatelessWidget {
   /// [SlidingClippedNavBar.selectedIndex] acts like a current index but
   /// changing the page through [selectedIndex] causes visual problems.
   /// Use [NoPageStack] with it.
-  Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) => SC.SlidingClippedNavBar(
+  Widget _buildSlidingClippedNavBar(int currentIndex, Function(int) onTap) =>
+      SC.SlidingClippedNavBar(
         selectedIndex: currentIndex,
         onButtonPressed: (index) => onTap(index),
         barItems: [

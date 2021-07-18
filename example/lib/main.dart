@@ -29,14 +29,16 @@ class AllParametersExample extends StatelessWidget {
       pages: [
         (_) => Center(child: Text("Welcome to bottom_nav_layout")),
         (_) => SliderPage(),
-        (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+        (_) => Center(
+            child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
       bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) => onTap(index),
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),
