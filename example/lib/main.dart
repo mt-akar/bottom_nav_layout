@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'examples/app_in_demo.dart';
-import 'examples/different_bottom_bars.dart';
+import 'examples/different_bottom_bars_example.dart';
 import 'examples/navigation_example.dart';
 import 'examples/page_transition_example.dart';
 import 'examples/quick_start.dart';
