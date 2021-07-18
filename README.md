@@ -155,7 +155,7 @@ Benefits
  2. You only need to push pages you need. Pops are handled by the layout.
  3. Android back button navigates both in-page and among pages.
  4. Bottom bar pops all in-page stack when the current bar item is reselected.
- 5. If you put an app bar to your page, it will show the up button correctly, depending on the context.
+ 5. If you put an app bar to your page, it will show the up button correctly.
 
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
 
