@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -37,7 +35,7 @@ class NavExtensions {
   static void push(BuildContext context, Widget page) {
     var route;
 
-    if (Platform.isIOS)
+    if (Theme.of(context).platform == TargetPlatform.iOS)
       route = CupertinoPageRoute(builder: (_) => page);
     else
       route = MaterialPageRoute(builder: (_) => page);

@@ -153,11 +153,46 @@ The layout maintains a [flat navigation pattern](https://developer.apple.com/des
 </p>
 
 Benefits
- 1. A [`Navigator`](https://api.flutter.dev/flutter/widgets/Navigator-class.html) per page can be used with ease.
- 2. Android back button navigates both in-page and among pages.
- 3. Bottom bar pops all in-page stack when the current bar item is reselected.
+ 1. [`Navigator`](https://api.flutter.dev/flutter/widgets/Navigator-class.html) per page is trivial to set up.
+ 2. You only need to push pages you need. Pops are handled by the layout.
+ 3. Android back button navigates both in-page and among pages.
+ 4. Bottom bar pops all in-page stack when the current bar item is reselected.
+ 5. If you put an app bar to your page, it will show the up button correctly, depending on the context.
 
 To do this, the page should have a `Navigator` widget that use the passed in `GlobalKey` as its key.
+
+```dart
+BottomNavLayout(
+  pages: [
+    (navKey) => Navigator(
+          key: navKey,
+          initialRoute: "/",
+          onGenerateRoute: (routeSettings) => MaterialPageRoute(
+            builder: (context) {
+              if (routeSettings.name == "/")
+                return OverviewPage();
+              else if (routeSettings.name == "/details")
+                return DetailsPage();
+              else
+                return Center(child: Text("Unknown route."));
+            },
+          ),
+        ),
+    (_) => SliderPage(),
+    (_) => Center(child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
+  ],
+  bottomNavigationBar: (currentIndex, onTap) => BottomNavigationBar(
+    currentIndex: currentIndex,
+    onTap: (index) => onTap(index),
+    items: [
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+      BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+      BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+    ],
+  ),
+  savePageState: true,
+);
+```
 
 # Different Bottom Bars
 | Documentation | Example |
