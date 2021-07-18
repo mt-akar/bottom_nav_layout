@@ -107,7 +107,7 @@ The layout offers the option to lazily create the pages using the passed in page
 # Page Back Stack
 | Documentation | Example |
 | :--- | :--- |
-| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) | - |
+| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_back_stack_example.dart) |
 
 The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
 
@@ -197,7 +197,7 @@ BottomNavLayout(
 # Different Bottom Bars
 | Documentation | Example |
 | :--- | :--- |
-| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/DifferentBottomBars) | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/different_bottom_bars.dart) |
+| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/DifferentBottomBars) | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/different_bottom_bars_example.dart) |
 
 So far, we only worked on Material bottom nav bar. The layout supports any bottom bar.
 
