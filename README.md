@@ -222,6 +222,8 @@ Any feedback is appreciated. 🚀🚀
 
 I love talking about code. Find me on discord at ViraL#2868
 
+If you like this work, please consider 👍 the package and ⭐ the repo. It is appreciated.
+
 If you have queries, feel free to create an [issue](https://github.com/m-azyoksul/bottom_nav_layout/issues).
 
 If you would like to contribute, feel free to create a [PR](https://github.com/m-azyoksul/bottom_nav_layout/pulls).
