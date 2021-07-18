@@ -68,4 +68,4 @@ This behavior is used by Google, Gmail, Facebook, and Twitter apps.
 | Stack | 0 | 0->1 | 0->2 | 0->1 | 0 | 0 | Exit App |
 
 ## Implement Your Own
-
+Follow the guides on [this example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/extension/extend_page_stack.dart)
