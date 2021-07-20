@@ -1,6 +1,7 @@
-## 3.0.4
+## 3.0.5
  - Jul 18, 2021
- - Docs updated
+ - Docs updated.
+ - A bug fixed.
 
 ## 3.0.0
  - Jul 16, 2021
@@ -15,7 +16,7 @@
  - Parameter defaults are changed to make the user more aware of their design choices.
    - `savePageState` default is change to false.
    - `pageStack` default is change to `NoPageStack` for iOS apps.
- - Page transition animations added.8
+ - Page transition animations added.5
    - Use `pageTransitionData` parameter to add animations while changing the page.
  - State management inside the library and performance is improved.
  - Comprehensive documentation added.

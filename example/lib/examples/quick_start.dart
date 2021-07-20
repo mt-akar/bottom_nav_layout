@@ -2,7 +2,7 @@ import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:example/pages/slider_page.dart';
 import 'package:flutter/material.dart';
 
-class QuickStartApp extends StatelessWidget {
+class QuickStartExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BottomNavLayout(

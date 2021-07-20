@@ -22,7 +22,7 @@ class DifferentBottomBarsExample extends StatelessWidget {
             child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
       bottomNavigationBar: (currentIndex, onTap) =>
-          _buildBottomNavigationBar(currentIndex, onTap),
+          _buildSnakeNavigationBar(currentIndex, onTap),
     );
   }
 

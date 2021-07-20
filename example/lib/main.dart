@@ -9,11 +9,11 @@ import 'examples/page_transition_example.dart';
 import 'examples/quick_start.dart';
 import 'pages/slider_page.dart';
 
-var quickStartExample = QuickStartApp();
+var quickStartExample = QuickStartExample();
 var allParametersExample = AllParametersExample();
 var pageTransitionExample = PageTransitionExample();
 var navigationExample = NavigationExample();
-var differentBottomBarsExampleExample = DifferentBottomBarsExample();
+var differentBottomBarsExample = DifferentBottomBarsExample();
 var appInDemo = AppInDemo();
 
 void main() => runApp(MaterialApp(

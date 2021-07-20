@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -39,7 +41,8 @@ class BottomNavLayout extends StatefulWidget {
   /// Pages are given as builders, this enables lazy page loading and in-page navigation.
   /// The layout builds the pages using these builders and manages its state and navigation.
   ///
-  /// [GlobalKey] passed as parameter can be used as a [Navigator] key.
+  /// [GlobalKey] passed as parameter can be used as a [Navigator]'s key.
+  /// This way, the navigation can be managed by the layout.
   /// See: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/navigation_example.dart
   final List<PageBuilder> pages;
 
@@ -104,7 +107,7 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   void initState() {
     // Set the pageStack. If not passed in, initialize with default.
     pageStack = widget.pageStack ??
-        (Theme.of(context).platform == TargetPlatform.android
+        (Platform.isAndroid
             ? ReorderToFrontPageStack(initialPage: 0)
             : NoPageStack(initialPage: 0));
 
