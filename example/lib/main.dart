@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'examples/app_in_demo.dart';
 import 'examples/different_bottom_bars_example.dart';
 import 'examples/navigation_example.dart';
+import 'examples/page_back_stack_example.dart';
 import 'examples/page_transition_example.dart';
 import 'examples/quick_start.dart';
 import 'pages/slider_page.dart';
@@ -12,13 +13,14 @@ import 'pages/slider_page.dart';
 var quickStartExample = QuickStartExample();
 var allParametersExample = AllParametersExample();
 var pageTransitionExample = PageTransitionExample();
+var pageBackStackExample = PageBackStackExample();
 var navigationExample = NavigationExample();
 var differentBottomBarsExample = DifferentBottomBarsExample();
 var appInDemo = AppInDemo();
 
 void main() => runApp(MaterialApp(
       // Change the example from here
-      home: allParametersExample,
+      home: pageBackStackExample,
     ));
 
 /// README: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/README.md#parameters
