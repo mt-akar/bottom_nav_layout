@@ -98,7 +98,7 @@ savePageState: true, // Default is false
 
 # Lazy Page Loading
 The layout offers the option to lazily create the pages using the passed in page builders. When `lazyLoadPages` is set to true, the pages are not created until they are navigated to for the first time. This is useful when a non-initial page;
- - Has a load animation.
+ - Has a launch animation.
  - Runs a heavy process that is not needed until the page is opened.
  ```dart
  lazyLoadPages: true, // Default is false
@@ -111,13 +111,27 @@ The layout offers the option to lazily create the pages using the passed in page
 
 The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
 
+```dart
+// Default is ReorderToFrontPageStack for Android and NoPageStack for iOS.
+pageStack: ReorderToFrontPageStack(initialPage: 0),
+```
+
 There are many useful page back stack behaviors implemented such as reorder-to-front and replace-except-first. You can also implement your own.
 
 You also specify the `initialPage` inside `PageStack`.
 
+To change the current page programmatically, you can use
+
 ```dart
-// Default is ReorderToFrontPageStack for Android and NoPageStack for iOS.
-pageStack: ReorderToFrontPageStack(initialPage: 0),
+// Navigate to a page. 
+myPageStack.push(2);
+
+// Navigate back to the previous page on the stack.
+myPageStack.pop();
+
+// PageStacks inherit ListQueue.
+var top = myPageStack.peek();
+var length = myPageStack.length;
 ```
 
 # Page Transition Animation
