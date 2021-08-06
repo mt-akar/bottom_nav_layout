@@ -40,7 +40,7 @@ It is a quick flutter app layout for building an app with a bottom nav bar. You 
 Add the following to your `pubspec.yaml` file.
 ```yaml
 dependencies:
-  bottom_nav_layout: latest_version
+  bottom_nav_layout: [Latest version]
 ```
 
 ## Quick Start Example
