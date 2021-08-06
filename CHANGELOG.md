@@ -1,7 +1,7 @@
-## 3.0.5
+## 3.0.6
  - Jul 18, 2021
  - Docs updated.
- - A bug fixed.
+ - Several improvements.
 
 ## 3.0.0
  - Jul 16, 2021

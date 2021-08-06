@@ -48,7 +48,8 @@ class _PageBackStackExampleState extends State<PageBackStackExample> {
         onTap: (index) => onTap(index), // onTap: onTap,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.linear_scale), label: 'Slider'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
         ],
       ),
