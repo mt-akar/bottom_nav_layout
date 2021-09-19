@@ -6,7 +6,8 @@ void main() {
   testWidgets('layout test', (WidgetTester tester) async {
     bool lazyLoadPages = false;
     var welcomeText = Text("Welcome to bottom_nav_layout");
-    var sliderField = TextField(decoration: InputDecoration(hintText: 'Slider..'));
+    var sliderField =
+        TextField(decoration: InputDecoration(hintText: 'Slider..'));
     var searchField = TextField(decoration: InputDecoration(hintText: 'Go..'));
 
     // Create the widget by telling the tester to build it.
@@ -23,7 +24,8 @@ void main() {
           onTap: (index) => onTap(index), // onTap: onTap,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.linear_scale), label: 'Slider'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.linear_scale), label: 'Slider'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           ],
         ),
