@@ -1,6 +1,7 @@
-## 3.0.7
+## 3.0.8
  - Sep 20, 2021
  - Docs updated.
+ - Dart formats fixed.
 
 ## 3.0.0
  - Jul 16, 2021
