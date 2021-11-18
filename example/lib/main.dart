@@ -20,7 +20,7 @@ var appInDemo = AppInDemo();
 
 void main() => runApp(MaterialApp(
       // Change the example from here
-      home: pageBackStackExample,
+      home: quickStartExample,
     ));
 
 /// README: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/README.md#parameters
