@@ -2,8 +2,7 @@ import 'dart:collection';
 
 /// Parent class for any stack implementation for [BottomNavLayout] navigation.
 ///
-/// [BottomNavLayout] requires an instance of [PageStack] to be passed in as a
-/// parameter.
+/// [BottomNavLayout] requires an instance of [PageStack] to be passed in as a parameter.
 ///
 /// Users can extend this class to have their own stack behaviour.
 ///
@@ -13,8 +12,7 @@ import 'dart:collection';
 /// [BottomNavLayout] never pushes the last item in the stack into the stack.
 ///
 /// Additionally, the last item in the stack is the current selected page index.
-/// Therefore, the stack is never empty while the [BottomNavLayout] is handling
-/// the pop events.
+/// Therefore, the stack is never empty while the [BottomNavLayout] is handling the pop events.
 ///
 /// When there is a single item on the stack and pop is called, the app exits if
 /// no other back button handler is added.
@@ -94,10 +92,8 @@ class ReorderToFrontPageStack extends PageStack {
   int peek() => last;
 }
 
-/// [PageStack] implementation that follows reorder-to-front behavior
-/// except the first item.
-/// The first item never changes and the initial page can be at two
-/// different positions in the stack.
+/// [PageStack] implementation that follows reorder-to-front behavior except the first item.
+/// The first item never changes and the initial page can be at two different positions in the stack.
 ///
 /// This behavior is used by Youtube app.
 ///
@@ -125,7 +121,9 @@ class ReorderToFrontExceptFirstPageStack extends PageStack {
     // If the index pushed is the first index,
     else {
       // Remove it up to two times.
-      this..remove(pageIndex)..remove(pageIndex);
+      this
+        ..remove(pageIndex)
+        ..remove(pageIndex);
 
       // Add it back to the first spot
       addFirst(pageIndex);
