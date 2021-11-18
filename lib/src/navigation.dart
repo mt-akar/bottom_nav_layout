@@ -1,3 +1,5 @@
+import 'package:universal_io/io.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -31,13 +33,15 @@ class NavigatorWithoutRouteNames extends StatelessWidget {
 
 /// This class contains extension methods.
 class NavExtensions {
-  /// Simply push a widget with MaterialPageRoute
+  /// Simply push a widget
   static void push(BuildContext context, Widget page) {
-    Navigator.push(context, MaterialPageRoute(builder: (_) => page));
-  }
+    var route;
 
-  /// Simply push a widget with CupertinoPageRoute
-  static void pushCupertino(BuildContext context, Widget page) {
-    Navigator.push(context, CupertinoPageRoute(builder: (_) => page));
+    if (Platform.isIOS)
+      route = CupertinoPageRoute(builder: (_) => page);
+    else
+      route = MaterialPageRoute(builder: (_) => page);
+
+    Navigator.push(context, route);
   }
 }
