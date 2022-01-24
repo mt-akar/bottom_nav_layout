@@ -1,8 +1,7 @@
-import 'package:universal_io/io.dart';
-
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:universal_io/io.dart';
 
 import 'page_transition/animated_indexed_stack.dart';
 
@@ -24,6 +23,7 @@ class BottomNavLayout extends StatefulWidget {
     this.savePageState = false,
     this.lazyLoadPages = false,
     this.pageStack,
+    this.shouldHandlePop = true,
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
     this.pageTransitionData,
@@ -68,6 +68,8 @@ class BottomNavLayout extends StatefulWidget {
   /// Default is [ReorderToFrontPageStack] for Android and [NoPageStack] for iOS.
   /// There are other stack implementations. You can also implement your own.
   final PageStack? pageStack;
+
+  final bool shouldHandlePop;
 
   /// Passed to [Scaffold.extendBody]. Default is false.
   final bool extendBody;
@@ -152,6 +154,10 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If there are more than one items in the pageStack, pops back to the previous page on the stack.
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
+    if (!widget.shouldHandlePop) {
+      return true;
+    }
+
     // Send pop event to the inner page
     final consumedByPage =
         await keys[pageStack.peek()].currentState?.maybePop() ?? false;
