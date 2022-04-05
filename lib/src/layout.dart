@@ -2,7 +2,6 @@ import 'package:universal_io/io.dart';
 
 import 'package:bottom_nav_layout/src/page_stack.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import 'page_transition/animated_indexed_stack.dart';
 

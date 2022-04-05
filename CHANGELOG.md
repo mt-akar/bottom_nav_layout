@@ -1,7 +1,6 @@
-## 3.0.9
- - Sep 20, 2021
- - Docs updated.
- - Dart formats fixed.
+## 3.0.10
+ - Mar 14, 2022
+ - Dart static analysis warnings fixed.
 
 ## 3.0.0
  - Jul 16, 2021
