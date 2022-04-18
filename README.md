@@ -107,7 +107,7 @@ The layout offers the option to lazily create the pages using the passed in page
 # Page Back Stack
 | Documentation | Example |
 | :--- | :--- |
-| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) | [example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_back_stack_example.dart) |
+| [documentation](https://github.com/m-azyoksul/bottom_nav_layout/tree/main/doc/PageBackStack) | [back stack example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/page_back_stack_example.dart), [programmatic navigation example](https://github.com/m-azyoksul/bottom_nav_layout/blob/main/example/lib/examples/programmatic_navigation_example.dart) |
 
 The layout remembers the order of pages navigated and when back button is pressed, navigates back to the previously navigated page.
 
