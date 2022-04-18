@@ -3,17 +3,19 @@ import 'package:flutter/material.dart';
 
 class ProgrammaticNavigationExample extends StatefulWidget {
   @override
-  State<ProgrammaticNavigationExample> createState() => _ProgrammaticNavigationExampleState();
+  State<ProgrammaticNavigationExample> createState() =>
+      _ProgrammaticNavigationExampleState();
 }
 
-class _ProgrammaticNavigationExampleState extends State<ProgrammaticNavigationExample> {
+class _ProgrammaticNavigationExampleState
+    extends State<ProgrammaticNavigationExample> {
   StandardPageStack _stack = StandardPageStack(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return BottomNavLayout(
       pages: [
-        (navKey) => Center(
+        (_) => Center(
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
@@ -23,7 +25,7 @@ class _ProgrammaticNavigationExampleState extends State<ProgrammaticNavigationEx
                 child: Text("Go to dashboard page"),
               ),
             ),
-        (navKey) => Center(
+        (_) => Center(
               child: ElevatedButton(
                 onPressed: () {
                   setState(() {
