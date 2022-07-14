@@ -1,6 +1,7 @@
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:flutter/material.dart';
 
+import 'examples/app_in_demo.dart';
 import 'examples/quick_start.dart';
 import 'pages/slider_page.dart';
 
@@ -11,11 +12,11 @@ var quickStartExample = QuickStartExample();
 // var navigationExample = NavigationExample();
 // var differentBottomBarsExample = DifferentBottomBarsExample();
 // var programmaticNavigationExample = ProgrammaticNavigationExample();
-// var appInDemo = AppInDemo();
+var appInDemo = AppInDemo();
 
 void main() => runApp(MaterialApp(
       // Change the example from here
-      home: quickStartExample,
+      home: appInDemo,
     ));
 
 /// README: https://github.com/m-azyoksul/bottom_nav_layout/blob/main/README.md#parameters
