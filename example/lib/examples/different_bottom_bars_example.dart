@@ -14,6 +14,18 @@ import 'package:water_drop_nav_bar/water_drop_nav_bar.dart' as WD;
 class DifferentBottomBarsExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var bottomBars = [
+      (currentIndex, onTap) => _buildBottomNavigationBar(currentIndex, onTap),
+      (currentIndex, onTap) => _buildCupertinoTabBar(currentIndex, onTap),
+      (currentIndex, onTap) => _buildGNav(currentIndex, onTap),
+      (currentIndex, onTap) => _buildSnakeNavigationBar(currentIndex, onTap),
+      (currentIndex, onTap) => _buildSalomonBottomBar(currentIndex, onTap),
+      (currentIndex, onTap) => _buildConvexAppBar(currentIndex, onTap),
+      (currentIndex, onTap) => _buildBottomBarWithSheet(currentIndex, onTap),
+      (currentIndex, onTap) => _buildWaterDropNavBar(currentIndex, onTap),
+      (currentIndex, onTap) => _buildSlidingClippedNavBar(currentIndex, onTap),
+    ];
+
     return BottomNavLayout(
       pages: [
         (_) => Center(child: Text("Welcome to bottom_nav_layout")),
@@ -22,7 +34,7 @@ class DifferentBottomBarsExample extends StatelessWidget {
             child: TextField(decoration: InputDecoration(hintText: 'Go..'))),
       ],
       bottomNavigationBar: (currentIndex, onTap) =>
-          _buildSnakeNavigationBar(currentIndex, onTap),
+          bottomBars[3](currentIndex, onTap),
     );
   }
 

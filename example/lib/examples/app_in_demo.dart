@@ -1,5 +1,4 @@
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'navigation_example.dart';

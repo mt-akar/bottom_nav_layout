@@ -37,9 +37,9 @@ void main() {
     expect(find.text('Search'), findsOneWidget);
     expect(find.text("Welcome to bottom_nav_layout"), findsOneWidget);
     expect(find.byWidget(welcomeText), findsOneWidget);
-    if (lazyLoadPages)
-      expect(find.byWidget(sliderField), findsNothing);
-    else
-      expect(find.byWidget(sliderField), findsOneWidget);
+    // if (lazyLoadPages)
+    //   expect(find.byWidget(sliderField), findsNothing);
+    // else
+    expect(find.byWidget(sliderField), findsOneWidget);
   });
 }

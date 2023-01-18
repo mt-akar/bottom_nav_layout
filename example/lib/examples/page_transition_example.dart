@@ -7,6 +7,12 @@ import '../pages/slider_page.dart';
 class PageTransitionExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var pageTransitions = [
+      _pageTransition1(),
+      _pageTransition2(),
+      _pageTransition3()
+    ];
+
     return BottomNavLayout(
       // The app's destinations
       pages: [
@@ -31,7 +37,7 @@ class PageTransitionExample extends StatelessWidget {
       savePageState: true,
 
       // Parameters related to the page transitions
-      pageTransitionData: _pageTransition1(),
+      pageTransitionData: pageTransitions[0],
     );
   }
 

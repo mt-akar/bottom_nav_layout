@@ -1,6 +1,5 @@
 import 'package:bottom_nav_layout/bottom_nav_layout.dart';
 import 'package:example/pages/slider_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// In-page navigation example with bottom_nav_layout package.
