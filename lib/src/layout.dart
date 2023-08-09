@@ -26,12 +26,18 @@ class BottomNavLayout extends StatefulWidget {
     this.extendBody = false,
     this.resizeToAvoidBottomInset = true,
     this.pageTransitionData,
+    this.onWillPopWithOnePageOnStack,
   })  : assert(pages.length >= 1, "At least 1 page is required"),
         assert(
             pageStack == null ||
                 pages.length > pageStack.peek() && pageStack.peek() >= 0,
             "initialPageIndex cannot exceed the page number or be negative"),
         super(key: key);
+
+  /// Custom callback when stack is with one page on stack
+  /// This way, you can show a popup before close app
+  ///
+  final WillPopCallback? onWillPopWithOnePageOnStack;
 
   /// The app's destinations.
   /// Each destination corresponds to one bottom navbar item.
@@ -152,6 +158,13 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
   /// If there is a single page in the stack, bubbles up the pop event. Exits the app if no other back button handler is configured in the app.
   Future<bool> onWillPop() async {
     // Send pop event to the inner page
+
+    //When there's only one page in stack and have custom future
+    if (widget.onWillPopWithOnePageOnStack != null && !(keys[pageStack.peek()].currentState?.canPop() ?? true)){
+      final res = await widget.onWillPopWithOnePageOnStack!.call();
+      return res;
+    }
+
     final consumedByPage =
         await keys[pageStack.peek()].currentState?.maybePop() ?? false;
 
@@ -169,10 +182,12 @@ class _BottomNavLayoutState extends State<BottomNavLayout> {
       // Set state to change the page
       setState(() {});
 
+
       // Consume pop event
       return false;
     }
 
+    print("here5");
     // Bubble up the pop event.
     return true;
   }
